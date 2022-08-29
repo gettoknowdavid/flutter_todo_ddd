@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizeUtil.vS(70),
+              SizeUtil.vS(90),
               Text(
                 'Welcome back',
                 style: TextStyle(
