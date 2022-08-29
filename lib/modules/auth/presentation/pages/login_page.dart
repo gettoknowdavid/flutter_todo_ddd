@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/login_form.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
@@ -43,7 +44,7 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const Text('Don\'t have an account?'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Modular.to.navigate('/auth/register'),
                     style: TextButton.styleFrom(
                       padding: SizeUtil.pSymmetric(h: 6),
                     ),
