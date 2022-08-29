@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
-import 'package:flutter_todo_ddd/utils/app_screen_util.dart';
+import 'package:flutter_todo_ddd/utils/size_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -21,16 +21,17 @@ class AppTheme {
 
   static final _elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
       onPrimary: AppColors.white,
       primary: AppColors.black,
-      padding: AppScreenUtil.pAll(20),
+      padding: SizeUtil.pAll(20),
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
-        borderRadius: AppScreenUtil.borderRadius(16),
+        borderRadius: SizeUtil.borderRadius(20),
       ),
       textStyle: GoogleFonts.poppins(
         color: AppColors.white,
-        fontSize: AppScreenUtil.fontSize(16),
+        fontSize: SizeUtil.fontSize(16),
       ),
     ),
   );
@@ -42,6 +43,31 @@ class AppTheme {
       }
       return AppColors.orange;
     }),
+  );
+
+  static final _textButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      primary: AppColors.black,
+      padding: SizeUtil.pFromLTRB(16, 8, 16, 8),
+      shadowColor: Colors.transparent,
+      textStyle: GoogleFonts.poppins(color: AppColors.black),
+    ),
+  );
+
+  static final _outlinedButtonTheme = OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
+      primary: AppColors.black,
+      padding: SizeUtil.pAll(20),
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: SizeUtil.borderRadius(20),
+      ),
+      textStyle: GoogleFonts.poppins(
+        color: AppColors.black,
+        fontSize: SizeUtil.fontSize(16),
+      ),
+    ),
   );
 
   static get theme {
@@ -60,9 +86,15 @@ class AppTheme {
       elevatedButtonTheme: _elevatedButtonTheme,
       primaryColor: AppColors.white,
       primaryColorDark: AppColors.greyDark,
+      primaryColorLight: AppColors.grey,
       radioTheme: _radioTheme,
       scaffoldBackgroundColor: AppColors.white,
+      textButtonTheme: _textButtonTheme,
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: AppColors.black,
+      ),
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
+      outlinedButtonTheme: _outlinedButtonTheme,
     );
   }
 
