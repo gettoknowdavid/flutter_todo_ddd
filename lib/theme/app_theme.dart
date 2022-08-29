@@ -6,6 +6,12 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static final _fontFamily = GoogleFonts.poppins().fontFamily;
 
+  static const _appBarTheme = AppBarTheme(
+    backgroundColor: AppColors.white,
+    elevation: 0,
+    iconTheme: _iconTheme,
+  );
+
   static final _colorScheme = const ColorScheme.light().copyWith(
     primary: AppColors.white,
     onPrimary: AppColors.black,
@@ -36,6 +42,8 @@ class AppTheme {
     ),
   );
 
+  static const _iconTheme = IconThemeData(color: AppColors.black);
+
   static final _radioTheme = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith<Color>((states) {
       if (states.contains(MaterialState.disabled)) {
@@ -52,6 +60,10 @@ class AppTheme {
       shadowColor: Colors.transparent,
       textStyle: GoogleFonts.poppins(color: AppColors.black),
     ),
+  );
+
+  static const _textSelectionTheme = TextSelectionThemeData(
+    cursorColor: AppColors.black,
   );
 
   static final _outlinedButtonTheme = OutlinedButtonThemeData(
@@ -74,25 +86,20 @@ class AppTheme {
     final ThemeData base = ThemeData.light();
 
     return base.copyWith(
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.white,
-        elevation: 0,
-        iconTheme: base.iconTheme,
-      ),
+      appBarTheme: _appBarTheme,
       backgroundColor: AppColors.white,
       brightness: Brightness.light,
       canvasColor: AppColors.grey,
       colorScheme: _colorScheme,
       elevatedButtonTheme: _elevatedButtonTheme,
+      iconTheme: _iconTheme,
       primaryColor: AppColors.white,
       primaryColorDark: AppColors.greyDark,
       primaryColorLight: AppColors.grey,
       radioTheme: _radioTheme,
       scaffoldBackgroundColor: AppColors.white,
       textButtonTheme: _textButtonTheme,
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.black,
-      ),
+      textSelectionTheme: _textSelectionTheme,
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
       outlinedButtonTheme: _outlinedButtonTheme,
     );
