@@ -10,6 +10,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      appBar: AppBar(leading: const BackButton()),
       body: Center(
         child: SingleChildScrollView(
           padding: SizeUtil.pSymmetric(h: 18, v: 20),
