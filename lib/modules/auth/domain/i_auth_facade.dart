@@ -8,4 +8,9 @@ abstract class IAuthFacade {
     required IEmail email,
     required IPassword password,
   });
+
+  Future<Either<AuthFailure, Unit>> login({
+    required IEmail email,
+    required IPassword password,
+  });
 }
