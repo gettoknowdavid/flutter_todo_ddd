@@ -14,19 +14,19 @@ class RegisterForm extends StatelessWidget {
             hint: 'Name',
             label: 'Name',
           ),
-          SizeUtil.vS(26),
+          SizeUtil.vS(20),
           const AppTextField(
             hint: 'Email',
             label: 'Email',
             keyboardType: TextInputType.emailAddress,
           ),
-          SizeUtil.vS(26),
+          SizeUtil.vS(20),
           const AppTextField(
             hint: 'Password',
             label: 'Password',
             isPassword: true,
           ),
-          SizeUtil.vS(36),
+          SizeUtil.vS(46),
           ElevatedButton(
             onPressed: () {},
             child: const Text('Register'),
