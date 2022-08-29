@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "272730972783",
+    "project_id": "teek-f2184",
+    "storage_bucket": "teek-f2184.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272730972783:android:bda95667a8573352a0239a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_todo_ddd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272730972783-32au49lpj3j5ad6lpr4ghbl247v9lt7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjIFMMNbeRgRSFzpbi6cOKM1EdMZ-hZDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272730972783-32au49lpj3j5ad6lpr4ghbl247v9lt7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
