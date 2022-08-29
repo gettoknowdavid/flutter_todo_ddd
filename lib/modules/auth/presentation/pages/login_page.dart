@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const Text('Don\'t have an account?'),
                   TextButton(
-                    onPressed: () => Modular.to.pushNamed('/auth/register'),
+                    onPressed: () => Modular.to.pushNamed('/register'),
                     style: TextButton.styleFrom(
                       padding: SizeUtil.pSymmetric(h: 6),
                     ),
