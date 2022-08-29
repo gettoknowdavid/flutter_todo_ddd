@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/login_form.dart';
+import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class LoginPage extends StatelessWidget {
@@ -7,8 +8,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Center(
@@ -18,24 +17,18 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizeUtil.vS(90),
-              Text(
-                'Welcome back',
-                style: TextStyle(
-                  fontSize: SizeUtil.fontSize(26),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text('Welcome back', style: AppTextStyles.authHeading),
               SizeUtil.vS(6),
               Text(
                 'You can login into your account with your email and password.',
-                style: TextStyle(color: theme.primaryColorDark),
+                style: AppTextStyles.authSubheading,
               ),
               SizeUtil.vS(36),
               const LoginForm(),
               SizeUtil.vS(16),
               Text(
                 'or',
-                style: TextStyle(color: theme.primaryColorDark),
+                style: AppTextStyles.authSubheading,
                 textAlign: TextAlign.center,
               ),
               SizeUtil.vS(16),
@@ -54,10 +47,7 @@ class LoginPage extends StatelessWidget {
                     style: TextButton.styleFrom(
                       padding: SizeUtil.pSymmetric(h: 6),
                     ),
-                    child: Text(
-                      'Register now',
-                      style: TextStyle(color: theme.colorScheme.secondary),
-                    ),
+                    child: Text('Register', style: AppTextStyles.registerNow),
                   ),
                 ],
               ),
