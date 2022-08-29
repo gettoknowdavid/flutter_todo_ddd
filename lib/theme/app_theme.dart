@@ -4,8 +4,6 @@ import 'package:flutter_todo_ddd/utils/app_screen_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  AppTheme._();
-
   static final _fontFamily = GoogleFonts.poppins().fontFamily;
 
   static final _colorScheme = const ColorScheme.light().copyWith(
@@ -65,4 +63,6 @@ class AppTheme {
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
     );
   }
+
+  AppTheme._();
 }
