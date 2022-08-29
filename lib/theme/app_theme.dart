@@ -21,6 +21,7 @@ class AppTheme {
 
   static final _elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      onPrimary: AppColors.white,
       primary: AppColors.black,
       padding: AppScreenUtil.pAll(20),
       shadowColor: Colors.transparent,
@@ -58,6 +59,7 @@ class AppTheme {
       colorScheme: _colorScheme,
       elevatedButtonTheme: _elevatedButtonTheme,
       primaryColor: AppColors.white,
+      primaryColorDark: AppColors.greyDark,
       radioTheme: _radioTheme,
       scaffoldBackgroundColor: AppColors.white,
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
