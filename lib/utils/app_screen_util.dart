@@ -40,8 +40,8 @@ class AppScreenUtil {
       EdgeInsets.fromLTRB(left, top, right, bottom).r;
 
   /// Padding symmetric
-  static pSymmetric({double horizontal = 0.0, double vertical = 0.0}) =>
-      EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical).r;
+  static pSymmetric({double h = 0.0, double v = 0.0}) =>
+      EdgeInsets.symmetric(horizontal: h, vertical: v).r;
 
   /// Padding only
   static pOnly({
