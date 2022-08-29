@@ -14,6 +14,7 @@ class RegisterForm extends StatelessWidget {
             hint: 'Name',
             label: 'Name',
           ),
+          SizeUtil.vS(26),
           const AppTextField(
             hint: 'Email',
             label: 'Email',
