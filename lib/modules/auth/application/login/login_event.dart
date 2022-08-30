@@ -8,5 +8,5 @@ class LoginEvent with _$LoginEvent {
 
   const factory LoginEvent.passwordChanged(String password) = PasswordChanged;
 
-  const factory LoginEvent.signInPressed() = SignInPressed;
+  const factory LoginEvent.loginPressed() = LoginPressed;
 }
