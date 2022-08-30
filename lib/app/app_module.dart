@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_todo_ddd/modules/app/presentation/pages/splash_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_controller.dart';
@@ -23,8 +22,9 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, __) => const SplashPage()),
-    ChildRoute('/login', child: (_, __) => const LoginPage()),
+    // ChildRoute(Modular.initialRoute, child: (_, __) => const SplashPage()),
+    ChildRoute(Modular.initialRoute, child: (_, __) => const LoginPage()),
+    // ChildRoute('/login', child: (_, __) => const LoginPage()),
     ChildRoute('/register', child: (_, __) => const RegisterPage()),
   ];
 }
