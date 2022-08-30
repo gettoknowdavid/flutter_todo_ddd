@@ -18,4 +18,8 @@ abstract class IAuthFacade {
   Future<void> logout();
 
   Future<Option<User?>> currentUser();
+
+  Future<void> sendVerificationEmail();
+
+  Future<Option<Either<AuthFailure, bool?>>> checkVerification();
 }
