@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/errors/auth_failure.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,6 +15,7 @@ class RegisterState with _$RegisterState {
     required bool loading,
     required bool showError,
     required Option<Either<AuthFailure, Unit>> authOption,
+    TextEditingController? passwordController, 
   }) = _RegisterState;
 
   factory RegisterState.initial() {
@@ -24,6 +26,7 @@ class RegisterState with _$RegisterState {
       loading: false,
       showError: false,
       authOption: none(),
+      passwordController: null,
     );
   }
 }
