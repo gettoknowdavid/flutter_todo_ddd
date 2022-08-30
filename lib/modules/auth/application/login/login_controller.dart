@@ -14,8 +14,9 @@ class LoginController extends StateNotifier<LoginState> {
   Future mapEventsToStates(LoginEvent e) async {
     return e.map(
       emailChanged: _emailChanged,
-      passwordChanged: _passwordChanged,
+      googleLoginPressed: _googleLoginPressed,
       loginPressed: _loginPressed,
+      passwordChanged: _passwordChanged,
     );
   }
 
@@ -26,11 +27,14 @@ class LoginController extends StateNotifier<LoginState> {
     );
   }
 
-  _passwordChanged(PasswordChanged e) async {
-    state = state.copyWith(
-      password: IPassword(e.password, isSignIn: true),
-      authOption: none(),
-    );
+  _googleLoginPressed(GoogleLoginPressed e) async {
+    Either<AuthFailure, Unit> r;
+
+    state = state.copyWith(loading: true, authOption: none());
+
+    r = await _facade.googleLogin();
+
+    state = state.copyWith(loading: false, authOption: some(r));
   }
 
   _loginPressed(LoginPressed e) async {
@@ -48,5 +52,12 @@ class LoginController extends StateNotifier<LoginState> {
     }
 
     state = state.copyWith(loading: false, showError: true, authOption: none());
+  }
+
+  _passwordChanged(PasswordChanged e) async {
+    state = state.copyWith(
+      password: IPassword(e.password, isSignIn: true),
+      authOption: none(),
+    );
   }
 }
