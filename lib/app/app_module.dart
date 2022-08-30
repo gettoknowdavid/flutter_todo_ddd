@@ -11,6 +11,7 @@ import 'package:flutter_todo_ddd/modules/auth/infrastructure/user_mapper.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
+import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 
 class AppModule extends Module {
   @override
@@ -20,7 +21,8 @@ class AppModule extends Module {
     Bind.lazySingleton<IAuthFacade>((i) => AuthFacade(i(), i())),
     Bind.lazySingleton<LoginController>((i) => LoginController(i())),
     Bind.lazySingleton<RegisterController>((i) => RegisterController(i())),
-    Bind.lazySingleton<AuthController>((i) => AuthController(i())),
+    Bind.lazySingleton<OpenMailAppFacade>((i) => OpenMailAppFacade()),
+    Bind.lazySingleton<AuthController>((i) => AuthController(i(), i())),
   ];
 
   @override
