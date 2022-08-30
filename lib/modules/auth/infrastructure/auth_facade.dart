@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_todo_ddd/modules/auth/domain/entities/user.dart' as app;
 import 'package:flutter_todo_ddd/modules/auth/domain/errors/auth_failure.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/value_objects.dart';
@@ -70,6 +71,19 @@ class AuthFacade implements IAuthFacade {
       } else {
         return left(const AuthFailure.serverError());
       }
+    }
+  }
+
+  @override
+  Future<Option<app.User?>> currentUser() async {
+    final fUser = _firebaseAuth.currentUser;
+
+    if (fUser != null) {
+      final user = await usersRef.doc(fUser.uid).get().then((v) => v.data);
+
+      return optionOf(_userMapper.toDomain(user));
+    } else {
+      return optionOf(null);
     }
   }
 }
