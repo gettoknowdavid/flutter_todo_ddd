@@ -22,8 +22,8 @@ class RegisterForm extends ConsumerWidget {
     final event = ref.watch(registerProvider.notifier);
     final authEvent = ref.watch(authProvider.notifier);
 
-    ref.listen<RegisterState>(registerProvider, (p, c) {
-      c.authOption.fold(
+    ref.listen<RegisterState>(registerProvider, (previous, next) {
+      next.authOption.fold(
         () => null,
         (either) => either.fold(
           (failure) {
