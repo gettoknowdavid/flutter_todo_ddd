@@ -86,4 +86,24 @@ class AuthFacade implements IAuthFacade {
       return optionOf(null);
     }
   }
+
+  @override
+  Future<Option<Either<AuthFailure, bool?>>> checkVerification() async {
+    if (_firebaseAuth.currentUser != null) {
+      await _firebaseAuth.currentUser!.reload();
+      final value = _firebaseAuth.currentUser!.emailVerified;
+      if (value) {
+        return optionOf(right(value));
+      } else {
+        return optionOf(left(const AuthFailure.emailNotVerified()));
+      }
+    } else {
+      return optionOf(null);
+    }
+  }
+
+  @override
+  Future<void> sendVerificationEmail() async {
+    return await _firebaseAuth.currentUser!.sendEmailVerification();
+  }
 }
