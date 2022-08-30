@@ -20,21 +20,21 @@ mixin _$LoginEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() signInPressed,
+    required TResult Function() loginPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +42,21 @@ mixin _$LoginEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(SignInPressed value) signInPressed,
+    required TResult Function(LoginPressed value) loginPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$EmailChanged implements EmailChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() signInPressed,
+    required TResult Function() loginPressed,
   }) {
     return emailChanged(email);
   }
@@ -154,7 +154,7 @@ class _$EmailChanged implements EmailChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
   }) {
     return emailChanged?.call(email);
   }
@@ -164,7 +164,7 @@ class _$EmailChanged implements EmailChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -178,7 +178,7 @@ class _$EmailChanged implements EmailChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(SignInPressed value) signInPressed,
+    required TResult Function(LoginPressed value) loginPressed,
   }) {
     return emailChanged(this);
   }
@@ -188,7 +188,7 @@ class _$EmailChanged implements EmailChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
   }) {
     return emailChanged?.call(this);
   }
@@ -198,7 +198,7 @@ class _$EmailChanged implements EmailChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -284,7 +284,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() signInPressed,
+    required TResult Function() loginPressed,
   }) {
     return passwordChanged(password);
   }
@@ -294,7 +294,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
   }) {
     return passwordChanged?.call(password);
   }
@@ -304,7 +304,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -318,7 +318,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(SignInPressed value) signInPressed,
+    required TResult Function(LoginPressed value) loginPressed,
   }) {
     return passwordChanged(this);
   }
@@ -328,7 +328,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
   }) {
     return passwordChanged?.call(this);
   }
@@ -338,7 +338,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -358,37 +358,37 @@ abstract class PasswordChanged implements LoginEvent {
 }
 
 /// @nodoc
-abstract class _$$SignInPressedCopyWith<$Res> {
-  factory _$$SignInPressedCopyWith(
-          _$SignInPressed value, $Res Function(_$SignInPressed) then) =
-      __$$SignInPressedCopyWithImpl<$Res>;
+abstract class _$$LoginPressedCopyWith<$Res> {
+  factory _$$LoginPressedCopyWith(
+          _$LoginPressed value, $Res Function(_$LoginPressed) then) =
+      __$$LoginPressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SignInPressedCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$SignInPressedCopyWith<$Res> {
-  __$$SignInPressedCopyWithImpl(
-      _$SignInPressed _value, $Res Function(_$SignInPressed) _then)
-      : super(_value, (v) => _then(v as _$SignInPressed));
+class __$$LoginPressedCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$LoginPressedCopyWith<$Res> {
+  __$$LoginPressedCopyWithImpl(
+      _$LoginPressed _value, $Res Function(_$LoginPressed) _then)
+      : super(_value, (v) => _then(v as _$LoginPressed));
 
   @override
-  _$SignInPressed get _value => super._value as _$SignInPressed;
+  _$LoginPressed get _value => super._value as _$LoginPressed;
 }
 
 /// @nodoc
 
-class _$SignInPressed implements SignInPressed {
-  const _$SignInPressed();
+class _$LoginPressed implements LoginPressed {
+  const _$LoginPressed();
 
   @override
   String toString() {
-    return 'LoginEvent.signInPressed()';
+    return 'LoginEvent.loginPressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignInPressed);
+        (other.runtimeType == runtimeType && other is _$LoginPressed);
   }
 
   @override
@@ -399,9 +399,9 @@ class _$SignInPressed implements SignInPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() signInPressed,
+    required TResult Function() loginPressed,
   }) {
-    return signInPressed();
+    return loginPressed();
   }
 
   @override
@@ -409,9 +409,9 @@ class _$SignInPressed implements SignInPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
   }) {
-    return signInPressed?.call();
+    return loginPressed?.call();
   }
 
   @override
@@ -419,11 +419,11 @@ class _$SignInPressed implements SignInPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? signInPressed,
+    TResult Function()? loginPressed,
     required TResult orElse(),
   }) {
-    if (signInPressed != null) {
-      return signInPressed();
+    if (loginPressed != null) {
+      return loginPressed();
     }
     return orElse();
   }
@@ -433,9 +433,9 @@ class _$SignInPressed implements SignInPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(SignInPressed value) signInPressed,
+    required TResult Function(LoginPressed value) loginPressed,
   }) {
-    return signInPressed(this);
+    return loginPressed(this);
   }
 
   @override
@@ -443,9 +443,9 @@ class _$SignInPressed implements SignInPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
   }) {
-    return signInPressed?.call(this);
+    return loginPressed?.call(this);
   }
 
   @override
@@ -453,16 +453,16 @@ class _$SignInPressed implements SignInPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(SignInPressed value)? signInPressed,
+    TResult Function(LoginPressed value)? loginPressed,
     required TResult orElse(),
   }) {
-    if (signInPressed != null) {
-      return signInPressed(this);
+    if (loginPressed != null) {
+      return loginPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class SignInPressed implements LoginEvent {
-  const factory SignInPressed() = _$SignInPressed;
+abstract class LoginPressed implements LoginEvent {
+  const factory LoginPressed() = _$LoginPressed;
 }
