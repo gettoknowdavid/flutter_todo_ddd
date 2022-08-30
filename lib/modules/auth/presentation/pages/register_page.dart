@@ -25,7 +25,7 @@ class RegisterPage extends StatelessWidget {
                 style: AppTextStyles.authSubheading,
               ),
               SizeUtil.vS(36),
-              const RegisterForm(),
+              RegisterForm(),
               SizeUtil.vS(16),
               Text(
                 'or',
@@ -34,7 +34,10 @@ class RegisterPage extends StatelessWidget {
               ),
               SizeUtil.vS(16),
               OutlinedButton.icon(
-                icon: Image.asset('assets/icons/google.png'),
+                icon: Image.asset(
+                  'assets/icons/google.png',
+                  height: SizeUtil.h(22),
+                ),
                 label: const Text('Register with Google'),
                 onPressed: () {},
               ),
