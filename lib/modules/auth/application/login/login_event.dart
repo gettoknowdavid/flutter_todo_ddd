@@ -9,4 +9,6 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.passwordChanged(String password) = PasswordChanged;
 
   const factory LoginEvent.loginPressed() = LoginPressed;
+
+  const factory LoginEvent.googleLoginPressed() = GoogleLoginPressed;
 }
