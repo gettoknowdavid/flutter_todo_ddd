@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/errors/auth_failure.dart';
+import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/value_objects.dart';
-import 'package:flutter_todo_ddd/modules/auth/infrastructure/auth_facade.dart';
 
 class RegisterController extends StateNotifier<RegisterState> {
-  final AuthFacade _facade;
+  final IAuthFacade _facade;
 
   RegisterController(this._facade) : super(RegisterState.initial());
 
@@ -36,7 +37,8 @@ class RegisterController extends StateNotifier<RegisterState> {
 
   _passwordChanged(PasswordChanged e) async {
     state = state.copyWith(
-      password: IPassword(e.password, isSignIn: true),
+      password: IPassword(e.password),
+      passwordController: TextEditingController(text: e.password),
       authOption: none(),
     );
   }
