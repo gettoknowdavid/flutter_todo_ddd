@@ -23,6 +23,8 @@ mixin _$RegisterState {
   bool get showError => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authOption =>
       throw _privateConstructorUsedError;
+  TextEditingController? get passwordController =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterStateCopyWith<RegisterState> get copyWith =>
@@ -40,7 +42,8 @@ abstract class $RegisterStateCopyWith<$Res> {
       IPassword password,
       bool loading,
       bool showError,
-      Option<Either<AuthFailure, Unit>> authOption});
+      Option<Either<AuthFailure, Unit>> authOption,
+      TextEditingController? passwordController});
 }
 
 /// @nodoc
@@ -60,6 +63,7 @@ class _$RegisterStateCopyWithImpl<$Res>
     Object? loading = freezed,
     Object? showError = freezed,
     Object? authOption = freezed,
+    Object? passwordController = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -86,6 +90,10 @@ class _$RegisterStateCopyWithImpl<$Res>
           ? _value.authOption
           : authOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      passwordController: passwordController == freezed
+          ? _value.passwordController
+          : passwordController // ignore: cast_nullable_to_non_nullable
+              as TextEditingController?,
     ));
   }
 }
@@ -103,7 +111,8 @@ abstract class _$$_RegisterStateCopyWith<$Res>
       IPassword password,
       bool loading,
       bool showError,
-      Option<Either<AuthFailure, Unit>> authOption});
+      Option<Either<AuthFailure, Unit>> authOption,
+      TextEditingController? passwordController});
 }
 
 /// @nodoc
@@ -125,6 +134,7 @@ class __$$_RegisterStateCopyWithImpl<$Res>
     Object? loading = freezed,
     Object? showError = freezed,
     Object? authOption = freezed,
+    Object? passwordController = freezed,
   }) {
     return _then(_$_RegisterState(
       name: name == freezed
@@ -151,6 +161,10 @@ class __$$_RegisterStateCopyWithImpl<$Res>
           ? _value.authOption
           : authOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      passwordController: passwordController == freezed
+          ? _value.passwordController
+          : passwordController // ignore: cast_nullable_to_non_nullable
+              as TextEditingController?,
     ));
   }
 }
@@ -164,7 +178,8 @@ class _$_RegisterState implements _RegisterState {
       required this.password,
       required this.loading,
       required this.showError,
-      required this.authOption});
+      required this.authOption,
+      this.passwordController});
 
   @override
   final IName name;
@@ -178,10 +193,12 @@ class _$_RegisterState implements _RegisterState {
   final bool showError;
   @override
   final Option<Either<AuthFailure, Unit>> authOption;
+  @override
+  final TextEditingController? passwordController;
 
   @override
   String toString() {
-    return 'RegisterState(name: $name, email: $email, password: $password, loading: $loading, showError: $showError, authOption: $authOption)';
+    return 'RegisterState(name: $name, email: $email, password: $password, loading: $loading, showError: $showError, authOption: $authOption, passwordController: $passwordController)';
   }
 
   @override
@@ -195,7 +212,9 @@ class _$_RegisterState implements _RegisterState {
             const DeepCollectionEquality().equals(other.loading, loading) &&
             const DeepCollectionEquality().equals(other.showError, showError) &&
             const DeepCollectionEquality()
-                .equals(other.authOption, authOption));
+                .equals(other.authOption, authOption) &&
+            const DeepCollectionEquality()
+                .equals(other.passwordController, passwordController));
   }
 
   @override
@@ -206,7 +225,8 @@ class _$_RegisterState implements _RegisterState {
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(loading),
       const DeepCollectionEquality().hash(showError),
-      const DeepCollectionEquality().hash(authOption));
+      const DeepCollectionEquality().hash(authOption),
+      const DeepCollectionEquality().hash(passwordController));
 
   @JsonKey(ignore: true)
   @override
@@ -216,13 +236,13 @@ class _$_RegisterState implements _RegisterState {
 
 abstract class _RegisterState implements RegisterState {
   const factory _RegisterState(
-          {required final IName name,
-          required final IEmail email,
-          required final IPassword password,
-          required final bool loading,
-          required final bool showError,
-          required final Option<Either<AuthFailure, Unit>> authOption}) =
-      _$_RegisterState;
+      {required final IName name,
+      required final IEmail email,
+      required final IPassword password,
+      required final bool loading,
+      required final bool showError,
+      required final Option<Either<AuthFailure, Unit>> authOption,
+      final TextEditingController? passwordController}) = _$_RegisterState;
 
   @override
   IName get name;
@@ -236,6 +256,8 @@ abstract class _RegisterState implements RegisterState {
   bool get showError;
   @override
   Option<Either<AuthFailure, Unit>> get authOption;
+  @override
+  TextEditingController? get passwordController;
   @override
   @JsonKey(ignore: true)
   _$$_RegisterStateCopyWith<_$_RegisterState> get copyWith =>
