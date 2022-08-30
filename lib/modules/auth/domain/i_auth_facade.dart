@@ -15,6 +15,8 @@ abstract class IAuthFacade {
     required IPassword password,
   });
 
+  Future<Either<AuthFailure, Unit>> googleLogin();
+
   Future<void> logout();
 
   Future<Option<User?>> currentUser();
