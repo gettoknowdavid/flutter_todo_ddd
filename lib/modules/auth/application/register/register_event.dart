@@ -11,5 +11,5 @@ class RegisterEvent with _$RegisterEvent {
   const factory RegisterEvent.passwordChanged(String password) =
       PasswordChanged;
 
-  const factory RegisterEvent.register() = Register;
+  const factory RegisterEvent.registerPressed() = RegisterPressed;
 }
