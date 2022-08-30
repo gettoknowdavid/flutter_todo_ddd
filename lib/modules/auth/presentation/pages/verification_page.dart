@@ -4,16 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
+import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
-import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
-
-final _authProvider = StateNotifierProvider<AuthController, AuthState>(
-  (ref) => AuthController(Modular.get<IAuthFacade>()),
-);
 
 class VerificationPage extends ConsumerStatefulWidget {
   const VerificationPage({Key? key}) : super(key: key);
@@ -27,8 +22,8 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
 
   @override
   Widget build(BuildContext context) {
-    final authEvent = ref.watch(_authProvider.notifier);
-    ref.listen<AuthState>(_authProvider, (previous, next) {
+    final authEvent = ref.watch(authProvider.notifier);
+    ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
         orElse: () => null,
         verified: (_) {
@@ -66,17 +61,28 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
                 style: AppTextStyles.authSubheading,
               ),
               SizeUtil.vS(40),
-              AppButton(onPressed: () {}, title: 'Open mail app'),
+              AppButton(
+                title: 'Open mail app',
+                onPressed: () {
+                  authEvent.mapEventsToStates(const AuthEvent.openMailApp());
+                },
+              ),
               SizeUtil.vS(30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      authEvent.mapEventsToStates(
+                        const AuthEvent.sendVerificationEmail(),
+                      );
+                    },
                     child: const Text('Resend Email'),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      authEvent.mapEventsToStates(const AuthEvent.loggedOut());
+                    },
                     child: const Text('Cancel'),
                   ),
                 ],
@@ -97,7 +103,7 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
 
   @override
   void initState() {
-    final authEvent = ref.read(_authProvider.notifier);
+    final authEvent = ref.read(authProvider.notifier);
     authEvent.mapEventsToStates(const AuthEvent.checkVerified());
     super.initState();
   }
