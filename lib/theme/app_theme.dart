@@ -30,7 +30,6 @@ class AppTheme {
       fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
       onPrimary: AppColors.white,
       primary: AppColors.black,
-      padding: SizeUtil.pAll(20),
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: SizeUtil.borderRadius(20),
@@ -70,7 +69,6 @@ class AppTheme {
     style: OutlinedButton.styleFrom(
       fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
       primary: AppColors.black,
-      padding: SizeUtil.pAll(20),
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: SizeUtil.borderRadius(20),
