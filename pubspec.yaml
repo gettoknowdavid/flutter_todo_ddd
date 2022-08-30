@@ -48,6 +48,7 @@ dependencies:
   intl: ^0.17.0
   lottie: ^1.4.2
   open_mail_app: ^0.4.5
+  google_sign_in: ^5.4.1
 
 dev_dependencies:
   flutter_test:
