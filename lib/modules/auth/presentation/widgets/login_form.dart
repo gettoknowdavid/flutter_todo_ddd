@@ -1,34 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_snackbars.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
+import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_event.dart';
-import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
-import 'package:flutter_todo_ddd/utils/size_util.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/login/login_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart';
-
-final loginProvider =
-    StateNotifierProvider.autoDispose<LoginController, LoginState>(
-  (ref) {
-    ref.onDispose(() => ref.refresh);
-    return LoginController(Modular.get<IAuthFacade>());
-  },
-);
-
-final authProvider = StateNotifierProvider<AuthController, AuthState>(
-  (ref) => AuthController(Modular.get<IAuthFacade>()),
-);
+import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class LoginForm extends ConsumerWidget {
-  LoginForm({Key? key}) : super(key: key);
-
   final formKey = GlobalKey<FormState>();
+
+  LoginForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
