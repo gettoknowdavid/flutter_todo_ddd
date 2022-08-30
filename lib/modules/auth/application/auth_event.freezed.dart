@@ -46,30 +46,30 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,28 +91,28 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_AuthCheckRequestedCopyWith<$Res> {
-  factory _$$_AuthCheckRequestedCopyWith(_$_AuthCheckRequested value,
-          $Res Function(_$_AuthCheckRequested) then) =
-      __$$_AuthCheckRequestedCopyWithImpl<$Res>;
+abstract class _$$AuthCheckRequestedCopyWith<$Res> {
+  factory _$$AuthCheckRequestedCopyWith(_$AuthCheckRequested value,
+          $Res Function(_$AuthCheckRequested) then) =
+      __$$AuthCheckRequestedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthCheckRequestedCopyWithImpl<$Res>
+class __$$AuthCheckRequestedCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AuthCheckRequestedCopyWith<$Res> {
-  __$$_AuthCheckRequestedCopyWithImpl(
-      _$_AuthCheckRequested _value, $Res Function(_$_AuthCheckRequested) _then)
-      : super(_value, (v) => _then(v as _$_AuthCheckRequested));
+    implements _$$AuthCheckRequestedCopyWith<$Res> {
+  __$$AuthCheckRequestedCopyWithImpl(
+      _$AuthCheckRequested _value, $Res Function(_$AuthCheckRequested) _then)
+      : super(_value, (v) => _then(v as _$AuthCheckRequested));
 
   @override
-  _$_AuthCheckRequested get _value => super._value as _$_AuthCheckRequested;
+  _$AuthCheckRequested get _value => super._value as _$AuthCheckRequested;
 }
 
 /// @nodoc
 
-class _$_AuthCheckRequested implements _AuthCheckRequested {
-  const _$_AuthCheckRequested();
+class _$AuthCheckRequested implements AuthCheckRequested {
+  const _$AuthCheckRequested();
 
   @override
   String toString() {
@@ -122,7 +122,7 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthCheckRequested);
+        (other.runtimeType == runtimeType && other is _$AuthCheckRequested);
   }
 
   @override
@@ -171,12 +171,12 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) {
     return checkRequested(this);
   }
@@ -184,11 +184,11 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) {
     return checkRequested?.call(this);
   }
@@ -196,11 +196,11 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) {
     if (checkRequested != null) {
@@ -210,33 +210,33 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   }
 }
 
-abstract class _AuthCheckRequested implements AuthEvent {
-  const factory _AuthCheckRequested() = _$_AuthCheckRequested;
+abstract class AuthCheckRequested implements AuthEvent {
+  const factory AuthCheckRequested() = _$AuthCheckRequested;
 }
 
 /// @nodoc
-abstract class _$$_AuthCheckVerifiedCopyWith<$Res> {
-  factory _$$_AuthCheckVerifiedCopyWith(_$_AuthCheckVerified value,
-          $Res Function(_$_AuthCheckVerified) then) =
-      __$$_AuthCheckVerifiedCopyWithImpl<$Res>;
+abstract class _$$AuthCheckVerifiedCopyWith<$Res> {
+  factory _$$AuthCheckVerifiedCopyWith(
+          _$AuthCheckVerified value, $Res Function(_$AuthCheckVerified) then) =
+      __$$AuthCheckVerifiedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthCheckVerifiedCopyWithImpl<$Res>
+class __$$AuthCheckVerifiedCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AuthCheckVerifiedCopyWith<$Res> {
-  __$$_AuthCheckVerifiedCopyWithImpl(
-      _$_AuthCheckVerified _value, $Res Function(_$_AuthCheckVerified) _then)
-      : super(_value, (v) => _then(v as _$_AuthCheckVerified));
+    implements _$$AuthCheckVerifiedCopyWith<$Res> {
+  __$$AuthCheckVerifiedCopyWithImpl(
+      _$AuthCheckVerified _value, $Res Function(_$AuthCheckVerified) _then)
+      : super(_value, (v) => _then(v as _$AuthCheckVerified));
 
   @override
-  _$_AuthCheckVerified get _value => super._value as _$_AuthCheckVerified;
+  _$AuthCheckVerified get _value => super._value as _$AuthCheckVerified;
 }
 
 /// @nodoc
 
-class _$_AuthCheckVerified implements _AuthCheckVerified {
-  const _$_AuthCheckVerified();
+class _$AuthCheckVerified implements AuthCheckVerified {
+  const _$AuthCheckVerified();
 
   @override
   String toString() {
@@ -246,7 +246,7 @@ class _$_AuthCheckVerified implements _AuthCheckVerified {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthCheckVerified);
+        (other.runtimeType == runtimeType && other is _$AuthCheckVerified);
   }
 
   @override
@@ -295,12 +295,12 @@ class _$_AuthCheckVerified implements _AuthCheckVerified {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) {
     return checkVerified(this);
   }
@@ -308,11 +308,11 @@ class _$_AuthCheckVerified implements _AuthCheckVerified {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) {
     return checkVerified?.call(this);
   }
@@ -320,11 +320,11 @@ class _$_AuthCheckVerified implements _AuthCheckVerified {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) {
     if (checkVerified != null) {
@@ -334,34 +334,33 @@ class _$_AuthCheckVerified implements _AuthCheckVerified {
   }
 }
 
-abstract class _AuthCheckVerified implements AuthEvent {
-  const factory _AuthCheckVerified() = _$_AuthCheckVerified;
+abstract class AuthCheckVerified implements AuthEvent {
+  const factory AuthCheckVerified() = _$AuthCheckVerified;
 }
 
 /// @nodoc
-abstract class _$$_SendVerificationEmailCopyWith<$Res> {
-  factory _$$_SendVerificationEmailCopyWith(_$_SendVerificationEmail value,
-          $Res Function(_$_SendVerificationEmail) then) =
-      __$$_SendVerificationEmailCopyWithImpl<$Res>;
+abstract class _$$SendVerificationEmailCopyWith<$Res> {
+  factory _$$SendVerificationEmailCopyWith(_$SendVerificationEmail value,
+          $Res Function(_$SendVerificationEmail) then) =
+      __$$SendVerificationEmailCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SendVerificationEmailCopyWithImpl<$Res>
+class __$$SendVerificationEmailCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_SendVerificationEmailCopyWith<$Res> {
-  __$$_SendVerificationEmailCopyWithImpl(_$_SendVerificationEmail _value,
-      $Res Function(_$_SendVerificationEmail) _then)
-      : super(_value, (v) => _then(v as _$_SendVerificationEmail));
+    implements _$$SendVerificationEmailCopyWith<$Res> {
+  __$$SendVerificationEmailCopyWithImpl(_$SendVerificationEmail _value,
+      $Res Function(_$SendVerificationEmail) _then)
+      : super(_value, (v) => _then(v as _$SendVerificationEmail));
 
   @override
-  _$_SendVerificationEmail get _value =>
-      super._value as _$_SendVerificationEmail;
+  _$SendVerificationEmail get _value => super._value as _$SendVerificationEmail;
 }
 
 /// @nodoc
 
-class _$_SendVerificationEmail implements _SendVerificationEmail {
-  const _$_SendVerificationEmail();
+class _$SendVerificationEmail implements SendVerificationEmail {
+  const _$SendVerificationEmail();
 
   @override
   String toString() {
@@ -371,7 +370,7 @@ class _$_SendVerificationEmail implements _SendVerificationEmail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SendVerificationEmail);
+        (other.runtimeType == runtimeType && other is _$SendVerificationEmail);
   }
 
   @override
@@ -420,12 +419,12 @@ class _$_SendVerificationEmail implements _SendVerificationEmail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) {
     return sendVerificationEmail(this);
   }
@@ -433,11 +432,11 @@ class _$_SendVerificationEmail implements _SendVerificationEmail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) {
     return sendVerificationEmail?.call(this);
   }
@@ -445,11 +444,11 @@ class _$_SendVerificationEmail implements _SendVerificationEmail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) {
     if (sendVerificationEmail != null) {
@@ -459,32 +458,32 @@ class _$_SendVerificationEmail implements _SendVerificationEmail {
   }
 }
 
-abstract class _SendVerificationEmail implements AuthEvent {
-  const factory _SendVerificationEmail() = _$_SendVerificationEmail;
+abstract class SendVerificationEmail implements AuthEvent {
+  const factory SendVerificationEmail() = _$SendVerificationEmail;
 }
 
 /// @nodoc
-abstract class _$$_LoggedOutCopyWith<$Res> {
-  factory _$$_LoggedOutCopyWith(
-          _$_LoggedOut value, $Res Function(_$_LoggedOut) then) =
-      __$$_LoggedOutCopyWithImpl<$Res>;
+abstract class _$$LoggedOutCopyWith<$Res> {
+  factory _$$LoggedOutCopyWith(
+          _$LoggedOut value, $Res Function(_$LoggedOut) then) =
+      __$$LoggedOutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoggedOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_LoggedOutCopyWith<$Res> {
-  __$$_LoggedOutCopyWithImpl(
-      _$_LoggedOut _value, $Res Function(_$_LoggedOut) _then)
-      : super(_value, (v) => _then(v as _$_LoggedOut));
+class __$$LoggedOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$LoggedOutCopyWith<$Res> {
+  __$$LoggedOutCopyWithImpl(
+      _$LoggedOut _value, $Res Function(_$LoggedOut) _then)
+      : super(_value, (v) => _then(v as _$LoggedOut));
 
   @override
-  _$_LoggedOut get _value => super._value as _$_LoggedOut;
+  _$LoggedOut get _value => super._value as _$LoggedOut;
 }
 
 /// @nodoc
 
-class _$_LoggedOut implements _LoggedOut {
-  const _$_LoggedOut();
+class _$LoggedOut implements LoggedOut {
+  const _$LoggedOut();
 
   @override
   String toString() {
@@ -494,7 +493,7 @@ class _$_LoggedOut implements _LoggedOut {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoggedOut);
+        (other.runtimeType == runtimeType && other is _$LoggedOut);
   }
 
   @override
@@ -543,12 +542,12 @@ class _$_LoggedOut implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) {
     return loggedOut(this);
   }
@@ -556,11 +555,11 @@ class _$_LoggedOut implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) {
     return loggedOut?.call(this);
   }
@@ -568,11 +567,11 @@ class _$_LoggedOut implements _LoggedOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) {
     if (loggedOut != null) {
@@ -582,32 +581,32 @@ class _$_LoggedOut implements _LoggedOut {
   }
 }
 
-abstract class _LoggedOut implements AuthEvent {
-  const factory _LoggedOut() = _$_LoggedOut;
+abstract class LoggedOut implements AuthEvent {
+  const factory LoggedOut() = _$LoggedOut;
 }
 
 /// @nodoc
-abstract class _$$_OpenMailAppCopyWith<$Res> {
-  factory _$$_OpenMailAppCopyWith(
-          _$_OpenMailApp value, $Res Function(_$_OpenMailApp) then) =
-      __$$_OpenMailAppCopyWithImpl<$Res>;
+abstract class _$$OpenMailAppCopyWith<$Res> {
+  factory _$$OpenMailAppCopyWith(
+          _$OpenMailApp value, $Res Function(_$OpenMailApp) then) =
+      __$$OpenMailAppCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OpenMailAppCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_OpenMailAppCopyWith<$Res> {
-  __$$_OpenMailAppCopyWithImpl(
-      _$_OpenMailApp _value, $Res Function(_$_OpenMailApp) _then)
-      : super(_value, (v) => _then(v as _$_OpenMailApp));
+class __$$OpenMailAppCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$OpenMailAppCopyWith<$Res> {
+  __$$OpenMailAppCopyWithImpl(
+      _$OpenMailApp _value, $Res Function(_$OpenMailApp) _then)
+      : super(_value, (v) => _then(v as _$OpenMailApp));
 
   @override
-  _$_OpenMailApp get _value => super._value as _$_OpenMailApp;
+  _$OpenMailApp get _value => super._value as _$OpenMailApp;
 }
 
 /// @nodoc
 
-class _$_OpenMailApp implements _OpenMailApp {
-  const _$_OpenMailApp();
+class _$OpenMailApp implements OpenMailApp {
+  const _$OpenMailApp();
 
   @override
   String toString() {
@@ -617,7 +616,7 @@ class _$_OpenMailApp implements _OpenMailApp {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OpenMailApp);
+        (other.runtimeType == runtimeType && other is _$OpenMailApp);
   }
 
   @override
@@ -666,12 +665,12 @@ class _$_OpenMailApp implements _OpenMailApp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckRequested value) checkRequested,
-    required TResult Function(_AuthCheckVerified value) checkVerified,
-    required TResult Function(_SendVerificationEmail value)
+    required TResult Function(AuthCheckRequested value) checkRequested,
+    required TResult Function(AuthCheckVerified value) checkVerified,
+    required TResult Function(SendVerificationEmail value)
         sendVerificationEmail,
-    required TResult Function(_LoggedOut value) loggedOut,
-    required TResult Function(_OpenMailApp value) openMailApp,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(OpenMailApp value) openMailApp,
   }) {
     return openMailApp(this);
   }
@@ -679,11 +678,11 @@ class _$_OpenMailApp implements _OpenMailApp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
   }) {
     return openMailApp?.call(this);
   }
@@ -691,11 +690,11 @@ class _$_OpenMailApp implements _OpenMailApp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckRequested value)? checkRequested,
-    TResult Function(_AuthCheckVerified value)? checkVerified,
-    TResult Function(_SendVerificationEmail value)? sendVerificationEmail,
-    TResult Function(_LoggedOut value)? loggedOut,
-    TResult Function(_OpenMailApp value)? openMailApp,
+    TResult Function(AuthCheckRequested value)? checkRequested,
+    TResult Function(AuthCheckVerified value)? checkVerified,
+    TResult Function(SendVerificationEmail value)? sendVerificationEmail,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(OpenMailApp value)? openMailApp,
     required TResult orElse(),
   }) {
     if (openMailApp != null) {
@@ -705,6 +704,6 @@ class _$_OpenMailApp implements _OpenMailApp {
   }
 }
 
-abstract class _OpenMailApp implements AuthEvent {
-  const factory _OpenMailApp() = _$_OpenMailApp;
+abstract class OpenMailApp implements AuthEvent {
+  const factory OpenMailApp() = _$OpenMailApp;
 }
