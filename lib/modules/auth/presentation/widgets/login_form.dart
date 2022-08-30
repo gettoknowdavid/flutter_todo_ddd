@@ -20,21 +20,21 @@ class LoginForm extends ConsumerWidget {
     final event = ref.watch(loginProvider.notifier);
     final authEvent = ref.watch(authProvider.notifier);
 
-    ref.listen<LoginState>(loginProvider, (p, c) {
-      c.authOption.fold(
+    ref.listen<LoginState>(loginProvider, (previous, next) {
+      next.authOption.fold(
         () => null,
         (either) => either.fold(
-          (f) {
+          (failure) {
             AppSnackbar.errorSnackbar(
               title: 'Authentication Failure',
-              message: f.maybeMap(
+              message: failure.maybeMap(
                 orElse: () => '',
                 serverError: (_) => 'Server error, please try again.',
                 invalidEmailOrPassword: (_) => 'Invalid email or password',
               ),
             );
           },
-          (_) {
+          (success) {
             authEvent.mapEventsToStates(const AuthEvent.checkRequested());
             authEvent.mapEventsToStates(const AuthEvent.checkVerified());
           },
