@@ -34,7 +34,10 @@ class LoginPage extends StatelessWidget {
               ),
               SizeUtil.vS(16),
               OutlinedButton.icon(
-                icon: Image.asset('assets/icons/google.png'),
+                icon: Image.asset(
+                  'assets/icons/google.png',
+                  height: SizeUtil.h(22),
+                ),
                 label: const Text('Login with Google'),
                 onPressed: () {},
               ),
