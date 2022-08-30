@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/register_form.dart';
+import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
-import 'package:flutter_todo_ddd/utils/password_rules.dart';
-
-final passwordRuleProvider = Provider((ref) {
-  return PRuleObject(passwordRules, false, AppColors.grey);
-});
 
 class PasswordRuleItem extends StatelessWidget {
   final Map<dynamic, dynamic> ruleMap;
@@ -72,12 +67,4 @@ class PasswordRulesWidget extends ConsumerWidget {
       ),
     );
   }
-}
-
-class PRuleObject {
-  List<Map> rules;
-  bool visible;
-  Color color;
-
-  PRuleObject(this.rules, this.visible, this.color);
 }
