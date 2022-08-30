@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_todo_ddd/firebase_options.dart';
 
@@ -15,9 +16,11 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
 
   runApp(
-    ModularApp(
-      module: AppModule(),
-      child: const AppWidget(),
+    ProviderScope(
+      child: ModularApp(
+        module: AppModule(),
+        child: const AppWidget(),
+      ),
     ),
   );
 }
