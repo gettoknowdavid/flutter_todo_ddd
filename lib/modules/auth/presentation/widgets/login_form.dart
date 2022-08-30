@@ -13,7 +13,8 @@ import 'package:flutter_todo_ddd/utils/size_util.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart';
 
-final provider = StateNotifierProvider.autoDispose<LoginController, LoginState>(
+final loginProvider =
+    StateNotifierProvider.autoDispose<LoginController, LoginState>(
   (ref) {
     ref.onDispose(() => ref.refresh);
     return LoginController(Modular.get<IAuthFacade>());
@@ -31,11 +32,11 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formState = ref.watch(provider);
-    final formEvent = ref.watch(provider.notifier);
+    final state = ref.watch(loginProvider);
+    final event = ref.watch(loginProvider.notifier);
     final authEvent = ref.watch(authProvider.notifier);
 
-    ref.listen<LoginState>(provider, (p, c) {
+    ref.listen<LoginState>(loginProvider, (p, c) {
       c.authOption.fold(
         () => null,
         (either) => either.fold(
@@ -62,14 +63,14 @@ class LoginForm extends ConsumerWidget {
       child: Column(
         children: [
           AppTextField(
-            hint: 'Email',
+            hint: 'johndoe@example.com',
             label: 'Email',
-            enabled: !formState.loading,
+            enabled: !state.loading,
             keyboardType: TextInputType.emailAddress,
-            onChanged: (value) => formEvent.mapEventsToStates(
+            onChanged: (value) => event.mapEventsToStates(
               LoginEvent.emailChanged(value),
             ),
-            validator: (_) => formState.email.value.fold(
+            validator: (_) => state.email.value.fold(
               (f) => f.mapOrNull(
                 invalidEmail: (_) => 'Please type in a valid email',
                 empty: (_) => 'Email required',
@@ -79,14 +80,14 @@ class LoginForm extends ConsumerWidget {
           ),
           SizeUtil.vS(26),
           AppTextField(
-            hint: 'Password',
+            hint: 'Your password',
             label: 'Password',
-            enabled: !formState.loading,
+            enabled: !state.loading,
             isPassword: true,
-            onChanged: (value) => formEvent.mapEventsToStates(
+            onChanged: (value) => event.mapEventsToStates(
               LoginEvent.passwordChanged(value),
             ),
-            validator: (_) => formState.password.value.fold(
+            validator: (_) => state.password.value.fold(
               (f) => f.mapOrNull(empty: (_) => 'Password required'),
               (_) => null,
             ),
@@ -100,16 +101,16 @@ class LoginForm extends ConsumerWidget {
           ),
           SizeUtil.vS(36),
           AppButton(
-            disabled: !formState.email.isValid() ||
-                formState.password.getOrCrash() == null,
+            disabled:
+                !state.email.isValid() || state.password.getOrCrash() == null,
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                formEvent.mapEventsToStates(
+                event.mapEventsToStates(
                   const LoginEvent.loginPressed(),
                 );
               }
             },
-            loading: formState.loading,
+            loading: state.loading,
             title: 'Login',
           ),
         ],
