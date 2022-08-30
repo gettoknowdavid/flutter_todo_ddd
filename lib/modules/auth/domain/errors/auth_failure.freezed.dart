@@ -22,6 +22,7 @@ mixin _$AuthFailure {
     required TResult Function() emailNotVerified,
     required TResult Function() emailInUse,
     required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AuthFailure {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AuthFailure {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$AuthFailure {
     required TResult Function(EmailInUse value) emailInUse,
     required TResult Function(InvalidEmailOrPassword value)
         invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$AuthFailure {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$AuthFailure {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +135,7 @@ class _$ServerError implements ServerError {
     required TResult Function() emailNotVerified,
     required TResult Function() emailInUse,
     required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
   }) {
     return serverError();
   }
@@ -140,6 +147,7 @@ class _$ServerError implements ServerError {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
   }) {
     return serverError?.call();
   }
@@ -151,6 +159,7 @@ class _$ServerError implements ServerError {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -167,6 +176,7 @@ class _$ServerError implements ServerError {
     required TResult Function(EmailInUse value) emailInUse,
     required TResult Function(InvalidEmailOrPassword value)
         invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
   }) {
     return serverError(this);
   }
@@ -178,6 +188,7 @@ class _$ServerError implements ServerError {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
   }) {
     return serverError?.call(this);
   }
@@ -189,6 +200,7 @@ class _$ServerError implements ServerError {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -247,6 +259,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     required TResult Function() emailNotVerified,
     required TResult Function() emailInUse,
     required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
   }) {
     return emailNotVerified();
   }
@@ -258,6 +271,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
   }) {
     return emailNotVerified?.call();
   }
@@ -269,6 +283,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (emailNotVerified != null) {
@@ -285,6 +300,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     required TResult Function(EmailInUse value) emailInUse,
     required TResult Function(InvalidEmailOrPassword value)
         invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
   }) {
     return emailNotVerified(this);
   }
@@ -296,6 +312,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
   }) {
     return emailNotVerified?.call(this);
   }
@@ -307,6 +324,7 @@ class _$EmailNotVerified implements EmailNotVerified {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (emailNotVerified != null) {
@@ -364,6 +382,7 @@ class _$EmailInUse implements EmailInUse {
     required TResult Function() emailNotVerified,
     required TResult Function() emailInUse,
     required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
   }) {
     return emailInUse();
   }
@@ -375,6 +394,7 @@ class _$EmailInUse implements EmailInUse {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
   }) {
     return emailInUse?.call();
   }
@@ -386,6 +406,7 @@ class _$EmailInUse implements EmailInUse {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (emailInUse != null) {
@@ -402,6 +423,7 @@ class _$EmailInUse implements EmailInUse {
     required TResult Function(EmailInUse value) emailInUse,
     required TResult Function(InvalidEmailOrPassword value)
         invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
   }) {
     return emailInUse(this);
   }
@@ -413,6 +435,7 @@ class _$EmailInUse implements EmailInUse {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
   }) {
     return emailInUse?.call(this);
   }
@@ -424,6 +447,7 @@ class _$EmailInUse implements EmailInUse {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (emailInUse != null) {
@@ -483,6 +507,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     required TResult Function() emailNotVerified,
     required TResult Function() emailInUse,
     required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
   }) {
     return invalidEmailOrPassword();
   }
@@ -494,6 +519,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
   }) {
     return invalidEmailOrPassword?.call();
   }
@@ -505,6 +531,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     TResult Function()? emailNotVerified,
     TResult Function()? emailInUse,
     TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (invalidEmailOrPassword != null) {
@@ -521,6 +548,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     required TResult Function(EmailInUse value) emailInUse,
     required TResult Function(InvalidEmailOrPassword value)
         invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
   }) {
     return invalidEmailOrPassword(this);
   }
@@ -532,6 +560,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
   }) {
     return invalidEmailOrPassword?.call(this);
   }
@@ -543,6 +572,7 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
     TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(EmailInUse value)? emailInUse,
     TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
     required TResult orElse(),
   }) {
     if (invalidEmailOrPassword != null) {
@@ -554,4 +584,128 @@ class _$InvalidEmailOrPassword implements InvalidEmailOrPassword {
 
 abstract class InvalidEmailOrPassword implements AuthFailure {
   const factory InvalidEmailOrPassword() = _$InvalidEmailOrPassword;
+}
+
+/// @nodoc
+abstract class _$$NoGoogleAccountCopyWith<$Res> {
+  factory _$$NoGoogleAccountCopyWith(
+          _$NoGoogleAccount value, $Res Function(_$NoGoogleAccount) then) =
+      __$$NoGoogleAccountCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoGoogleAccountCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$NoGoogleAccountCopyWith<$Res> {
+  __$$NoGoogleAccountCopyWithImpl(
+      _$NoGoogleAccount _value, $Res Function(_$NoGoogleAccount) _then)
+      : super(_value, (v) => _then(v as _$NoGoogleAccount));
+
+  @override
+  _$NoGoogleAccount get _value => super._value as _$NoGoogleAccount;
+}
+
+/// @nodoc
+
+class _$NoGoogleAccount implements NoGoogleAccount {
+  const _$NoGoogleAccount();
+
+  @override
+  String toString() {
+    return 'AuthFailure.noGoogleAccount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoGoogleAccount);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() emailNotVerified,
+    required TResult Function() emailInUse,
+    required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
+  }) {
+    return noGoogleAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? emailNotVerified,
+    TResult Function()? emailInUse,
+    TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
+  }) {
+    return noGoogleAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? emailNotVerified,
+    TResult Function()? emailInUse,
+    TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
+    required TResult orElse(),
+  }) {
+    if (noGoogleAccount != null) {
+      return noGoogleAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+    required TResult Function(EmailInUse value) emailInUse,
+    required TResult Function(InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
+    required TResult Function(NoGoogleAccount value) noGoogleAccount,
+  }) {
+    return noGoogleAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(EmailInUse value)? emailInUse,
+    TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
+  }) {
+    return noGoogleAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    TResult Function(EmailInUse value)? emailInUse,
+    TResult Function(InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(NoGoogleAccount value)? noGoogleAccount,
+    required TResult orElse(),
+  }) {
+    if (noGoogleAccount != null) {
+      return noGoogleAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoGoogleAccount implements AuthFailure {
+  const factory NoGoogleAccount() = _$NoGoogleAccount;
 }

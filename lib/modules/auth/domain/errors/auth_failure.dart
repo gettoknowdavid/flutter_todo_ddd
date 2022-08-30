@@ -8,4 +8,5 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.emailNotVerified() = EmailNotVerified;
   const factory AuthFailure.emailInUse() = EmailInUse;
   const factory AuthFailure.invalidEmailOrPassword() = InvalidEmailOrPassword;
+  const factory AuthFailure.noGoogleAccount() = NoGoogleAccount;
 }
