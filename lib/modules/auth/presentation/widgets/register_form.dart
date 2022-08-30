@@ -47,6 +47,7 @@ class RegisterForm extends ConsumerWidget {
     });
 
     return Form(
+      key: formKey,
       child: Column(
         children: [
           AppTextField(
