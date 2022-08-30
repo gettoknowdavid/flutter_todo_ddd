@@ -8,11 +8,15 @@ import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
+import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/utils/password_rules.dart';
 
 final authProvider = StateNotifierProvider<AuthController, AuthState>(
-  (ref) => AuthController(Modular.get<IAuthFacade>()),
+  (ref) => AuthController(
+    Modular.get<IAuthFacade>(),
+    Modular.get<OpenMailAppFacade>(),
+  ),
 );
 
 final loginProvider =
