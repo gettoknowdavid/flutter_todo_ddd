@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_snackbars.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
@@ -98,19 +99,18 @@ class LoginForm extends ConsumerWidget {
             ),
           ),
           SizeUtil.vS(36),
-          ElevatedButton(
-            onPressed: formState.loading ||
-                    !formState.email.isValid() ||
-                    formState.password.getOrCrash() == null
-                ? null
-                : () {
-                    if (formKey.currentState!.validate()) {
-                      formEvent.mapEventsToStates(
-                        const LoginEvent.loginPressed(),
-                      );
-                    }
-                  },
-            child: Text(formState.loading ? 'Loading...' : 'Login'),
+          AppButton(
+            disabled: !formState.email.isValid() ||
+                formState.password.getOrCrash() == null,
+            loading: !formState.loading,
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formEvent.mapEventsToStates(
+                  const LoginEvent.loginPressed(),
+                );
+              }
+            },
+            title: 'Login',
           ),
         ],
       ),
