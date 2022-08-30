@@ -102,7 +102,6 @@ class LoginForm extends ConsumerWidget {
           AppButton(
             disabled: !formState.email.isValid() ||
                 formState.password.getOrCrash() == null,
-            loading: !formState.loading,
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formEvent.mapEventsToStates(
@@ -110,6 +109,7 @@ class LoginForm extends ConsumerWidget {
                 );
               }
             },
+            loading: formState.loading,
             title: 'Login',
           ),
         ],
