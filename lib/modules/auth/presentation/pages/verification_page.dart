@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
+import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
+import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 final _authProvider = StateNotifierProvider<AuthController, AuthState>(
   (ref) => AuthController(Modular.get<IAuthFacade>()),
@@ -47,10 +50,40 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
 
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            Image.asset('assets/images/verify-email.png'),
-          ],
+        child: Padding(
+          padding: SizeUtil.pSymmetric(h: 18),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Spacer(),
+              Image.asset('assets/images/verify-email.png'),
+              SizeUtil.vS(10),
+              Text('Verify your email', style: AppTextStyles.authHeading),
+              SizeUtil.vS(14),
+              Text(
+                'You can open your mail application to check for the verification mail we just sent to you.',
+                style: AppTextStyles.authSubheading,
+              ),
+              SizeUtil.vS(40),
+              AppButton(onPressed: () {}, title: 'Open mail app'),
+              SizeUtil.vS(30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Resend Email'),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Cancel'),
+                  ),
+                ],
+              ),
+              SizeUtil.vS(50),
+            ],
+          ),
         ),
       ),
     );
