@@ -2,11 +2,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
+import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 
 class AuthController extends StateNotifier<AuthState> {
   final IAuthFacade _facade;
+  final OpenMailAppFacade _mailFacade;
 
-  AuthController(this._facade) : super(const AuthState.initial());
+  AuthController(
+    this._facade,
+    this._mailFacade,
+  ) : super(const AuthState.initial());
 
   Future mapEventsToStates(AuthEvent e) async {
     return e.map(
@@ -43,7 +48,7 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   _openMailApp(OpenMailApp e) async {
-    throw UnimplementedError('To be implemented');
+    await _mailFacade.openMailApp();
   }
 
   _sendVerificationEmail(SendVerificationEmail e) async {
