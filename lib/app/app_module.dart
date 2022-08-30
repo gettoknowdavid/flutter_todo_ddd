@@ -12,13 +12,15 @@ import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
 import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton<FirebaseAuth>((i) => FirebaseAuth.instance),
+    Bind.lazySingleton<GoogleSignIn>((i) => GoogleSignIn()),
     Bind.lazySingleton<UserMapper>((i) => UserMapper()),
-    Bind.lazySingleton<IAuthFacade>((i) => AuthFacade(i(), i())),
+    Bind.lazySingleton<IAuthFacade>((i) => AuthFacade(i(), i(), i())),
     Bind.lazySingleton<LoginController>((i) => LoginController(i())),
     Bind.lazySingleton<RegisterController>((i) => RegisterController(i())),
     Bind.lazySingleton<OpenMailAppFacade>((i) => OpenMailAppFacade()),
