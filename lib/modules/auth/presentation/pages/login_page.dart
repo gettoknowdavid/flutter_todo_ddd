@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
                 style: AppTextStyles.authSubheading,
               ),
               SizeUtil.vS(36),
-              const LoginForm(),
+              LoginForm(),
               SizeUtil.vS(16),
               Text(
                 'or',
