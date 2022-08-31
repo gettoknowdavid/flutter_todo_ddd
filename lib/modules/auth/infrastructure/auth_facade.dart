@@ -18,6 +18,9 @@ class AuthFacade implements IAuthFacade {
   AuthFacade(this._googleSignIn, this._firebaseAuth, this._userMapper);
 
   @override
+  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
+
+  @override
   Future<Option<Either<AuthFailure, bool?>>> checkVerification() async {
     if (_firebaseAuth.currentUser != null) {
       await _firebaseAuth.currentUser!.reload();
@@ -48,6 +51,7 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> googleLogin() async {
     try {
+      await _googleSignIn.signOut();
       return await _googleSignIn.signIn().then((gAccount) async {
         if (gAccount != null) {
           return await gAccount.authentication.then((gAuth) async {
@@ -65,8 +69,10 @@ class AuthFacade implements IAuthFacade {
         return left(const AuthFailure.noGoogleAccount());
       });
     } on FirebaseAuthException catch (_) {
+      print(_);
       return left(const AuthFailure.noGoogleAccount());
     } on Exception catch (_) {
+      print(_);
       return left(const AuthFailure.serverError());
     }
   }
