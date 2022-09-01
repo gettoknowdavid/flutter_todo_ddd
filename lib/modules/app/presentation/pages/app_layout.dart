@@ -14,9 +14,7 @@ class AppLayout extends ConsumerWidget {
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
         orElse: () => null,
-        unauthenticated: (_) {
-          Modular.to.pushReplacementNamed('/login');
-        },
+        unauthenticated: (_) => Modular.to.pushReplacementNamed('/login'),
       );
     });
     return Scaffold(
