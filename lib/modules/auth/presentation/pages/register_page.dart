@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/register_form.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-class RegisterPage extends ConsumerWidget {
+class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    
+  Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(),
@@ -28,21 +26,6 @@ class RegisterPage extends ConsumerWidget {
               ),
               SizeUtil.vS(36),
               RegisterForm(),
-              SizeUtil.vS(16),
-              Text(
-                'or',
-                style: AppTextStyles.authSubheading,
-                textAlign: TextAlign.center,
-              ),
-              SizeUtil.vS(16),
-              OutlinedButton.icon(
-                icon: Image.asset(
-                  'assets/icons/google.png',
-                  height: SizeUtil.h(22),
-                ),
-                label: const Text('Register with Google'),
-                onPressed: () {},
-              ),
             ],
           ),
         ),
