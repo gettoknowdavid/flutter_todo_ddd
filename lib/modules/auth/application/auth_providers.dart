@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/core/password_rule_object.dart';
@@ -8,9 +9,12 @@ import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
+import 'package:flutter_todo_ddd/modules/auth/infrastructure/auth_facade.dart';
+import 'package:flutter_todo_ddd/modules/auth/infrastructure/user_mapper.dart';
 import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/utils/password_rules.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 final authProvider = StateNotifierProvider<AuthController, AuthState>(
   (ref) => AuthController(
@@ -38,3 +42,15 @@ final registerProvider =
     return RegisterController(Modular.get<IAuthFacade>());
   },
 );
+
+final authFacadeProvider = Provider<IAuthFacade>((ref) {
+  return AuthFacade(
+    Modular.get<GoogleSignIn>(),
+    Modular.get<FirebaseAuth>(),
+    Modular.get<UserMapper>(),
+  );
+});
+
+final authStateProvider = StreamProvider<User?>((ref) {
+  return ref.read(authFacadeProvider).authStateChange;
+});
