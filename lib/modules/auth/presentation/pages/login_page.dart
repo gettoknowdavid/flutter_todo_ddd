@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/common/widgets/app_loading_indicator.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
@@ -16,6 +17,20 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final event = ref.watch(loginProvider.notifier);
     final authEvent = ref.watch(authProvider.notifier);
+    // final authState = ref.watch(authStateProvider);
+    // authState.when(
+    //   data: (data) {
+    //     if (data != null) {
+    //       Modular.to.pushReplacementNamed('/layout');
+    //     }
+    //   },
+    //   error: (_, __) {},
+    //   loading: () => const Scaffold(
+    //     body: Center(
+    //       child: AppLoadingIndicator(),
+    //     ),
+    //   ),
+    // );
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
         orElse: () => null,
