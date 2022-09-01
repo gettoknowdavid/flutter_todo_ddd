@@ -18,10 +18,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
     ref.listen<AuthState>(authProvider, (previous, next) {
       Future.delayed(const Duration(seconds: 5), () {
         next.mapOrNull(
-          authenticated: (_) {
-            // profileBloc.add(const ProfileEvent.initialized());
-            Modular.to.pushReplacementNamed('/layout');
-          },
+          authenticated: (_) => Modular.to.pushReplacementNamed('/layout'),
           unauthenticated: (_) => Modular.to.pushReplacementNamed('/login'),
           unverified: (_) => Modular.to.pushReplacementNamed('/verification'),
         );
