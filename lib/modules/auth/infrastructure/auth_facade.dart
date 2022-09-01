@@ -37,11 +37,16 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Option<app.User?>> currentUser() async {
-    final fUser = _firebaseAuth.currentUser;
+    User? fUser;
+    print('1 $fUser');
+    _firebaseAuth.authStateChanges().listen((value) {
+      fUser = value;
+      print('2 $fUser');
+    });
 
     if (fUser != null) {
-      final user = await usersRef.doc(fUser.uid).get().then((v) => v.data);
-
+      final user = await usersRef.doc(fUser!.uid).get().then((v) => v.data);
+      print('3 $user');
       return optionOf(_userMapper.toDomain(user));
     } else {
       return optionOf(null);
@@ -52,22 +57,32 @@ class AuthFacade implements IAuthFacade {
   Future<Either<AuthFailure, Unit>> googleLogin() async {
     try {
       await _googleSignIn.signOut();
-      return await _googleSignIn.signIn().then((gAccount) async {
-        if (gAccount != null) {
-          return await gAccount.authentication.then((gAuth) async {
-            final credential = GoogleAuthProvider.credential(
-              accessToken: gAuth.accessToken,
-              idToken: gAuth.idToken,
-            );
 
-            await _firebaseAuth.signInWithCredential(credential);
+      final GoogleSignInAccount? gAccount = await _googleSignIn.signIn();
 
-            return right(unit);
-          });
-        }
+      if (gAccount != null) {
+        final GoogleSignInAuthentication gAuth = await gAccount.authentication;
 
-        return left(const AuthFailure.noGoogleAccount());
-      });
+        final credential = GoogleAuthProvider.credential(
+          accessToken: gAuth.accessToken,
+          idToken: gAuth.idToken,
+        );
+
+        final userCred = await _firebaseAuth.signInWithCredential(credential);
+
+        final user = UserDto(
+          uid: userCred.user!.uid,
+          name: userCred.user!.displayName!,
+          email: userCred.user!.email!,
+          avatar: userCred.user?.photoURL,
+        );
+
+        usersRef.doc(user.uid).set(user);
+
+        return right(unit);
+      }
+
+      return left(const AuthFailure.noGoogleAccount());
     } on FirebaseAuthException catch (_) {
       print(_);
       return left(const AuthFailure.noGoogleAccount());
@@ -139,5 +154,10 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<void> sendVerificationEmail() async {
     return await _firebaseAuth.currentUser!.sendEmailVerification();
+  }
+
+  @override
+  Stream<Option<User?>> authChange() {
+    throw UnimplementedError();
   }
 }
