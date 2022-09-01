@@ -24,11 +24,22 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   _checkRequested(AuthCheckRequested e) async {
-    final option = await _facade.currentUser();
-    state = option.fold(
-      () => const AuthState.unauthenticated(),
-      (_) => const AuthState.authenticated(),
-    );
+    // final option = await _facade.currentUser();
+
+    _facade.authStateChange.listen((event) {
+      print('01 $state');
+      if (event != null) {
+        state = const AuthState.authenticated();
+        print('02 $state');
+      } else {
+        state = const AuthState.unauthenticated();
+        print('03 $state');
+      }
+    });
+    // state = option.fold(
+    //   () => const AuthState.unauthenticated(),
+    //   (_) => const AuthState.authenticated(),
+    // );
   }
 
   _checkVerified(AuthCheckVerified e) async {
