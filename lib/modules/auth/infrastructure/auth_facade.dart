@@ -38,15 +38,10 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Option<app.User?>> currentUser() async {
     User? fUser;
-    print('1 $fUser');
-    _firebaseAuth.authStateChanges().listen((value) {
-      fUser = value;
-      print('2 $fUser');
-    });
+    _firebaseAuth.authStateChanges().listen((value) => fUser = value);
 
     if (fUser != null) {
       final user = await usersRef.doc(fUser!.uid).get().then((v) => v.data);
-      print('3 $user');
       return optionOf(_userMapper.toDomain(user));
     } else {
       return optionOf(null);
@@ -84,10 +79,8 @@ class AuthFacade implements IAuthFacade {
 
       return left(const AuthFailure.noGoogleAccount());
     } on FirebaseAuthException catch (_) {
-      print(_);
       return left(const AuthFailure.noGoogleAccount());
     } on Exception catch (_) {
-      print(_);
       return left(const AuthFailure.serverError());
     }
   }
@@ -156,8 +149,5 @@ class AuthFacade implements IAuthFacade {
     return await _firebaseAuth.currentUser!.sendEmailVerification();
   }
 
-  @override
-  Stream<Option<User?>> authChange() {
-    throw UnimplementedError();
-  }
+
 }
