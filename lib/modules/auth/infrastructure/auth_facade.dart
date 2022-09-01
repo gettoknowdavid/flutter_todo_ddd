@@ -148,6 +148,4 @@ class AuthFacade implements IAuthFacade {
   Future<void> sendVerificationEmail() async {
     return await _firebaseAuth.currentUser!.sendEmailVerification();
   }
-
-
 }
