@@ -14,6 +14,7 @@ class ForgotPasswordController extends StateNotifier<ForgotPasswordState> {
   Future mapEventsToStates(ForgotPasswordEvent e) async {
     return e.map(
       emailChanged: _emailChanged,
+      statusChanged: _statusChanged,
       submitPressed: _submitPressed,
     );
   }
@@ -23,6 +24,14 @@ class ForgotPasswordController extends StateNotifier<ForgotPasswordState> {
       email: IEmail(e.email),
       authOption: none(),
     );
+  }
+
+  _statusChanged(StatusChanged e) async {
+    state = state.copyWith(loading: true);
+
+    if (state.authOption.isSome()) {
+      state = state.copyWith(status: true);
+    }
   }
 
   _submitPressed(SubmitPressed e) async {
