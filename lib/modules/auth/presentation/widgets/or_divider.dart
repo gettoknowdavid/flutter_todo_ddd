@@ -9,11 +9,11 @@ class OrDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
           child: Container(
-            color: Colors.grey.shade300,
+            color: Colors.grey.shade200,
             height: SizeUtil.h(1),
           ),
         ),
@@ -26,7 +26,7 @@ class OrDivider extends StatelessWidget {
         SizeUtil.hS(16),
         Expanded(
           child: Container(
-            color: Colors.grey.shade300,
+            color: Colors.grey.shade200,
             height: SizeUtil.h(1),
           ),
         ),
