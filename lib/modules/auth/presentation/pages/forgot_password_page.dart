@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
-import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
+import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/forgot_password_form.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -45,39 +43,10 @@ class ForgotPassword extends StatelessWidget {
                 style: AppTextStyles.authSubheading,
               ),
               SizeUtil.vS(20),
-              _ForgotPasswordForm(),
+              ForgotPasswordForm(),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _ForgotPasswordForm extends ConsumerWidget {
-  _ForgotPasswordForm({Key? key}) : super(key: key);
-
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Form(
-      child: Column(
-        children: [
-          AppTextField(
-            hint: 'johndoe@example.com',
-            label: 'Email',
-            keyboardType: TextInputType.emailAddress,
-            onChanged: (value) {},
-          ),
-          SizeUtil.vS(40),
-          AppButton(
-            onPressed: () {
-              if (formKey.currentState!.validate()) {}
-            },
-            title: 'Submit',
-          ),
-        ],
       ),
     );
   }
