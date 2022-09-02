@@ -16,23 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ForgotPasswordEvent {
-  String get email => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
-    required TResult Function(String email) submitPressed,
+    required TResult Function() submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,10 +54,6 @@ mixin _$ForgotPasswordEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ForgotPasswordEventCopyWith<ForgotPasswordEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -66,7 +61,6 @@ abstract class $ForgotPasswordEventCopyWith<$Res> {
   factory $ForgotPasswordEventCopyWith(
           ForgotPasswordEvent value, $Res Function(ForgotPasswordEvent) then) =
       _$ForgotPasswordEventCopyWithImpl<$Res>;
-  $Res call({String email});
 }
 
 /// @nodoc
@@ -77,27 +71,13 @@ class _$ForgotPasswordEventCopyWithImpl<$Res>
   final ForgotPasswordEvent _value;
   // ignore: unused_field
   final $Res Function(ForgotPasswordEvent) _then;
-
-  @override
-  $Res call({
-    Object? email = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$EmailChangedCopyWith<$Res>
-    implements $ForgotPasswordEventCopyWith<$Res> {
+abstract class _$$EmailChangedCopyWith<$Res> {
   factory _$$EmailChangedCopyWith(
           _$EmailChanged value, $Res Function(_$EmailChanged) then) =
       __$$EmailChangedCopyWithImpl<$Res>;
-  @override
   $Res call({String email});
 }
 
@@ -159,7 +139,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
-    required TResult Function(String email) submitPressed,
+    required TResult Function() submitPressed,
   }) {
     return emailChanged(email);
   }
@@ -168,7 +148,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
   }) {
     return emailChanged?.call(email);
   }
@@ -177,7 +157,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -221,22 +201,17 @@ class _$EmailChanged implements EmailChanged {
 abstract class EmailChanged implements ForgotPasswordEvent {
   const factory EmailChanged(final String email) = _$EmailChanged;
 
-  @override
   String get email;
-  @override
   @JsonKey(ignore: true)
   _$$EmailChangedCopyWith<_$EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SubmitPressedCopyWith<$Res>
-    implements $ForgotPasswordEventCopyWith<$Res> {
+abstract class _$$SubmitPressedCopyWith<$Res> {
   factory _$$SubmitPressedCopyWith(
           _$SubmitPressed value, $Res Function(_$SubmitPressed) then) =
       __$$SubmitPressedCopyWithImpl<$Res>;
-  @override
-  $Res call({String email});
 }
 
 /// @nodoc
@@ -249,77 +224,54 @@ class __$$SubmitPressedCopyWithImpl<$Res>
 
   @override
   _$SubmitPressed get _value => super._value as _$SubmitPressed;
-
-  @override
-  $Res call({
-    Object? email = freezed,
-  }) {
-    return _then(_$SubmitPressed(
-      email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SubmitPressed implements SubmitPressed {
-  const _$SubmitPressed(this.email);
-
-  @override
-  final String email;
+  const _$SubmitPressed();
 
   @override
   String toString() {
-    return 'ForgotPasswordEvent.submitPressed(email: $email)';
+    return 'ForgotPasswordEvent.submitPressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SubmitPressed &&
-            const DeepCollectionEquality().equals(other.email, email));
+        (other.runtimeType == runtimeType && other is _$SubmitPressed);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(email));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$SubmitPressedCopyWith<_$SubmitPressed> get copyWith =>
-      __$$SubmitPressedCopyWithImpl<_$SubmitPressed>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
-    required TResult Function(String email) submitPressed,
+    required TResult Function() submitPressed,
   }) {
-    return submitPressed(email);
+    return submitPressed();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
   }) {
-    return submitPressed?.call(email);
+    return submitPressed?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
-    TResult Function(String email)? submitPressed,
+    TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
     if (submitPressed != null) {
-      return submitPressed(email);
+      return submitPressed();
     }
     return orElse();
   }
@@ -357,12 +309,5 @@ class _$SubmitPressed implements SubmitPressed {
 }
 
 abstract class SubmitPressed implements ForgotPasswordEvent {
-  const factory SubmitPressed(final String email) = _$SubmitPressed;
-
-  @override
-  String get email;
-  @override
-  @JsonKey(ignore: true)
-  _$$SubmitPressedCopyWith<_$SubmitPressed> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory SubmitPressed() = _$SubmitPressed;
 }
