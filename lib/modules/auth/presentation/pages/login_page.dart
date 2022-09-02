@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/common/widgets/app_snackbars.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
@@ -21,6 +22,7 @@ class LoginPage extends ConsumerWidget {
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
         orElse: () => null,
+        unverified: (_) => Modular.to.pushReplacementNamed('/verification'),
         authenticated: (_) => Modular.to.pushReplacementNamed('/layout'),
       );
     });
