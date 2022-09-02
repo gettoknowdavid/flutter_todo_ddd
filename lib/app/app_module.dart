@@ -34,7 +34,7 @@ class AppModule extends Module {
     ChildRoute('/login', child: (_, __) => const LoginPage()),
     ChildRoute('/register', child: (_, __) => const RegisterPage()),
     ChildRoute('/verification', child: (_, __) => const VerificationPage()),
-    ChildRoute('/forgotPassword', child: (_, __) => const ForgotPassword()),
+    ChildRoute('/forgotPassword', child: (_, __) => ForgotPasswordPage()),
     ChildRoute('/layout', child: (_, __) => const AppLayout()),
   ];
 }
