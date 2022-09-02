@@ -11,6 +11,7 @@ class ForgotPasswordState with _$ForgotPasswordState {
     required IEmail email,
     required bool loading,
     required bool showError,
+    required bool status,
     required Option<Either<AuthFailure, Unit>> authOption,
   }) = _ForgotPasswordState;
 
@@ -19,6 +20,7 @@ class ForgotPasswordState with _$ForgotPasswordState {
       email: IEmail(''),
       loading: false,
       showError: false,
+      status: false,
       authOption: none(),
     );
   }
