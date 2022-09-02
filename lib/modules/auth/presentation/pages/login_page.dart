@@ -34,8 +34,12 @@ class LoginPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizeUtil.vS(30),
-              Image.asset('assets/images/login.png', height: SizeUtil.sh(0.4)),
+              Image.asset('assets/images/login.png', height: SizeUtil.sh(0.35)),
               Text('Welcome back', style: AppTextStyles.authHeading),
+              Text(
+                'Login with your email and password.',
+                style: AppTextStyles.authSubheading,
+              ),
               SizeUtil.vS(14),
               LoginForm(),
               SizeUtil.vS(8),
@@ -78,5 +82,3 @@ class LoginPage extends ConsumerWidget {
     );
   }
 }
-
-
