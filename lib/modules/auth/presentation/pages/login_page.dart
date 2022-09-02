@@ -40,7 +40,7 @@ class LoginPage extends ConsumerWidget {
                 'Login with your email and password.',
                 style: AppTextStyles.authSubheading,
               ),
-              SizeUtil.vS(14),
+              SizeUtil.vS(20),
               LoginForm(),
               SizeUtil.vS(8),
               const OrDivider(),
