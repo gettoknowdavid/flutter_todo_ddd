@@ -58,7 +58,7 @@ class _AppTextFieldState extends State<AppTextField> {
           borderRadius: SizeUtil.borderRadius(20),
           borderSide: const BorderSide(color: Colors.transparent),
         ),
-        contentPadding: SizeUtil.pFromLTRB(22, 21, 22, 21),
+        contentPadding: SizeUtil.pFromLTRB(22, 17.5, 22, 17.5),
         enabledBorder: OutlineInputBorder(
           borderRadius: SizeUtil.borderRadius(20),
           borderSide: const BorderSide(color: Colors.transparent),
