@@ -62,7 +62,7 @@ class LoginForm extends ConsumerWidget {
               (_) => null,
             ),
           ),
-          SizeUtil.vS(26),
+          SizeUtil.vS(12),
           AppTextField(
             hint: 'Your password',
             label: 'Password',
@@ -83,7 +83,7 @@ class LoginForm extends ConsumerWidget {
               child: const Text('Forgot Password?'),
             ),
           ),
-          SizeUtil.vS(36),
+          SizeUtil.vS(10),
           AppButton(
             disabled:
                 !state.email.isValid() || state.password.getOrCrash() == null,
