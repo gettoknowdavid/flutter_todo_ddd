@@ -31,11 +31,14 @@ class ForgotPasswordForm extends ConsumerWidget {
               userNotFound: (_) => 'No user associated with this email.',
             ),
           ),
-          (success) => AppSnackbar.errorSnackbar(
-            title: 'Email Sent',
-            message:
-                'An email with a password reset link has been sent to ${state.email}',
-          ),
+          (success) {
+            AppSnackbar.errorSnackbar(
+              title: 'Email Sent',
+              message:
+                  'An email with a password reset link has been sent to ${state.email}',
+            );
+            event.mapEventsToStates(const ForgotPasswordEvent.statusChanged());
+          },
         ),
       );
     });
