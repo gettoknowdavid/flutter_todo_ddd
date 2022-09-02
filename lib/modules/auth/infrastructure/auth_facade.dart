@@ -20,20 +20,7 @@ class AuthFacade implements IAuthFacade {
   @override
   Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 
-  @override
-  Future<Option<Either<AuthFailure, bool?>>> checkVerification() async {
-    if (_firebaseAuth.currentUser != null) {
-      await _firebaseAuth.currentUser!.reload();
-      final value = _firebaseAuth.currentUser!.emailVerified;
-      if (value) {
-        return optionOf(right(value));
-      } else {
-        return optionOf(left(const AuthFailure.emailNotVerified()));
-      }
-    } else {
-      return optionOf(null);
-    }
-  }
+  
 
   @override
   Future<Option<app.User?>> currentUser() async {
@@ -93,17 +80,20 @@ class AuthFacade implements IAuthFacade {
     final email_ = email.getOrCrash()!;
     final password_ = password.getOrCrash()!;
 
+    // john.doe@gmail.com
+
     try {
       return await _firebaseAuth
           .signInWithEmailAndPassword(email: email_, password: password_)
-          .timeout(const Duration(seconds: 10))
-          .then((_) => right(unit));
+          .then((value) => right(unit));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'wrong-password' || e.code == 'user-not-found') {
-        return left(const AuthFailure.invalidEmailOrPassword());
+      switch (e.code) {
+        case 'wrong-password':
+        case 'user-not-found':
+          return left(const AuthFailure.invalidEmailOrPassword());
+        default:
+          return left(const AuthFailure.serverError());
       }
-
-      return left(const AuthFailure.serverError());
     }
   }
 
