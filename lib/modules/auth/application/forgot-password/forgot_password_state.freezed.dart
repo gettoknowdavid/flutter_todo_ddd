@@ -19,6 +19,7 @@ mixin _$ForgotPasswordState {
   IEmail get email => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
+  bool get status => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authOption =>
       throw _privateConstructorUsedError;
 
@@ -36,6 +37,7 @@ abstract class $ForgotPasswordStateCopyWith<$Res> {
       {IEmail email,
       bool loading,
       bool showError,
+      bool status,
       Option<Either<AuthFailure, Unit>> authOption});
 }
 
@@ -53,6 +55,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? loading = freezed,
     Object? showError = freezed,
+    Object? status = freezed,
     Object? authOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +70,10 @@ class _$ForgotPasswordStateCopyWithImpl<$Res>
       showError: showError == freezed
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as bool,
       authOption: authOption == freezed
           ? _value.authOption
@@ -87,6 +94,7 @@ abstract class _$$_ForgotPasswordStateCopyWith<$Res>
       {IEmail email,
       bool loading,
       bool showError,
+      bool status,
       Option<Either<AuthFailure, Unit>> authOption});
 }
 
@@ -106,6 +114,7 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? loading = freezed,
     Object? showError = freezed,
+    Object? status = freezed,
     Object? authOption = freezed,
   }) {
     return _then(_$_ForgotPasswordState(
@@ -120,6 +129,10 @@ class __$$_ForgotPasswordStateCopyWithImpl<$Res>
       showError: showError == freezed
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as bool,
       authOption: authOption == freezed
           ? _value.authOption
@@ -136,6 +149,7 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
       {required this.email,
       required this.loading,
       required this.showError,
+      required this.status,
       required this.authOption});
 
   @override
@@ -145,11 +159,13 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
   @override
   final bool showError;
   @override
+  final bool status;
+  @override
   final Option<Either<AuthFailure, Unit>> authOption;
 
   @override
   String toString() {
-    return 'ForgotPasswordState(email: $email, loading: $loading, showError: $showError, authOption: $authOption)';
+    return 'ForgotPasswordState(email: $email, loading: $loading, showError: $showError, status: $status, authOption: $authOption)';
   }
 
   @override
@@ -160,6 +176,7 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.loading, loading) &&
             const DeepCollectionEquality().equals(other.showError, showError) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.authOption, authOption));
   }
@@ -170,6 +187,7 @@ class _$_ForgotPasswordState implements _ForgotPasswordState {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(loading),
       const DeepCollectionEquality().hash(showError),
+      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(authOption));
 
   @JsonKey(ignore: true)
@@ -184,6 +202,7 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
           {required final IEmail email,
           required final bool loading,
           required final bool showError,
+          required final bool status,
           required final Option<Either<AuthFailure, Unit>> authOption}) =
       _$_ForgotPasswordState;
 
@@ -193,6 +212,8 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
   bool get loading;
   @override
   bool get showError;
+  @override
+  bool get status;
   @override
   Option<Either<AuthFailure, Unit>> get authOption;
   @override
