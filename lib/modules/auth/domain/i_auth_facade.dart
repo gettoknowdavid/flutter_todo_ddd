@@ -9,6 +9,8 @@ abstract class IAuthFacade {
 
   Future<Option<User?>> currentUser();
 
+  Future<Either<AuthFailure, Unit>> forgotPassword({required IEmail email});
+
   Future<Either<AuthFailure, Unit>> googleLogin();
 
   Future<Either<AuthFailure, Unit>> login({
