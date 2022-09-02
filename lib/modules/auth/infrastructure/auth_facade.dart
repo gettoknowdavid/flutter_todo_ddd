@@ -44,9 +44,9 @@ class AuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
-        case 'auth/user-not-found':
+        case 'user-not-found':
           return left(const AuthFailure.userNotFound());
-        case 'auth/invalid-email':
+        case 'invalid-email':
           return left(const AuthFailure.invalidEmail());
         default:
           return left(const AuthFailure.serverError());
@@ -140,7 +140,7 @@ class AuthFacade implements IAuthFacade {
 
         usersRef.doc(value.user!.uid).set(user);
 
-        _firebaseAuth.currentUser!.sendEmailVerification(); 
+        _firebaseAuth.currentUser!.sendEmailVerification();
 
         return right(unit);
       });
