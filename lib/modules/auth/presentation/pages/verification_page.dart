@@ -31,9 +31,8 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
           Modular.to.pushReplacementNamed('/layout');
         },
         unauthenticated: (_) {
-          timer = Timer.periodic(const Duration(seconds: 3), (_) {
-            authEvent.mapEventsToStates(const AuthEvent.checkVerified());
-          });
+          timer?.cancel();
+          Modular.to.pushReplacementNamed('/login');
         },
         awaitingVerified: (_) {
           timer = Timer.periodic(const Duration(seconds: 3), (_) {
@@ -82,6 +81,7 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
                   TextButton(
                     onPressed: () {
                       authEvent.mapEventsToStates(const AuthEvent.loggedOut());
+                      Modular.to.pushReplacementNamed('/login');
                     },
                     child: const Text('Cancel'),
                   ),
