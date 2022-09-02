@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
@@ -53,13 +54,13 @@ class ForgotPassword extends StatelessWidget {
   }
 }
 
-class _ForgotPasswordForm extends StatelessWidget {
+class _ForgotPasswordForm extends ConsumerWidget {
   _ForgotPasswordForm({Key? key}) : super(key: key);
 
   final formKey = GlobalKey<FormState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
       child: Column(
         children: [
