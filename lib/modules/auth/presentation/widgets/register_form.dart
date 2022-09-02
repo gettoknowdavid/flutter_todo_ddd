@@ -62,7 +62,7 @@ class RegisterForm extends ConsumerWidget {
               (_) => null,
             ),
           ),
-          SizeUtil.vS(20),
+          SizeUtil.vS(10),
           AppTextField(
             hint: 'Email',
             label: 'Email',
@@ -79,7 +79,7 @@ class RegisterForm extends ConsumerWidget {
               (_) => null,
             ),
           ),
-          SizeUtil.vS(20),
+          SizeUtil.vS(10),
           AppTextField(
             hint: 'Password',
             label: 'Password',
@@ -94,7 +94,7 @@ class RegisterForm extends ConsumerWidget {
             ),
           ),
           PasswordRulesWidget(password: state.password.getOrCrash()),
-          SizeUtil.vS(46),
+          SizeUtil.vS(26),
           AppButton(
             disabled: !state.name.isValid() ||
                 !state.email.isValid() ||
