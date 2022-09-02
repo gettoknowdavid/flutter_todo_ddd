@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BottomNavigationState {
   int get currentIndex => throw _privateConstructorUsedError;
-  Widget get widget => throw _privateConstructorUsedError;
-  List<BottomNavigation> get items => throw _privateConstructorUsedError;
+  Widget get page => throw _privateConstructorUsedError;
+  List<BottomNavigation> get pages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BottomNavigationStateCopyWith<BottomNavigationState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $BottomNavigationStateCopyWith<$Res> {
   factory $BottomNavigationStateCopyWith(BottomNavigationState value,
           $Res Function(BottomNavigationState) then) =
       _$BottomNavigationStateCopyWithImpl<$Res>;
-  $Res call({int currentIndex, Widget widget, List<BottomNavigation> items});
+  $Res call({int currentIndex, Widget page, List<BottomNavigation> pages});
 }
 
 /// @nodoc
@@ -45,21 +45,21 @@ class _$BottomNavigationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentIndex = freezed,
-    Object? widget = freezed,
-    Object? items = freezed,
+    Object? page = freezed,
+    Object? pages = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      widget: widget == freezed
-          ? _value.widget
-          : widget // ignore: cast_nullable_to_non_nullable
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
               as Widget,
-      items: items == freezed
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      pages: pages == freezed
+          ? _value.pages
+          : pages // ignore: cast_nullable_to_non_nullable
               as List<BottomNavigation>,
     ));
   }
@@ -72,7 +72,7 @@ abstract class _$$_BottomNavigationStateCopyWith<$Res>
           $Res Function(_$_BottomNavigationState) then) =
       __$$_BottomNavigationStateCopyWithImpl<$Res>;
   @override
-  $Res call({int currentIndex, Widget widget, List<BottomNavigation> items});
+  $Res call({int currentIndex, Widget page, List<BottomNavigation> pages});
 }
 
 /// @nodoc
@@ -90,21 +90,21 @@ class __$$_BottomNavigationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentIndex = freezed,
-    Object? widget = freezed,
-    Object? items = freezed,
+    Object? page = freezed,
+    Object? pages = freezed,
   }) {
     return _then(_$_BottomNavigationState(
       currentIndex: currentIndex == freezed
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      widget: widget == freezed
-          ? _value.widget
-          : widget // ignore: cast_nullable_to_non_nullable
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
               as Widget,
-      items: items == freezed
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
+      pages: pages == freezed
+          ? _value._pages
+          : pages // ignore: cast_nullable_to_non_nullable
               as List<BottomNavigation>,
     ));
   }
@@ -115,24 +115,24 @@ class __$$_BottomNavigationStateCopyWithImpl<$Res>
 class _$_BottomNavigationState implements _BottomNavigationState {
   const _$_BottomNavigationState(
       {required this.currentIndex,
-      required this.widget,
-      required final List<BottomNavigation> items})
-      : _items = items;
+      required this.page,
+      required final List<BottomNavigation> pages})
+      : _pages = pages;
 
   @override
   final int currentIndex;
   @override
-  final Widget widget;
-  final List<BottomNavigation> _items;
+  final Widget page;
+  final List<BottomNavigation> _pages;
   @override
-  List<BottomNavigation> get items {
+  List<BottomNavigation> get pages {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_pages);
   }
 
   @override
   String toString() {
-    return 'BottomNavigationState(currentIndex: $currentIndex, widget: $widget, items: $items)';
+    return 'BottomNavigationState(currentIndex: $currentIndex, page: $page, pages: $pages)';
   }
 
   @override
@@ -142,16 +142,16 @@ class _$_BottomNavigationState implements _BottomNavigationState {
             other is _$_BottomNavigationState &&
             const DeepCollectionEquality()
                 .equals(other.currentIndex, currentIndex) &&
-            const DeepCollectionEquality().equals(other.widget, widget) &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other.page, page) &&
+            const DeepCollectionEquality().equals(other._pages, _pages));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(currentIndex),
-      const DeepCollectionEquality().hash(widget),
-      const DeepCollectionEquality().hash(_items));
+      const DeepCollectionEquality().hash(page),
+      const DeepCollectionEquality().hash(_pages));
 
   @JsonKey(ignore: true)
   @override
@@ -163,15 +163,15 @@ class _$_BottomNavigationState implements _BottomNavigationState {
 abstract class _BottomNavigationState implements BottomNavigationState {
   const factory _BottomNavigationState(
       {required final int currentIndex,
-      required final Widget widget,
-      required final List<BottomNavigation> items}) = _$_BottomNavigationState;
+      required final Widget page,
+      required final List<BottomNavigation> pages}) = _$_BottomNavigationState;
 
   @override
   int get currentIndex;
   @override
-  Widget get widget;
+  Widget get page;
   @override
-  List<BottomNavigation> get items;
+  List<BottomNavigation> get pages;
   @override
   @JsonKey(ignore: true)
   _$$_BottomNavigationStateCopyWith<_$_BottomNavigationState> get copyWith =>
