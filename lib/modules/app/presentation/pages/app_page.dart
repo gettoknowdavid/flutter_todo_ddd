@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 
 class AppPage extends ConsumerWidget {
@@ -21,10 +20,13 @@ class AppPage extends ConsumerWidget {
           children: [
             const Text('app Page Body'),
             AppButton(
-                onPressed: () {
-                  authEvent.mapEventsToStates(const AuthEvent.loggedOut());
-                },
-                title: 'Logout'),
+              onPressed: () {
+                authEvent.mapEventsToStates(
+                  const AuthEvent.loggedOut(),
+                );
+              },
+              title: 'Logout',
+            ),
           ],
         ),
       ),
