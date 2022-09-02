@@ -29,7 +29,8 @@ class LoginForm extends ConsumerWidget {
               title: 'Authentication Failure',
               message: failure.maybeMap(
                 orElse: () => '',
-                serverError: (_) => 'Server error, please try again.',
+                serverError: (_) => 'Server error, try again',
+                emailNotVerified: (_) => 'Please verify your email',
                 invalidEmailOrPassword: (_) => 'Invalid email or password',
               ),
             );
@@ -89,9 +90,8 @@ class LoginForm extends ConsumerWidget {
                 !state.email.isValid() || state.password.getOrCrash() == null,
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                event.mapEventsToStates(
-                  const LoginEvent.loginPressed(),
-                );
+                event.mapEventsToStates(const LoginEvent.loginPressed());
+                authEvent.mapEventsToStates(const AuthEvent.checkVerified());
               }
             },
             loading: state.loading,
