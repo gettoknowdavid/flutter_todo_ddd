@@ -62,7 +62,7 @@ class LoginForm extends ConsumerWidget {
               (_) => null,
             ),
           ),
-          SizeUtil.vS(12),
+          SizeUtil.vS(10),
           AppTextField(
             hint: 'Your password',
             label: 'Password',
