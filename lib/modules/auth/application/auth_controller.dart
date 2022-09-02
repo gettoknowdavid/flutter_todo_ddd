@@ -36,7 +36,6 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   _checkVerified(AuthCheckVerified e) async {
-
     _facade.authStateChange.listen((event) {
       if (event != null) {
         switch (event.emailVerified) {
@@ -51,8 +50,6 @@ class AuthController extends StateNotifier<AuthState> {
         }
       }
     });
-
-   
   }
 
   _loggedOut(LoggedOut e) async {
