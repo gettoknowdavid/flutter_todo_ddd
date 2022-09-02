@@ -9,14 +9,14 @@ part 'bottom_navigation_state.freezed.dart';
 class BottomNavigationState with _$BottomNavigationState {
   const factory BottomNavigationState({
     required int currentIndex,
-    required Widget widget,
-    required List<BottomNavigation> items,
+    required Widget page,
+    required List<BottomNavigation> pages,
   }) = _BottomNavigationState;
 
   factory BottomNavigationState.initial() => BottomNavigationState(
         currentIndex: 0,
-        widget: const AppPage(),
-        items: <BottomNavigation>[
+        page: const AppPage(),
+        pages: <BottomNavigation>[
           BottomNavigation(title: 'Home', icon: Icons.home),
           BottomNavigation(title: 'Calendar', icon: Icons.calendar_today),
           BottomNavigation(title: 'Stats', icon: Icons.bar_chart),
