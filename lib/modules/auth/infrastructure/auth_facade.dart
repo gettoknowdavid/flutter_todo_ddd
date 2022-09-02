@@ -20,8 +20,6 @@ class AuthFacade implements IAuthFacade {
   @override
   Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 
-  
-
   @override
   Future<Option<app.User?>> currentUser() async {
     User? fUser;
