@@ -8,7 +8,7 @@ import 'package:flutter_todo_ddd/modules/auth/application/register/register_cont
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
 import 'package:flutter_todo_ddd/modules/auth/infrastructure/auth_facade.dart';
 import 'package:flutter_todo_ddd/modules/auth/infrastructure/user_mapper.dart';
-import 'package:flutter_todo_ddd/modules/auth/presentation/pages/forgot_password.dart';
+import 'package:flutter_todo_ddd/modules/auth/presentation/pages/forgot_password_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
