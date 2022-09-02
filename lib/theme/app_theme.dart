@@ -27,7 +27,7 @@ class AppTheme {
 
   static final _elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
+      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(56)),
       onPrimary: AppColors.white,
       primary: AppColors.black,
       shadowColor: Colors.transparent,
@@ -55,7 +55,7 @@ class AppTheme {
   static final _textButtonTheme = TextButtonThemeData(
     style: TextButton.styleFrom(
       primary: AppColors.black,
-      padding: SizeUtil.pFromLTRB(16, 8, 16, 8),
+      padding: SizeUtil.pFromLTRB(16, 4, 16, 4),
       shadowColor: Colors.transparent,
       textStyle: GoogleFonts.poppins(color: AppColors.black),
     ),
@@ -67,7 +67,7 @@ class AppTheme {
 
   static final _outlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(63)),
+      fixedSize: Size(SizeUtil.sw(1), SizeUtil.h(56)),
       primary: AppColors.black,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
