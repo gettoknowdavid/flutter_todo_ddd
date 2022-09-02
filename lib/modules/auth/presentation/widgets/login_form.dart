@@ -7,6 +7,7 @@ import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart';
+import 'package:flutter_todo_ddd/modules/auth/domain/errors/auth_failure.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class LoginForm extends ConsumerWidget {
@@ -25,15 +26,17 @@ class LoginForm extends ConsumerWidget {
         () => null,
         (either) => either.fold(
           (failure) {
-            AppSnackbar.errorSnackbar(
-              title: 'Authentication Failure',
-              message: failure.maybeMap(
-                orElse: () => '',
-                serverError: (_) => 'Server error, try again',
-                emailNotVerified: (_) => 'Please verify your email',
-                invalidEmailOrPassword: (_) => 'Invalid email or password',
-              ),
-            );
+            if (failure != const AuthFailure.noGoogleAccount()) {
+              AppSnackbar.errorSnackbar(
+                title: 'Authentication Failure',
+                message: failure.maybeMap(
+                  orElse: () => '',
+                  serverError: (_) => 'Server error, try again',
+                  emailNotVerified: (_) => 'Please verify your email',
+                  invalidEmailOrPassword: (_) => 'Invalid email or password',
+                ),
+              );
+            }
           },
           (success) {
             authEvent.mapEventsToStates(const AuthEvent.checkRequested());
