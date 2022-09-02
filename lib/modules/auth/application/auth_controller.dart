@@ -25,29 +25,34 @@ class AuthController extends StateNotifier<AuthState> {
 
   _checkRequested(AuthCheckRequested e) async {
     _facade.authStateChange.listen((event) {
-      switch (event != null) {
-        case true:
-          state = const AuthState.authenticated();
-          break;
-        case false:
-          state = const AuthState.unauthenticated();
-          break;
-        default:
-          state = state;
+      if (event != null) {
+        state = const AuthState.authenticated();
+      } else if (event != null && !event.emailVerified) {
+        state = const AuthState.unverified();
+      } else {
+        state = const AuthState.unauthenticated();
       }
     });
   }
 
   _checkVerified(AuthCheckVerified e) async {
-    final verifiedEither = await _facade.checkVerification();
 
-    state = verifiedEither.fold(
-      () => const AuthState.unauthenticated(),
-      (either) => either.fold(
-        (_) => const AuthState.unverified(),
-        (_) => const AuthState.verified(),
-      ),
-    );
+    _facade.authStateChange.listen((event) {
+      if (event != null) {
+        switch (event.emailVerified) {
+          case true:
+            state = const AuthState.verified();
+            break;
+          case false:
+            state = const AuthState.unverified();
+            break;
+          default:
+            state = const AuthState.awaitingVerified();
+        }
+      }
+    });
+
+   
   }
 
   _loggedOut(LoggedOut e) async {
