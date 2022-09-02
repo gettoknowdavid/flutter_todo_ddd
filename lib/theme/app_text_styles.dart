@@ -8,8 +8,8 @@ class AppTextStyles {
   static final ThemeData _theme = AppTheme.theme;
 
   static final TextStyle authHeading = TextStyle(
-    fontSize: SizeUtil.fontSize(26),
-    fontWeight: FontWeight.bold,
+    fontSize: SizeUtil.fontSize(24),
+    fontWeight: FontWeight.w900,
   );
 
   static final TextStyle authSubheading = TextStyle(
