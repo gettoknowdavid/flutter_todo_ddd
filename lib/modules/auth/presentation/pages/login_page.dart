@@ -28,26 +28,18 @@ class LoginPage extends ConsumerWidget {
       extendBodyBehindAppBar: true,
       body: Center(
         child: SingleChildScrollView(
-          padding: SizeUtil.pSymmetric(h: 18, v: 20),
+          padding: SizeUtil.pFromLTRB(18, 0, 18, 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizeUtil.vS(90),
+              SizeUtil.vS(30),
+              Image.asset('assets/images/login.png', height: SizeUtil.sh(0.4)),
               Text('Welcome back', style: AppTextStyles.authHeading),
-              SizeUtil.vS(6),
-              Text(
-                'You can login into your account with your email and password.',
-                style: AppTextStyles.authSubheading,
-              ),
-              SizeUtil.vS(36),
+              SizeUtil.vS(14),
               LoginForm(),
-              SizeUtil.vS(16),
-              Text(
-                'or',
-                style: AppTextStyles.authSubheading,
-                textAlign: TextAlign.center,
-              ),
-              SizeUtil.vS(16),
+              SizeUtil.vS(8),
+              const OrDivider(),
+              SizeUtil.vS(8),
               OutlinedButton.icon(
                 icon: Image.asset(
                   'assets/icons/google.png',
@@ -61,7 +53,7 @@ class LoginPage extends ConsumerWidget {
                   authEvent.mapEventsToStates(const AuthEvent.checkRequested());
                 },
               ),
-              SizeUtil.vS(16),
+              SizeUtil.vS(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -82,6 +74,39 @@ class LoginPage extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class OrDivider extends StatelessWidget {
+  const OrDivider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(
+          child: Container(
+            color: Colors.grey.shade300,
+            height: SizeUtil.h(1),
+          ),
+        ),
+        SizeUtil.hS(16),
+        Text(
+          'or',
+          style: AppTextStyles.authSubheading,
+          textAlign: TextAlign.center,
+        ),
+        SizeUtil.hS(16),
+        Expanded(
+          child: Container(
+            color: Colors.grey.shade300,
+            height: SizeUtil.h(1),
+          ),
+        ),
+      ],
     );
   }
 }
