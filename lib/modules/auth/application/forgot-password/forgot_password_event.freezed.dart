@@ -19,18 +19,21 @@ mixin _$ForgotPasswordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
+    required TResult Function() statusChanged,
     required TResult Function() submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$ForgotPasswordEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(StatusChanged value) statusChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) =>
@@ -139,6 +145,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
+    required TResult Function() statusChanged,
     required TResult Function() submitPressed,
   }) {
     return emailChanged(email);
@@ -148,6 +155,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
   }) {
     return emailChanged?.call(email);
@@ -157,6 +165,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
@@ -170,6 +179,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(StatusChanged value) statusChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
     return emailChanged(this);
@@ -179,6 +189,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
   }) {
     return emailChanged?.call(this);
@@ -188,6 +199,7 @@ class _$EmailChanged implements EmailChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {
@@ -205,6 +217,117 @@ abstract class EmailChanged implements ForgotPasswordEvent {
   @JsonKey(ignore: true)
   _$$EmailChangedCopyWith<_$EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StatusChangedCopyWith<$Res> {
+  factory _$$StatusChangedCopyWith(
+          _$StatusChanged value, $Res Function(_$StatusChanged) then) =
+      __$$StatusChangedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StatusChangedCopyWithImpl<$Res>
+    extends _$ForgotPasswordEventCopyWithImpl<$Res>
+    implements _$$StatusChangedCopyWith<$Res> {
+  __$$StatusChangedCopyWithImpl(
+      _$StatusChanged _value, $Res Function(_$StatusChanged) _then)
+      : super(_value, (v) => _then(v as _$StatusChanged));
+
+  @override
+  _$StatusChanged get _value => super._value as _$StatusChanged;
+}
+
+/// @nodoc
+
+class _$StatusChanged implements StatusChanged {
+  const _$StatusChanged();
+
+  @override
+  String toString() {
+    return 'ForgotPasswordEvent.statusChanged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StatusChanged);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function() statusChanged,
+    required TResult Function() submitPressed,
+  }) {
+    return statusChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
+    TResult Function()? submitPressed,
+  }) {
+    return statusChanged?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
+    TResult Function()? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(StatusChanged value) statusChanged,
+    required TResult Function(SubmitPressed value) submitPressed,
+  }) {
+    return statusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
+    TResult Function(SubmitPressed value)? submitPressed,
+  }) {
+    return statusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
+    TResult Function(SubmitPressed value)? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StatusChanged implements ForgotPasswordEvent {
+  const factory StatusChanged() = _$StatusChanged;
 }
 
 /// @nodoc
@@ -249,6 +372,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
+    required TResult Function() statusChanged,
     required TResult Function() submitPressed,
   }) {
     return submitPressed();
@@ -258,6 +382,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
   }) {
     return submitPressed?.call();
@@ -267,6 +392,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
+    TResult Function()? statusChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
@@ -280,6 +406,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(StatusChanged value) statusChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
     return submitPressed(this);
@@ -289,6 +416,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
   }) {
     return submitPressed?.call(this);
@@ -298,6 +426,7 @@ class _$SubmitPressed implements SubmitPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(StatusChanged value)? statusChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {

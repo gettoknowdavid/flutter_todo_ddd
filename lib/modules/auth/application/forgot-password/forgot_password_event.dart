@@ -5,5 +5,6 @@ part 'forgot_password_event.freezed.dart';
 @freezed
 class ForgotPasswordEvent with _$ForgotPasswordEvent {
   const factory ForgotPasswordEvent.emailChanged(String email) = EmailChanged;
+  const factory ForgotPasswordEvent.statusChanged() = StatusChanged;
   const factory ForgotPasswordEvent.submitPressed() = SubmitPressed;
 }
