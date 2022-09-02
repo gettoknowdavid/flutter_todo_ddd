@@ -7,8 +7,6 @@ import 'package:flutter_todo_ddd/modules/auth/domain/value_objects.dart';
 abstract class IAuthFacade {
   Stream<firebase.User?> get authStateChange;
 
-  Future<Option<Either<AuthFailure, bool?>>> checkVerification();
-
   Future<Option<User?>> currentUser();
 
   Future<Either<AuthFailure, Unit>> googleLogin();
