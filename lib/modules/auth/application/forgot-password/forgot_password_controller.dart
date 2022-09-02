@@ -27,11 +27,7 @@ class ForgotPasswordController extends StateNotifier<ForgotPasswordState> {
   }
 
   _statusChanged(StatusChanged e) async {
-    state = state.copyWith(loading: true);
-
-    if (state.authOption.isSome()) {
-      state = state.copyWith(status: true);
-    }
+    state = state.copyWith(status: true, loading: false, authOption: none());
   }
 
   _submitPressed(SubmitPressed e) async {
@@ -40,7 +36,7 @@ class ForgotPasswordController extends StateNotifier<ForgotPasswordState> {
     final emailValid = state.email.isValid();
 
     if (emailValid) {
-      state = state.copyWith(loading: true, authOption: none());
+      state = state.copyWith(loading: true, status: false, authOption: none());
 
       r = await _facade.forgotPassword(email: state.email);
 
