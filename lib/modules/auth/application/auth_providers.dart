@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/core/password_rule_object.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
+import 'package:flutter_todo_ddd/modules/auth/application/forgot-password/forgot_password_controller.dart';
+import 'package:flutter_todo_ddd/modules/auth/application/forgot-password/forgot_password_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/login/login_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/register/register_controller.dart';
@@ -17,6 +19,14 @@ final authProvider = StateNotifierProvider<AuthController, AuthState>(
     Modular.get<IAuthFacade>(),
     Modular.get<OpenMailAppFacade>(),
   ),
+);
+
+final forgotPasswordProvider = StateNotifierProvider.autoDispose<
+    ForgotPasswordController, ForgotPasswordState>(
+  (ref) {
+    ref.onDispose(() => ref.refresh);
+    return ForgotPasswordController(Modular.get<IAuthFacade>());
+  },
 );
 
 final loginProvider =
