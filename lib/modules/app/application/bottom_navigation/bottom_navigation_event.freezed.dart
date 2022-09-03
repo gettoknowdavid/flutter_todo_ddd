@@ -16,22 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BottomNavigationEvent {
+  int get index => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() indexSet,
-    required TResult Function() pageUpdated,
+    required TResult Function(int index) indexSet,
+    required TResult Function(int index) pageUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +55,10 @@ mixin _$BottomNavigationEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BottomNavigationEventCopyWith<BottomNavigationEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,6 +66,7 @@ abstract class $BottomNavigationEventCopyWith<$Res> {
   factory $BottomNavigationEventCopyWith(BottomNavigationEvent value,
           $Res Function(BottomNavigationEvent) then) =
       _$BottomNavigationEventCopyWithImpl<$Res>;
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -71,13 +77,28 @@ class _$BottomNavigationEventCopyWithImpl<$Res>
   final BottomNavigationEvent _value;
   // ignore: unused_field
   final $Res Function(BottomNavigationEvent) _then;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(_value.copyWith(
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$IndexSetCopyWith<$Res> {
+abstract class _$$IndexSetCopyWith<$Res>
+    implements $BottomNavigationEventCopyWith<$Res> {
   factory _$$IndexSetCopyWith(
           _$IndexSet value, $Res Function(_$IndexSet) then) =
       __$$IndexSetCopyWithImpl<$Res>;
+  @override
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -89,54 +110,77 @@ class __$$IndexSetCopyWithImpl<$Res>
 
   @override
   _$IndexSet get _value => super._value as _$IndexSet;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(_$IndexSet(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$IndexSet implements IndexSet {
-  const _$IndexSet();
+  const _$IndexSet(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'BottomNavigationEvent.indexSet()';
+    return 'BottomNavigationEvent.indexSet(index: $index)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IndexSet);
+        (other.runtimeType == runtimeType &&
+            other is _$IndexSet &&
+            const DeepCollectionEquality().equals(other.index, index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(index));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$IndexSetCopyWith<_$IndexSet> get copyWith =>
+      __$$IndexSetCopyWithImpl<_$IndexSet>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() indexSet,
-    required TResult Function() pageUpdated,
+    required TResult Function(int index) indexSet,
+    required TResult Function(int index) pageUpdated,
   }) {
-    return indexSet();
+    return indexSet(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
   }) {
-    return indexSet?.call();
+    return indexSet?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
     required TResult orElse(),
   }) {
     if (indexSet != null) {
-      return indexSet();
+      return indexSet(index);
     }
     return orElse();
   }
@@ -174,14 +218,24 @@ class _$IndexSet implements IndexSet {
 }
 
 abstract class IndexSet implements BottomNavigationEvent {
-  const factory IndexSet() = _$IndexSet;
+  const factory IndexSet(final int index) = _$IndexSet;
+
+  @override
+  int get index;
+  @override
+  @JsonKey(ignore: true)
+  _$$IndexSetCopyWith<_$IndexSet> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PageUpdatedCopyWith<$Res> {
+abstract class _$$PageUpdatedCopyWith<$Res>
+    implements $BottomNavigationEventCopyWith<$Res> {
   factory _$$PageUpdatedCopyWith(
           _$PageUpdated value, $Res Function(_$PageUpdated) then) =
       __$$PageUpdatedCopyWithImpl<$Res>;
+  @override
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -194,54 +248,77 @@ class __$$PageUpdatedCopyWithImpl<$Res>
 
   @override
   _$PageUpdated get _value => super._value as _$PageUpdated;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(_$PageUpdated(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$PageUpdated implements PageUpdated {
-  const _$PageUpdated();
+  const _$PageUpdated(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'BottomNavigationEvent.pageUpdated()';
+    return 'BottomNavigationEvent.pageUpdated(index: $index)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PageUpdated);
+        (other.runtimeType == runtimeType &&
+            other is _$PageUpdated &&
+            const DeepCollectionEquality().equals(other.index, index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(index));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PageUpdatedCopyWith<_$PageUpdated> get copyWith =>
+      __$$PageUpdatedCopyWithImpl<_$PageUpdated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() indexSet,
-    required TResult Function() pageUpdated,
+    required TResult Function(int index) indexSet,
+    required TResult Function(int index) pageUpdated,
   }) {
-    return pageUpdated();
+    return pageUpdated(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
   }) {
-    return pageUpdated?.call();
+    return pageUpdated?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? indexSet,
-    TResult Function()? pageUpdated,
+    TResult Function(int index)? indexSet,
+    TResult Function(int index)? pageUpdated,
     required TResult orElse(),
   }) {
     if (pageUpdated != null) {
-      return pageUpdated();
+      return pageUpdated(index);
     }
     return orElse();
   }
@@ -279,5 +356,12 @@ class _$PageUpdated implements PageUpdated {
 }
 
 abstract class PageUpdated implements BottomNavigationEvent {
-  const factory PageUpdated() = _$PageUpdated;
+  const factory PageUpdated(final int index) = _$PageUpdated;
+
+  @override
+  int get index;
+  @override
+  @JsonKey(ignore: true)
+  _$$PageUpdatedCopyWith<_$PageUpdated> get copyWith =>
+      throw _privateConstructorUsedError;
 }
