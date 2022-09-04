@@ -14,9 +14,6 @@ class AppLayout extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bottomNavState = ref.watch(bottomNavProvider);
-    final bottomNavEvent = ref.watch(bottomNavProvider.notifier);
-
-    int pagesLength = bottomNavState.pages.length;
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
@@ -28,31 +25,45 @@ class AppLayout extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Teek Layout')),
       body: bottomNavState.page,
-      bottomNavigationBar: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        width: SizeUtil.sw(1),
-        height: SizeUtil.h(80),
-        // color: Colors.pink,
-        padding: SizeUtil.pSymmetric(h: 18),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            for (var i = 0; i < pagesLength; i++) ...[
-              BottomNavigationItem(
-                item: bottomNavState.pages[i],
-                onSelect: () {
-                  final index = bottomNavState.pages.indexOf(
-                    bottomNavState.pages[i],
-                  );
+      bottomNavigationBar: const AppBottomNavigationBar(),
+    );
+  }
+}
 
-                  bottomNavEvent.mapEventsToStates(
-                    BottomNavigationEvent.pageUpdated(index),
-                  );
-                },
-              )
-            ],
+class AppBottomNavigationBar extends ConsumerWidget {
+  const AppBottomNavigationBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bottomNavState = ref.watch(bottomNavProvider);
+    final bottomNavEvent = ref.watch(bottomNavProvider.notifier);
+
+    int pagesLength = bottomNavState.pages.length;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 250),
+      width: SizeUtil.sw(1),
+      height: SizeUtil.h(80),
+      // color: Colors.pink,
+      padding: SizeUtil.pSymmetric(h: 18),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          for (var i = 0; i < pagesLength; i++) ...[
+            BottomNavigationItem(
+              item: bottomNavState.pages[i],
+              onSelect: () {
+                final index = bottomNavState.pages.indexOf(
+                  bottomNavState.pages[i],
+                );
+
+                bottomNavEvent.mapEventsToStates(
+                  BottomNavigationEvent.pageUpdated(index),
+                );
+              },
+            )
           ],
-        ),
+        ],
       ),
     );
   }
