@@ -3,8 +3,6 @@ import 'package:flutter_todo_ddd/theme/app_theme.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class AppTextStyles {
-  AppTextStyles._();
-
   static final ThemeData _theme = AppTheme.theme;
 
   static final TextStyle authHeading = TextStyle(
@@ -19,4 +17,15 @@ class AppTextStyles {
   static final TextStyle registerNow = TextStyle(
     color: _theme.colorScheme.secondary,
   );
+
+  static final TextStyle avatarPlaceholder = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: _theme.colorScheme.onSecondary,
+  );
+
+  static const TextStyle appBarHeading = TextStyle(
+    fontWeight: FontWeight.w800,
+  );
+
+  AppTextStyles._();
 }
