@@ -32,11 +32,10 @@ class AppLayout extends ConsumerWidget {
         duration: const Duration(milliseconds: 250),
         width: SizeUtil.sw(1),
         height: SizeUtil.h(80),
-        color: Colors.white,
-        padding: SizeUtil.pSymmetric(h: 14),
-        child: Wrap(
-          alignment: WrapAlignment.spaceAround,
-          runAlignment: WrapAlignment.center,
+        // color: Colors.pink,
+        padding: SizeUtil.pSymmetric(h: 18),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             for (var i = 0; i < pagesLength; i++) ...[
               BottomNavigationItem(
