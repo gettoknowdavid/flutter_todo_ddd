@@ -45,10 +45,10 @@ class SizeUtil {
 
   /// Padding only
   static pOnly({
-    double left = 0.0,
-    double top = 0.0,
-    double right = 0.0,
-    double bottom = 0.0,
+    double l = 0.0,
+    double t = 0.0,
+    double r = 0.0,
+    double b = 0.0,
   }) =>
-      EdgeInsets.only(left: left, top: top, right: right, bottom: bottom).r;
+      EdgeInsets.only(left: l, top: t, right: r, bottom: b).r;
 }
