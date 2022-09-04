@@ -22,11 +22,10 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Option<app.User?>> currentUser() async {
-    User? fUser;
-    _firebaseAuth.authStateChanges().listen((value) => fUser = value);
+    User? fUser = _firebaseAuth.currentUser;
 
     if (fUser != null) {
-      final user = await usersRef.doc(fUser!.uid).get().then((v) => v.data);
+      final user = await usersRef.doc(fUser.uid).get().then((v) => v.data);
       return optionOf(_userMapper.toDomain(user));
     } else {
       return optionOf(null);
