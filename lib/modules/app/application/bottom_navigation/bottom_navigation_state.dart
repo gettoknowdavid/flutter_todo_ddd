@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
 import 'package:flutter_todo_ddd/modules/app/domain/bottom_navigation.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/home_page.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,10 +18,10 @@ class BottomNavigationState with _$BottomNavigationState {
         currentIndex: 0,
         page: const HomePage(),
         pages: <BottomNavigation>[
-          BottomNavigation(title: 'Home', icon: Icons.home),
-          BottomNavigation(title: 'Calendar', icon: Icons.calendar_today),
-          BottomNavigation(title: 'Stats', icon: Icons.bar_chart),
-          BottomNavigation(title: 'Settings', icon: Icons.settings),
+          BottomNavigation(title: 'Home', icon: AppIcons.home),
+          BottomNavigation(title: 'Calendar', icon: AppIcons.calendar),
+          BottomNavigation(title: 'Stats', icon: AppIcons.chart),
+          BottomNavigation(title: 'Settings', icon: AppIcons.setting),
         ],
       );
 }
