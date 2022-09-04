@@ -20,6 +20,7 @@ class BottomNavigationState with _$BottomNavigationState {
         pages: <BottomNavigation>[
           BottomNavigation(title: 'Home', icon: AppIcons.home),
           BottomNavigation(title: 'Calendar', icon: AppIcons.calendar),
+          BottomNavigation(title: 'Add', icon: AppIcons.plus),
           BottomNavigation(title: 'Stats', icon: AppIcons.chart),
           BottomNavigation(title: 'Settings', icon: AppIcons.setting),
         ],
