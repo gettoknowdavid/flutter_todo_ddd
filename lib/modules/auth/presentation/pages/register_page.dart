@@ -15,15 +15,7 @@ class RegisterPage extends StatelessWidget {
         leading: const SizedBox(),
         leadingWidth: 0,
         backgroundColor: Colors.transparent,
-        title: TextButton.icon(
-          icon: const BackButtonIcon(),
-          label: const Text('Back to Login'),
-          onPressed: () => Modular.to.pop(),
-          style: TextButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColorLight,
-            padding: SizeUtil.pFromLTRB(12, 0, 12, 0),
-          ),
-        ),
+        title: const AppBackButton(title: 'Back to Login'),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -46,6 +38,25 @@ class RegisterPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AppBackButton extends StatelessWidget {
+  const AppBackButton({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+      icon: const BackButtonIcon(),
+      label: Text(title),
+      onPressed: () => Modular.to.pop(),
+      style: TextButton.styleFrom(
+        backgroundColor: Theme.of(context).primaryColorLight,
+        padding: SizeUtil.pFromLTRB(12, 0, 12, 0),
       ),
     );
   }
