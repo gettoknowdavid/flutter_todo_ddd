@@ -30,6 +30,7 @@ class UserDto with _$UserDto {
       uid: user.uid.getOrCrash()!,
       name: user.name.getOrCrash()!,
       email: user.email.getOrCrash()!,
+      avatar: user.avatar,
     );
   }
 
