@@ -4,5 +4,5 @@ part 'app_event.freezed.dart';
 
 @freezed
 class AppEvent with _$AppEvent {
-  factory AppEvent.initialized() = AppInitialized;
+  const factory AppEvent.initialized() = AppInitialized;
 }

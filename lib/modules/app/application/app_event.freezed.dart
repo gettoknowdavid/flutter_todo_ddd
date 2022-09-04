@@ -86,7 +86,7 @@ class __$$AppInitializedCopyWithImpl<$Res> extends _$AppEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppInitialized implements AppInitialized {
-  _$AppInitialized();
+  const _$AppInitialized();
 
   @override
   String toString() {
@@ -160,5 +160,5 @@ class _$AppInitialized implements AppInitialized {
 }
 
 abstract class AppInitialized implements AppEvent {
-  factory AppInitialized() = _$AppInitialized;
+  const factory AppInitialized() = _$AppInitialized;
 }
