@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_back_button.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/widgets/register_form.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
@@ -38,25 +38,6 @@ class RegisterPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class AppBackButton extends StatelessWidget {
-  const AppBackButton({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton.icon(
-      icon: const BackButtonIcon(),
-      label: Text(title),
-      onPressed: () => Modular.to.pop(),
-      style: TextButton.styleFrom(
-        backgroundColor: Theme.of(context).primaryColorLight,
-        padding: SizeUtil.pFromLTRB(12, 0, 12, 0),
       ),
     );
   }
