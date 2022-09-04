@@ -12,6 +12,15 @@ class AppTheme {
     iconTheme: _iconTheme,
   );
 
+  static const _bottomNavigationBarTheme = BottomNavigationBarThemeData(
+    elevation: 0,
+    backgroundColor: AppColors.white,
+    selectedItemColor: AppColors.white,
+    showSelectedLabels: false,
+    showUnselectedLabels: false,
+    unselectedItemColor: AppColors.black,
+  );
+
   static final _colorScheme = const ColorScheme.light().copyWith(
     primary: AppColors.white,
     onPrimary: AppColors.black,
@@ -86,6 +95,7 @@ class AppTheme {
     return base.copyWith(
       appBarTheme: _appBarTheme,
       backgroundColor: AppColors.white,
+      bottomNavigationBarTheme: _bottomNavigationBarTheme,
       brightness: Brightness.light,
       canvasColor: AppColors.grey,
       colorScheme: _colorScheme,
