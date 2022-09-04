@@ -10,15 +10,17 @@ import 'package:flutter_todo_ddd/modules/todo/presentation/pages/stats_page.dart
 class BottomNavigationController extends StateNotifier<BottomNavigationState> {
   BottomNavigationController() : super(BottomNavigationState.initial());
 
-  Widget get _getPage {
-    switch (state.currentIndex) {
+  Widget _getPage(int index) {
+    switch (index) {
       case 0:
         return const HomePage();
       case 1:
         return const CalendarPage();
       case 2:
-        return const StatsPage();
+        return const SizedBox();
       case 3:
+        return const StatsPage();
+      case 4:
         return const SettingsPage();
       default:
         return const HomePage();
@@ -37,6 +39,9 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
   }
 
   _pageUpdated(PageUpdated e) async {
-    state = state.copyWith(page: _getPage, currentIndex: e.index);
+    state = state.copyWith(
+      page: e.index == 2 ? state.page : _getPage(e.index),
+      currentIndex: e.index,
+    );
   }
 }
