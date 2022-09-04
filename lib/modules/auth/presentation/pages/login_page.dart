@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_ddd/common/widgets/app_snackbars.dart';
+import 'package:flutter_todo_ddd/modules/app/application/app_event.dart';
+import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
@@ -17,13 +18,17 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final event = ref.watch(loginProvider.notifier);
+    final appEvent = ref.watch(appProvider.notifier);
     final authEvent = ref.watch(authProvider.notifier);
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
         orElse: () => null,
         unverified: (_) => Modular.to.pushReplacementNamed('/verification'),
-        authenticated: (_) => Modular.to.pushReplacementNamed('/layout'),
+        authenticated: (_) {
+          appEvent.mapEventsToStates(const AppEvent.initialized());
+          Modular.to.pushReplacementNamed('/layout');
+        },
       );
     });
 
