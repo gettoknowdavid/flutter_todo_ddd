@@ -28,12 +28,15 @@ class AppLayout extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Teek Layout')),
       body: bottomNavState.page,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
         width: SizeUtil.sw(1),
         height: SizeUtil.h(80),
         color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        padding: SizeUtil.pSymmetric(h: 14),
+        child: Wrap(
+          alignment: WrapAlignment.spaceAround,
+          runAlignment: WrapAlignment.center,
           children: [
             for (var i = 0; i < pagesLength; i++) ...[
               BottomNavigationItem(
