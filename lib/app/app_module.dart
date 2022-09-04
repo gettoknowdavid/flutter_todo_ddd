@@ -12,6 +12,7 @@ import 'package:flutter_todo_ddd/modules/auth/presentation/pages/forgot_password
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/pages/profile_page.dart';
 import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -36,5 +37,6 @@ class AppModule extends Module {
     ChildRoute('/verification', child: (_, __) => const VerificationPage()),
     ChildRoute('/forgotPassword', child: (_, __) => ForgotPasswordPage()),
     ChildRoute('/layout', child: (_, __) => const AppLayout()),
+    ChildRoute('/profile', child: (_, __) => const ProfilePage()),
   ];
 }
