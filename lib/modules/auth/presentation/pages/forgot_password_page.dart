@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_snackbars.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
+import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_back_button.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/forgot-password/forgot_password_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/forgot-password/forgot_password_state.dart';
@@ -46,15 +46,7 @@ class ForgotPasswordPage extends ConsumerWidget {
         leading: const SizedBox(),
         leadingWidth: 0,
         backgroundColor: Colors.transparent,
-        title: TextButton.icon(
-          icon: const BackButtonIcon(),
-          label: const Text('Back to Login'),
-          onPressed: () => Modular.to.pop(),
-          style: TextButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColorLight,
-            padding: SizeUtil.pFromLTRB(12, 0, 12, 0),
-          ),
-        ),
+        title: const AppBackButton(title: 'Back to Login'),
       ),
       body: Center(
         child: SingleChildScrollView(
