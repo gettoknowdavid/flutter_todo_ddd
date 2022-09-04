@@ -8,7 +8,7 @@ class AppController extends StateNotifier<AppState> {
 
   AppController(this._authFacade) : super(AppState.initial());
 
-  Future mapEventsToState(AppEvent e) async {
+  Future mapEventsToStates(AppEvent e) async {
     e.map(initialized: _initialized);
   }
 
