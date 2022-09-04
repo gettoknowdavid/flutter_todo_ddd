@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
-import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
 import 'package:flutter_todo_ddd/modules/auth/infrastructure/dtos/user_dto.dart';
@@ -20,7 +19,6 @@ class AppAppBar extends ConsumerWidget with PreferredSizeWidget {
     final theme = Theme.of(context);
 
     final appState = ref.watch(appProvider);
-    final authEvent = ref.watch(authProvider.notifier);
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
@@ -38,9 +36,7 @@ class AppAppBar extends ConsumerWidget with PreferredSizeWidget {
       ),
       actions: [
         GestureDetector(
-          onTap: () {
-            authEvent.mapEventsToStates(const AuthEvent.loggedOut());
-          },
+          onTap: () => Modular.to.pushNamed('/profile'),
           child: Center(
             child: CircleAvatar(
               backgroundColor: theme.colorScheme.secondary,
