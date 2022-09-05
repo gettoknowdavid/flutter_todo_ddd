@@ -25,9 +25,20 @@ class TodoFacade implements ITodoFacade {
   }
 
   @override
-  Future<Either<TodoFailure, Unit>> delete(Todo todo) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<TodoFailure, Unit>> delete(Todo todo) async {
+    final todoDto = TodoDto.fromDomain(todo);
+
+    try {
+      await todosRef.doc(todoDto.uid).delete();
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    }
   }
 
   @override
