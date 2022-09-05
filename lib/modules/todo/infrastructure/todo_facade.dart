@@ -42,9 +42,20 @@ class TodoFacade implements ITodoFacade {
   }
 
   @override
-  Future<Either<TodoFailure, Unit>> edit(Todo todo) {
-    // TODO: implement edit
-    throw UnimplementedError();
+  Future<Either<TodoFailure, Unit>> edit(Todo todo) async {
+    final todoDto = TodoDto.fromDomain(todo);
+
+    try {
+      await todosRef.doc(todoDto.uid).set(todoDto);
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    }
   }
 
   @override
