@@ -18,32 +18,41 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodoFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
     required TResult Function() serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
     TResult Function()? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
     TResult Function()? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TodoInsufficientPermissions value)
+        insufficientPermissions,
     required TResult Function(_TodoServerError value) serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
     TResult Function(_TodoServerError value)? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
     TResult Function(_TodoServerError value)? serverError,
     required TResult orElse(),
   }) =>
@@ -64,6 +73,118 @@ class _$TodoFailureCopyWithImpl<$Res> implements $TodoFailureCopyWith<$Res> {
   final TodoFailure _value;
   // ignore: unused_field
   final $Res Function(TodoFailure) _then;
+}
+
+/// @nodoc
+abstract class _$$_TodoInsufficientPermissionsCopyWith<$Res> {
+  factory _$$_TodoInsufficientPermissionsCopyWith(
+          _$_TodoInsufficientPermissions value,
+          $Res Function(_$_TodoInsufficientPermissions) then) =
+      __$$_TodoInsufficientPermissionsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TodoInsufficientPermissionsCopyWithImpl<$Res>
+    extends _$TodoFailureCopyWithImpl<$Res>
+    implements _$$_TodoInsufficientPermissionsCopyWith<$Res> {
+  __$$_TodoInsufficientPermissionsCopyWithImpl(
+      _$_TodoInsufficientPermissions _value,
+      $Res Function(_$_TodoInsufficientPermissions) _then)
+      : super(_value, (v) => _then(v as _$_TodoInsufficientPermissions));
+
+  @override
+  _$_TodoInsufficientPermissions get _value =>
+      super._value as _$_TodoInsufficientPermissions;
+}
+
+/// @nodoc
+
+class _$_TodoInsufficientPermissions implements _TodoInsufficientPermissions {
+  const _$_TodoInsufficientPermissions();
+
+  @override
+  String toString() {
+    return 'TodoFailure.insufficientPermissions()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TodoInsufficientPermissions);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
+    required TResult Function() serverError,
+  }) {
+    return insufficientPermissions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? serverError,
+  }) {
+    return insufficientPermissions?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (insufficientPermissions != null) {
+      return insufficientPermissions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodoInsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(_TodoServerError value) serverError,
+  }) {
+    return insufficientPermissions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
+    TResult Function(_TodoServerError value)? serverError,
+  }) {
+    return insufficientPermissions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
+    TResult Function(_TodoServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (insufficientPermissions != null) {
+      return insufficientPermissions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TodoInsufficientPermissions implements TodoFailure {
+  const factory _TodoInsufficientPermissions() = _$_TodoInsufficientPermissions;
 }
 
 /// @nodoc
@@ -107,6 +228,7 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() insufficientPermissions,
     required TResult Function() serverError,
   }) {
     return serverError();
@@ -115,6 +237,7 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
     TResult Function()? serverError,
   }) {
     return serverError?.call();
@@ -123,6 +246,7 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? insufficientPermissions,
     TResult Function()? serverError,
     required TResult orElse(),
   }) {
@@ -135,6 +259,8 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TodoInsufficientPermissions value)
+        insufficientPermissions,
     required TResult Function(_TodoServerError value) serverError,
   }) {
     return serverError(this);
@@ -143,6 +269,8 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
     TResult Function(_TodoServerError value)? serverError,
   }) {
     return serverError?.call(this);
@@ -151,6 +279,8 @@ class _$_TodoServerError implements _TodoServerError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodoInsufficientPermissions value)?
+        insufficientPermissions,
     TResult Function(_TodoServerError value)? serverError,
     required TResult orElse(),
   }) {
