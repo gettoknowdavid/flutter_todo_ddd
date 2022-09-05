@@ -1,9 +1,14 @@
-import 'package:flutter_todo_ddd/modules/todo/domain/errors/todo_failure.dart';
-import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/errors/todo_failure.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_todo_facade.dart';
 
 class TodoFacade implements ITodoFacade {
+  FirebaseFirestore _firestore;
+
+  TodoFacade(this._firestore);
+
   @override
   Future<Either<TodoFailure, Unit>> create(Todo todo) {
     // TODO: implement create
