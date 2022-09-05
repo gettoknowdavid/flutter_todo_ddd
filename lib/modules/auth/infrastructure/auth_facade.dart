@@ -77,7 +77,7 @@ class AuthFacade implements IAuthFacade {
           avatar: userCred.user?.photoURL,
         );
 
-        usersRef.doc(user.uid).set(user);
+        await usersRef.doc(user.uid).set(user);
 
         return right(unit);
       }
