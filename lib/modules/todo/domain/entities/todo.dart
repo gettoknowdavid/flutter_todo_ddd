@@ -15,7 +15,7 @@ class Todo with _$Todo {
     DateTime? createdAt,
   }) = _Todo;
 
-  factory Todo.isEmpty() => Todo(
+  factory Todo.empty() => Todo(
         uid: Uid(),
         title: ITodoTitle('Test title'),
         isDone: false,
