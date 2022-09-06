@@ -3,28 +3,25 @@ import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'todo_dto.freezed.dart';
 part 'todo_dto.g.dart';
 
-const firestoreSerializable = JsonSerializable(
-  explicitToJson: true,
-  createFactory: false,
-);
+@JsonSerializable(explicitToJson: true, createFieldMap: true)
+class TodoDto {
+  TodoDto({
+    required this.uid,
+    required this.title,
+    required this.isDone,
+    this.description,
+    this.time,
+    this.createdAt,
+  });
 
-@Collection<TodoDto>('todos')
-final todosRef = TodoDtoCollectionReference();
-
-@freezed
-@firestoreSerializable
-class TodoDto with _$TodoDto {
-  factory TodoDto({
-    required String uid,
-    required String title,
-    required bool isDone,
-    String? description,
-    DateTime? time,
-    DateTime? createdAt,
-  }) = _TodoDto;
+  final String uid;
+  final String title;
+  final bool isDone;
+  final String? description;
+  final DateTime? time;
+  final DateTime? createdAt;
 
   factory TodoDto.fromDomain(Todo todo) {
     return TodoDto(
@@ -37,9 +34,11 @@ class TodoDto with _$TodoDto {
     );
   }
 
-  factory TodoDto.fromJson(Map<String, dynamic> json) =>
+  factory TodoDto.fromJson(Map<String, Object?> json) =>
       _$TodoDtoFromJson(json);
 
-  @override
-  Map<String, dynamic> toJson() => _$TodoDtoToJson(this);
+  Map<String, Object?> toJson() => _$TodoDtoToJson(this);
 }
+
+@Collection<TodoDto>('todos')
+final todosRef = TodoDtoCollectionReference();
