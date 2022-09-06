@@ -50,6 +50,7 @@ dependencies:
   open_mail_app: ^0.4.5
   google_sign_in: ^5.4.1
   flutter_svg: ^1.1.4
+  rxdart: ^0.27.5
 
 dev_dependencies:
   flutter_test:
