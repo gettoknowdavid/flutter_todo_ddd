@@ -5,18 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'todo_dto.g.dart';
 
-@Collection<TodoDto>('todos')
-final todosRef = TodoDtoCollectionReference();
-
 @JsonSerializable(explicitToJson: true, createFieldMap: true)
 class TodoDto {
-  final String uid;
-
-  final String title;
-  final bool isDone;
-  final String? description;
-  final DateTime? time;
-  final DateTime? createdAt;
   TodoDto({
     required this.uid,
     required this.title,
@@ -25,6 +15,13 @@ class TodoDto {
     this.time,
     this.createdAt,
   });
+
+  final String uid;
+  final String title;
+  final bool isDone;
+  final String? description;
+  final DateTime? time;
+  final DateTime? createdAt;
 
   factory TodoDto.fromDomain(Todo todo) {
     return TodoDto(
@@ -42,3 +39,6 @@ class TodoDto {
 
   Map<String, Object?> toJson() => _$TodoDtoToJson(this);
 }
+
+@Collection<TodoDto>('todos')
+final todosRef = TodoDtoCollectionReference();
