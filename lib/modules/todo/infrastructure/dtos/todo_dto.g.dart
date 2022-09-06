@@ -122,6 +122,15 @@ abstract class TodoDtoDocumentReference
   @override
   Future<void> delete();
 
+  Future<void> update({
+    String uid,
+    String title,
+    bool isDone,
+    String? description,
+    DateTime? time,
+    DateTime? createdAt,
+  });
+
   Future<void> set(TodoDto value);
 }
 
@@ -161,6 +170,26 @@ class _$TodoDtoDocumentReference
   @override
   Future<void> delete() {
     return reference.delete();
+  }
+
+  Future<void> update({
+    Object? uid = _sentinel,
+    Object? title = _sentinel,
+    Object? isDone = _sentinel,
+    Object? description = _sentinel,
+    Object? time = _sentinel,
+    Object? createdAt = _sentinel,
+  }) async {
+    final json = {
+      if (uid != _sentinel) "uid": uid as String,
+      if (title != _sentinel) "title": title as String,
+      if (isDone != _sentinel) "isDone": isDone as bool,
+      if (description != _sentinel) "description": description as String?,
+      if (time != _sentinel) "time": time as DateTime?,
+      if (createdAt != _sentinel) "createdAt": createdAt as DateTime?,
+    };
+
+    return reference.update(json);
   }
 
   Future<void> set(TodoDto value) {
@@ -283,6 +312,72 @@ abstract class TodoDtoQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
+  TodoDtoQuery whereUid({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  TodoDtoQuery whereTitle({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  TodoDtoQuery whereIsDone({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  });
+  TodoDtoQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  TodoDtoQuery whereTime({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  });
+  TodoDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  });
 
   TodoDtoQuery orderByDocumentId({
     bool descending = false,
@@ -290,6 +385,78 @@ abstract class TodoDtoQuery
     String startAfter,
     String endAt,
     String endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByUid({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByTitle({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByIsDone({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByDescription({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByTime({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByCreatedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
     TodoDtoDocumentSnapshot? startAtDocument,
     TodoDtoDocumentSnapshot? endAtDocument,
     TodoDtoDocumentSnapshot? endBeforeDocument,
@@ -462,6 +629,174 @@ class _$TodoDtoQuery extends QueryReference<TodoDto, TodoDtoQuerySnapshot>
     );
   }
 
+  TodoDtoQuery whereUid({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["uid"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
+  TodoDtoQuery whereTitle({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["title"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
+  TodoDtoQuery whereIsDone({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["isDone"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
+  TodoDtoQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["description"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
+  TodoDtoQuery whereTime({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["time"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
+  TodoDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["createdAt"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
   TodoDtoQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -474,6 +809,264 @@ class _$TodoDtoQuery extends QueryReference<TodoDto, TodoDtoQuerySnapshot>
     TodoDtoDocumentSnapshot? startAfterDocument,
   }) {
     var query = reference.orderBy(FieldPath.documentId, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByUid({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query =
+        reference.orderBy(_$TodoDtoFieldMap["uid"]!, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByTitle({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query =
+        reference.orderBy(_$TodoDtoFieldMap["title"]!, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByIsDone({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query =
+        reference.orderBy(_$TodoDtoFieldMap["isDone"]!, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByDescription({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query = reference.orderBy(_$TodoDtoFieldMap["description"]!,
+        descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByTime({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query =
+        reference.orderBy(_$TodoDtoFieldMap["time"]!, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
+  TodoDtoQuery orderByCreatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query = reference.orderBy(_$TodoDtoFieldMap["createdAt"]!,
+        descending: descending);
 
     if (startAtDocument != null) {
       query = query.startAtDocument(startAtDocument.snapshot);
@@ -553,16 +1146,7 @@ class TodoDtoQueryDocumentSnapshot
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
-      'uid': instance.uid,
-      'title': instance.title,
-      'isDone': instance.isDone,
-      'description': instance.description,
-      'time': instance.time?.toIso8601String(),
-      'createdAt': instance.createdAt?.toIso8601String(),
-    };
-
-_$_TodoDto _$$_TodoDtoFromJson(Map<String, dynamic> json) => _$_TodoDto(
+TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       uid: json['uid'] as String,
       title: json['title'] as String,
       isDone: json['isDone'] as bool,
@@ -574,8 +1158,16 @@ _$_TodoDto _$$_TodoDtoFromJson(Map<String, dynamic> json) => _$_TodoDto(
           : DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$$_TodoDtoToJson(_$_TodoDto instance) =>
-    <String, dynamic>{
+const _$TodoDtoFieldMap = <String, String>{
+  'uid': 'uid',
+  'title': 'title',
+  'isDone': 'isDone',
+  'description': 'description',
+  'time': 'time',
+  'createdAt': 'createdAt',
+};
+
+Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
       'uid': instance.uid,
       'title': instance.title,
       'isDone': instance.isDone,
