@@ -19,6 +19,7 @@ class AppAppBar extends ConsumerWidget with PreferredSizeWidget {
     final theme = Theme.of(context);
 
     final appState = ref.watch(appProvider);
+    final bottomNavState = ref.watch(bottomNavProvider);
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       next.maybeMap(
@@ -30,10 +31,12 @@ class AppAppBar extends ConsumerWidget with PreferredSizeWidget {
     final user = UserDto.fromDomain(appState.user!);
 
     return AppBar(
-      title: Text(
-        "Hello ${user.name.split(' ')[0]}",
-        style: AppTextStyles.appBarHeading,
-      ),
+      title: bottomNavState.currentIndex == 0
+          ? null
+          : Text(
+              "Hello ${user.name.split(' ')[0]}",
+              style: AppTextStyles.appBarHeading,
+            ),
       actions: [
         GestureDetector(
           onTap: () => Modular.to.pushNamed('/profile'),
