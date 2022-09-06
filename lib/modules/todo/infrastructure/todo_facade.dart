@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
@@ -67,7 +66,7 @@ class TodoFacade implements ITodoFacade {
   @override
   Stream<Either<TodoFailure, List<Todo?>>> watchAll() async* {
     yield* todosRef
-        .orderByFieldPath(FieldPath.fromString('serverTimeStamp'))
+        .orderByCreatedAt(descending: true)
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
@@ -81,8 +80,19 @@ class TodoFacade implements ITodoFacade {
   }
 
   @override
-  Stream<Either<TodoFailure, List<Todo?>>> watchUncompleted() {
-    // TODO: implement watchUncompleted
-    throw UnimplementedError();
+  Stream<Either<TodoFailure, List<Todo?>>> watchUncompleted() async* {
+    yield* todosRef
+        .orderByCreatedAt(descending: true)
+        .orderByIsDone(startAt: false)
+        .snapshots()
+        .map((snapshot) => right<TodoFailure, List<Todo?>>(
+            snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
+        .onErrorReturnWith((e, stackTrace) {
+      if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    });
   }
 }
