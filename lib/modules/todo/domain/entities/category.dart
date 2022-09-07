@@ -10,14 +10,12 @@ class Category with _$Category {
   const factory Category({
     required Uid uid,
     required ICategoryTitle title,
-    required ICategoryTodoList todos,
     required ICategoryColor color,
   }) = _Category;
 
   factory Category.empty() => Category(
         uid: Uid.fromUniqueString(''),
         title: ICategoryTitle(''),
-        todos: ICategoryTodoList(emptyList()),
         color: ICategoryColor(ICategoryColor.colors[0]),
       );
 }
