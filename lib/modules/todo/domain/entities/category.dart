@@ -1,7 +1,6 @@
 import 'package:flutter_todo_ddd/core/uid.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/collection.dart';
 
 part 'category.freezed.dart';
 
