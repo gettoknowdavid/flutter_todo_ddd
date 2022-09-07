@@ -40,45 +40,16 @@ class CreateTodoPage extends StatelessWidget {
             SizeUtil.vS(20),
             Wrap(
               children: [
-                Container(
-                  height: SizeUtil.sh(0.13),
-                  padding: SizeUtil.pSymmetric(h: 10, v: 12),
-                  decoration: BoxDecoration(
-                    color: AppColors.lavender,
-                    borderRadius: SizeUtil.borderRadius(18),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AppIcon(
-                        icon: AppIcons.calendar,
-                        semantic: 'Calendar icons',
-                        color: theme.colorScheme.secondary,
-                        width: SizeUtil.w(22),
-                      ),
-                      SizeUtil.hS(6),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Date',
-                            style: TextStyle(
-                              fontSize: SizeUtil.fontSize(14),
-                              color: AppColors.greyDark,
-                            ),
-                          ),
-                          Text(
-                            '24 Dec',
-                            style: TextStyle(
-                              fontSize: SizeUtil.fontSize(18),
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                TodoInfoContainer(
+                  icon: AppIcons.calendar,
+                  title: 'Date',
+                  child: Text(
+                    '24 Dec',
+                    style: TextStyle(
+                      fontSize: SizeUtil.fontSize(18),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
                 ),
               ],
@@ -92,6 +63,59 @@ class CreateTodoPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TodoInfoContainer extends StatelessWidget {
+  final String icon;
+
+  final String title;
+  final Widget child;
+  const TodoInfoContainer({
+    Key? key,
+    required this.icon,
+    required this.title,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      height: SizeUtil.sh(0.13),
+      padding: SizeUtil.pSymmetric(h: 10, v: 12),
+      decoration: BoxDecoration(
+        color: AppColors.lavender,
+        borderRadius: SizeUtil.borderRadius(18),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          AppIcon(
+            icon: icon,
+            semantic: icon,
+            color: theme.colorScheme.secondary,
+            width: SizeUtil.w(22),
+          ),
+          SizeUtil.hS(6),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: SizeUtil.fontSize(14),
+                  color: AppColors.greyDark,
+                ),
+              ),
+              child,
+            ],
+          ),
+        ],
       ),
     );
   }
