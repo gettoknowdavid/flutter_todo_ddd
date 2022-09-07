@@ -52,6 +52,31 @@ class AppTheme {
 
   static const _iconTheme = IconThemeData(color: AppColors.black);
 
+  static final _inputDecorationTheme = InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: SizeUtil.borderRadius(20),
+      borderSide: const BorderSide(color: Colors.transparent),
+    ),
+    contentPadding: SizeUtil.pFromLTRB(22, 17.5, 22, 17.5),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: SizeUtil.borderRadius(20),
+      borderSide: const BorderSide(color: Colors.transparent),
+    ),
+    errorMaxLines: 5,
+    errorStyle: const TextStyle(color: AppColors.red),
+    filled: true,
+    fillColor: AppColors.grey,
+    focusedBorder: OutlineInputBorder(
+      borderRadius: SizeUtil.borderRadius(20),
+      borderSide: const BorderSide(color: Colors.transparent),
+    ),
+    labelStyle: TextStyle(
+      color: AppColors.greyDark,
+      fontSize: SizeUtil.fontSize(14),
+      fontWeight: FontWeight.w500,
+    ),
+  );
+
   static final _radioTheme = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith<Color>((states) {
       if (states.contains(MaterialState.disabled)) {
@@ -101,6 +126,7 @@ class AppTheme {
       colorScheme: _colorScheme,
       elevatedButtonTheme: _elevatedButtonTheme,
       iconTheme: _iconTheme,
+      inputDecorationTheme: _inputDecorationTheme,
       primaryColor: AppColors.white,
       primaryColorDark: AppColors.greyDark,
       primaryColorLight: AppColors.grey,
