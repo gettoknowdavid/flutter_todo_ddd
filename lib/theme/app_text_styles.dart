@@ -27,5 +27,14 @@ class AppTextStyles {
     fontWeight: FontWeight.w800,
   );
 
+  static final TextStyle homeNameHeader = TextStyle(
+    fontSize: SizeUtil.fontSize(30),
+    fontWeight: FontWeight.w900,
+  );
+
+  static final TextStyle homeHeaderGreeting = TextStyle(
+    color: _theme.primaryColorDark,
+  );
+
   AppTextStyles._();
 }
