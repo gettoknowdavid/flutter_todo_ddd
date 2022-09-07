@@ -52,6 +52,7 @@ dependencies:
   flutter_svg: ^1.1.4
   rxdart: ^0.27.5
   kt_dart: ^0.10.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
