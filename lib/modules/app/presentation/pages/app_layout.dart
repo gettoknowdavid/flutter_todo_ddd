@@ -7,6 +7,7 @@ import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_app_bar.da
 import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_bottom_navigation_bar.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/pages/home_page.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class AppLayout extends ConsumerWidget {
@@ -39,7 +40,7 @@ class AppLayout extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: const AppAppBar(),
+      appBar: bottomNavState.page is HomePage ? null : const AppAppBar(),
       body: bottomNavState.page,
       bottomNavigationBar: const AppBottomNavigationBar(),
     );
