@@ -1,16 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
-import 'package:flutter_todo_ddd/modules/app/domain/bottom_navigation.dart';
-import 'package:flutter_todo_ddd/modules/todo/presentation/pages/home_page.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'bottom_navigation_state.freezed.dart';
+part of 'bottom_navigation_controller.dart';
 
 @freezed
 class BottomNavigationState with _$BottomNavigationState {
   const factory BottomNavigationState({
     required int currentIndex,
-    required Widget page,
+    required Widget? page,
     required List<BottomNavigation> pages,
   }) = _BottomNavigationState;
 
