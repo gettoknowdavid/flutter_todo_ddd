@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
-import 'package:flutter_todo_ddd/modules/app/application/bottom_navigation/bottom_navigation_event.dart';
+import 'package:flutter_todo_ddd/modules/app/application/bottom_navigation/bottom_navigation_controller.dart';
 import 'package:flutter_todo_ddd/modules/app/presentation/widgets/bottom_navigation_item.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -33,7 +33,7 @@ class AppBottomNavigationBar extends ConsumerWidget {
                 );
 
                 bottomNavEvent.mapEventsToStates(
-                  BottomNavigationEvent.pageUpdated(index),
+                  BottomNavigationEvent.pageUpdated(index, context),
                 );
               },
             )
