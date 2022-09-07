@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_todo_ddd/core/value_failure.dart';
 import 'package:flutter_todo_ddd/core/value_object.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_validators.dart';
-import 'package:kt_dart/collection.dart';
 
 class ICategoryColor extends ValueObject<Color> {
   static const List<Color> colors = [
@@ -38,19 +38,15 @@ class ICategoryTitle extends ValueObject<String> {
   const ICategoryTitle._(this.value);
 }
 
-class ICategoryTodoList<T> extends ValueObject<KtList<T>> {
+class ITodoCategory extends ValueObject<Category> {
   @override
-  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
+  final Either<ValueFailure<Category>, Category> value;
 
-  factory ICategoryTodoList(KtList<T> input) {
-    return ICategoryTodoList._(right(input));
+  factory ITodoCategory(Category input) {
+    return ITodoCategory._(right(input));
   }
 
-  const ICategoryTodoList._(this.value);
-
-  int get length {
-    return value.getOrElse(() => emptyList()).size;
-  }
+  const ITodoCategory._(this.value);
 }
 
 class ITodoTitle extends ValueObject<String> {
