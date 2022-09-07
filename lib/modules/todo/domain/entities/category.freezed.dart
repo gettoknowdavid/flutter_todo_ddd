@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Category {
   Uid get uid => throw _privateConstructorUsedError;
   ICategoryTitle get title => throw _privateConstructorUsedError;
-  ICategoryTodoList<dynamic> get todos => throw _privateConstructorUsedError;
   ICategoryColor get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,11 +29,7 @@ mixin _$Category {
 abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res>;
-  $Res call(
-      {Uid uid,
-      ICategoryTitle title,
-      ICategoryTodoList<dynamic> todos,
-      ICategoryColor color});
+  $Res call({Uid uid, ICategoryTitle title, ICategoryColor color});
 }
 
 /// @nodoc
@@ -49,7 +44,6 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
   $Res call({
     Object? uid = freezed,
     Object? title = freezed,
-    Object? todos = freezed,
     Object? color = freezed,
   }) {
     return _then(_value.copyWith(
@@ -61,10 +55,6 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as ICategoryTitle,
-      todos: todos == freezed
-          ? _value.todos
-          : todos // ignore: cast_nullable_to_non_nullable
-              as ICategoryTodoList<dynamic>,
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -79,11 +69,7 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
           _$_Category value, $Res Function(_$_Category) then) =
       __$$_CategoryCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {Uid uid,
-      ICategoryTitle title,
-      ICategoryTodoList<dynamic> todos,
-      ICategoryColor color});
+  $Res call({Uid uid, ICategoryTitle title, ICategoryColor color});
 }
 
 /// @nodoc
@@ -100,7 +86,6 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
   $Res call({
     Object? uid = freezed,
     Object? title = freezed,
-    Object? todos = freezed,
     Object? color = freezed,
   }) {
     return _then(_$_Category(
@@ -112,10 +97,6 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as ICategoryTitle,
-      todos: todos == freezed
-          ? _value.todos
-          : todos // ignore: cast_nullable_to_non_nullable
-              as ICategoryTodoList<dynamic>,
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -128,23 +109,18 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
 class _$_Category implements _Category {
   const _$_Category(
-      {required this.uid,
-      required this.title,
-      required this.todos,
-      required this.color});
+      {required this.uid, required this.title, required this.color});
 
   @override
   final Uid uid;
   @override
   final ICategoryTitle title;
   @override
-  final ICategoryTodoList<dynamic> todos;
-  @override
   final ICategoryColor color;
 
   @override
   String toString() {
-    return 'Category(uid: $uid, title: $title, todos: $todos, color: $color)';
+    return 'Category(uid: $uid, title: $title, color: $color)';
   }
 
   @override
@@ -154,7 +130,6 @@ class _$_Category implements _Category {
             other is _$_Category &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.todos, todos) &&
             const DeepCollectionEquality().equals(other.color, color));
   }
 
@@ -163,7 +138,6 @@ class _$_Category implements _Category {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(todos),
       const DeepCollectionEquality().hash(color));
 
   @JsonKey(ignore: true)
@@ -176,15 +150,12 @@ abstract class _Category implements Category {
   const factory _Category(
       {required final Uid uid,
       required final ICategoryTitle title,
-      required final ICategoryTodoList<dynamic> todos,
       required final ICategoryColor color}) = _$_Category;
 
   @override
   Uid get uid;
   @override
   ICategoryTitle get title;
-  @override
-  ICategoryTodoList<dynamic> get todos;
   @override
   ICategoryColor get color;
   @override
