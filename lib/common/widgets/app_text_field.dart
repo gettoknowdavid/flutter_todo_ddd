@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_icon.dart';
-import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -54,30 +53,8 @@ class _AppTextFieldState extends State<AppTextField> {
       enabled: widget.enabled,
       style: theme.textTheme.titleMedium,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: SizeUtil.borderRadius(20),
-          borderSide: const BorderSide(color: Colors.transparent),
-        ),
-        contentPadding: SizeUtil.pFromLTRB(22, 17.5, 22, 17.5),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: SizeUtil.borderRadius(20),
-          borderSide: const BorderSide(color: Colors.transparent),
-        ),
-        errorMaxLines: 5,
-        errorStyle: TextStyle(color: theme.colorScheme.error),
-        filled: true,
-        fillColor: theme.primaryColorLight,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: SizeUtil.borderRadius(20),
-          borderSide: const BorderSide(color: Colors.transparent),
-        ),
         hintText: widget.hint,
         labelText: widget.label,
-        labelStyle: TextStyle(
-          color: theme.primaryColorDark,
-          fontSize: SizeUtil.fontSize(14),
-          fontWeight: FontWeight.w500,
-        ),
         suffixIcon: !widget.isPassword
             ? null
             : AppIcon(
