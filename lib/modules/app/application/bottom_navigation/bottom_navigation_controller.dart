@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
 import 'package:flutter_todo_ddd/modules/app/domain/bottom_navigation.dart';
@@ -22,6 +23,7 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
       case 1:
         return const CalendarPage();
       case 2:
+        Modular.to.navigate('/createTodo');
         // showModalBottomSheet(
         //   context: context,
         //   constraints: BoxConstraints(minHeight: SizeUtil.sh(0.7)),
