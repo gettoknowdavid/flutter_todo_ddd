@@ -22,6 +22,7 @@ class AppIcons {
   static const String paperPlus = 'paper-plus';
   static const String plus = 'plus';
   static const String profile = 'profile';
+  static const String search = 'search';
   static const String setting = 'setting';
   static const String show = 'show';
 }
