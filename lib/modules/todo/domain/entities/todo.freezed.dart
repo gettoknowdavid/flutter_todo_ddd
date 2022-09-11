@@ -20,7 +20,7 @@ mixin _$Todo {
   ITodoTitle get title => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
   ITodoCategory? get category => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  ITodoDescription? get description => throw _privateConstructorUsedError;
   DateTime? get time => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $TodoCopyWith<$Res> {
       ITodoTitle title,
       bool isDone,
       ITodoCategory? category,
-      String? description,
+      ITodoDescription? description,
       DateTime? time,
       DateTime? createdAt});
 }
@@ -80,7 +80,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ITodoDescription?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       ITodoTitle title,
       bool isDone,
       ITodoCategory? category,
-      String? description,
+      ITodoDescription? description,
       DateTime? time,
       DateTime? createdAt});
 }
@@ -147,7 +147,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ITodoDescription?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -181,7 +181,7 @@ class _$_Todo implements _Todo {
   @override
   final ITodoCategory? category;
   @override
-  final String? description;
+  final ITodoDescription? description;
   @override
   final DateTime? time;
   @override
@@ -230,7 +230,7 @@ abstract class _Todo implements Todo {
       required final ITodoTitle title,
       required final bool isDone,
       final ITodoCategory? category,
-      final String? description,
+      final ITodoDescription? description,
       final DateTime? time,
       final DateTime? createdAt}) = _$_Todo;
 
@@ -243,7 +243,7 @@ abstract class _Todo implements Todo {
   @override
   ITodoCategory? get category;
   @override
-  String? get description;
+  ITodoDescription? get description;
   @override
   DateTime? get time;
   @override
