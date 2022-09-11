@@ -5,6 +5,7 @@ import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_icon.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
+import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 const _items = <Cat>[
@@ -35,10 +36,7 @@ class AddTodoBottomSheet extends StatelessWidget {
             ),
           ),
           SizeUtil.vS(20),
-          Text(
-            'Add a new todo',
-            style: TextStyle(fontSize: SizeUtil.fontSize(20)),
-          ),
+          Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
           SizeUtil.vS(16),
           const AppTextField(hint: 'Title'),
           SizeUtil.vS(14),
