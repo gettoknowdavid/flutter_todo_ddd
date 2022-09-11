@@ -60,8 +60,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 ),
                 validator: (_) => state.todo.title.value.fold(
                   (f) => f.mapOrNull(
-                    empty: (_) => 'Please title is required',
-                    titleLengthExceeded: (_) => 'Title length exceeded (150)',
+                    titleLengthExceeded: (_) => 'Title length exceeds 60',
                   ),
                   (_) => null,
                 ),
@@ -79,7 +78,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 ),
                 validator: (_) => state.todo.description?.value.fold(
                   (f) => f.mapOrNull(
-                    descLengthExceeded: (_) => 'Description length exceeded',
+                    descLengthExceeded: (_) => 'Description length exceeds 250',
                   ),
                   (_) => null,
                 ),
