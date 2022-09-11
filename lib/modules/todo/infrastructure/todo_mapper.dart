@@ -13,7 +13,7 @@ class TodoMapper {
       uid: Uid.fromUniqueString(dto.uid),
       title: ITodoTitle(dto.title),
       isDone: dto.isDone,
-      description: dto.description,
+      description: ITodoDescription(dto.description),
       time: dto.time,
       createdAt: dto.createdAt,
     );

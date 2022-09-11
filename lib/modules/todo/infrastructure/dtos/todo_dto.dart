@@ -36,7 +36,7 @@ class TodoDto extends Equatable {
       uid: todo.uid.getOrCrash()!,
       title: todo.title.getOrCrash()!,
       isDone: todo.isDone,
-      description: todo.description,
+      description: todo.description!.getOrCrash()!,
       category: todo.category != null
           ? CategoryDto.fromDomain(todo.category!.getOrCrash()!)
           : null,
