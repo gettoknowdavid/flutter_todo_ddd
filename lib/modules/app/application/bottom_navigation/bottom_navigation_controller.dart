@@ -29,7 +29,7 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
           context: context,
           isScrollControlled: true,
           useRootNavigator: true,
-          builder: (context) => const AddTodoBottomSheet(),
+          builder: (context) => AddTodoBottomSheet(),
         );
         return state.page;
       case 3:
