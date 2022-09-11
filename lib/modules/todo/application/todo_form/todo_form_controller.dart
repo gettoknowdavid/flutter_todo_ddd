@@ -29,7 +29,7 @@ class TodoFormController extends StateNotifier<TodoFormState> {
   _descChanged(_TodoDescChanged e) async {
     state = state.copyWith(
       todo: state.todo.copyWith(
-        description: e.desc,
+        description: ITodoDescription(e.desc),
       ),
     );
   }
