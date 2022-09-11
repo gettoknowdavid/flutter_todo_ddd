@@ -6,6 +6,7 @@ class AppIcons {
   static const String camera = 'camera';
   static const String category = 'category';
   static const String chart = 'chart';
+  static const String clock = 'clock';
   static const String delete = 'delete';
   static const String document = 'document';
   static const String editSquare = 'edit-square';
