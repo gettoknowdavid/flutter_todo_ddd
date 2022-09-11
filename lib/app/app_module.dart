@@ -12,8 +12,12 @@ import 'package:flutter_todo_ddd/modules/auth/presentation/pages/forgot_password
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/category_form/category_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/i_category_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_todo_facade.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/category_facade.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/category_mapper.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_mapper.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/profile_page.dart';
@@ -27,13 +31,17 @@ class AppModule extends Module {
     Bind.lazySingleton<GoogleSignIn>((i) => GoogleSignIn()),
     Bind.lazySingleton<UserMapper>((i) => UserMapper()),
     Bind.lazySingleton<TodoMapper>((i) => TodoMapper()),
+    Bind.lazySingleton<CategoryMapper>((i) => CategoryMapper()),
     Bind.lazySingleton<IAuthFacade>((i) => AuthFacade(i(), i(), i())),
     Bind.lazySingleton<ITodoFacade>((i) => TodoFacade(i())),
+    Bind.lazySingleton<ICategoryFacade>((i) => CategoryFacade(i())),
     Bind.lazySingleton<LoginController>((i) => LoginController(i())),
     Bind.lazySingleton<RegisterController>((i) => RegisterController(i())),
     Bind.lazySingleton<OpenMailAppFacade>((i) => OpenMailAppFacade()),
     Bind.lazySingleton<AuthController>((i) => AuthController(i(), i())),
     Bind.lazySingleton<TodoFormController>((i) => TodoFormController(i())),
+    Bind.lazySingleton<CategoryFormController>(
+        (i) => CategoryFormController(i())),
   ];
 
   @override
