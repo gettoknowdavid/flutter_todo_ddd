@@ -12,15 +12,15 @@ class Todo with _$Todo {
     required ITodoTitle title,
     required bool isDone,
     ITodoCategory? category,
-    String? description,
+    ITodoDescription? description,
     DateTime? time,
     DateTime? createdAt,
   }) = _Todo;
 
   factory Todo.empty() => Todo(
         uid: Uid(),
-        title: ITodoTitle('Test title'),
-        description: '',
+        title: ITodoTitle(''),
+        description: ITodoDescription(null),
         category: ITodoCategory(Category.empty()),
         isDone: false,
         time: null,
