@@ -1,9 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_icon.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -13,11 +16,14 @@ const _items = <Cat>[
   Cat(2, 'Church'),
 ];
 
-class AddTodoBottomSheet extends StatelessWidget {
+class AddTodoBottomSheet extends ConsumerWidget {
   const AddTodoBottomSheet({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(todoFormProvider);
+    final event = ref.watch(todoFormProvider.notifier);
+
     return SingleChildScrollView(
       padding: SizeUtil.pFromLTRB(18, 14, 18, 20),
       child: Column(
@@ -28,8 +34,17 @@ class AddTodoBottomSheet extends StatelessWidget {
           SizeUtil.vS(20),
           Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
           SizeUtil.vS(16),
-          const AppTextField(
+          AppTextField(
             hint: 'Title',
+            label: 'Title',
+            enabled: !state.loading,
+            onChanged: (value) => event.mapEventsToStates(
+              TodoFormEvent.titleChanged(value),
+            ),
+            validator: (_) => state.todo.title.value.fold(
+              (f) => f.mapOrNull(empty: (_) => 'Please title is required'),
+              (_) => null,
+            ),
           ),
           SizeUtil.vS(14),
           const TextField(
