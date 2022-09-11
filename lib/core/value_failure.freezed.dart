@@ -22,6 +22,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T f) invalidEmail,
     required TResult Function(T f) invalidPassword,
     required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidPassword<T> value) invalidPassword,
     required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$ValueFailure<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,6 +157,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(T f) invalidEmail,
     required TResult Function(T f) invalidPassword,
     required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
   }) {
     return empty(f);
   }
@@ -162,6 +169,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
   }) {
     return empty?.call(f);
   }
@@ -173,6 +181,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -188,6 +197,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidPassword<T> value) invalidPassword,
     required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
   }) {
     return empty(this);
   }
@@ -199,6 +209,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
   }) {
     return empty?.call(this);
   }
@@ -210,6 +221,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -297,6 +309,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T f) invalidEmail,
     required TResult Function(T f) invalidPassword,
     required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
   }) {
     return invalidEmail(f);
   }
@@ -308,6 +321,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
   }) {
     return invalidEmail?.call(f);
   }
@@ -319,6 +333,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -334,6 +349,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidPassword<T> value) invalidPassword,
     required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
   }) {
     return invalidEmail(this);
   }
@@ -345,6 +361,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
   }) {
     return invalidEmail?.call(this);
   }
@@ -356,6 +373,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -444,6 +462,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     required TResult Function(T f) invalidEmail,
     required TResult Function(T f) invalidPassword,
     required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
   }) {
     return invalidPassword(f);
   }
@@ -455,6 +474,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
   }) {
     return invalidPassword?.call(f);
   }
@@ -466,6 +486,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -481,6 +502,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidPassword<T> value) invalidPassword,
     required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
   }) {
     return invalidPassword(this);
   }
@@ -492,6 +514,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
   }) {
     return invalidPassword?.call(this);
   }
@@ -503,6 +526,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -592,6 +616,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     required TResult Function(T f) invalidEmail,
     required TResult Function(T f) invalidPassword,
     required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
   }) {
     return titleLengthExceeded(f);
   }
@@ -603,6 +628,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
   }) {
     return titleLengthExceeded?.call(f);
   }
@@ -614,6 +640,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     TResult Function(T f)? invalidEmail,
     TResult Function(T f)? invalidPassword,
     TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (titleLengthExceeded != null) {
@@ -629,6 +656,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(InvalidPassword<T> value) invalidPassword,
     required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
   }) {
     return titleLengthExceeded(this);
   }
@@ -640,6 +668,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
   }) {
     return titleLengthExceeded?.call(this);
   }
@@ -651,6 +680,7 @@ class _$TitleLengthExceeded<T> implements TitleLengthExceeded<T> {
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(InvalidPassword<T> value)? invalidPassword,
     TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
     required TResult orElse(),
   }) {
     if (titleLengthExceeded != null) {
@@ -666,5 +696,158 @@ abstract class TitleLengthExceeded<T> implements ValueFailure<T> {
   T get f;
   @JsonKey(ignore: true)
   _$$TitleLengthExceededCopyWith<T, _$TitleLengthExceeded<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DescLengthExceededCopyWith<T, $Res> {
+  factory _$$DescLengthExceededCopyWith(_$DescLengthExceeded<T> value,
+          $Res Function(_$DescLengthExceeded<T>) then) =
+      __$$DescLengthExceededCopyWithImpl<T, $Res>;
+  $Res call({T f});
+}
+
+/// @nodoc
+class __$$DescLengthExceededCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$DescLengthExceededCopyWith<T, $Res> {
+  __$$DescLengthExceededCopyWithImpl(_$DescLengthExceeded<T> _value,
+      $Res Function(_$DescLengthExceeded<T>) _then)
+      : super(_value, (v) => _then(v as _$DescLengthExceeded<T>));
+
+  @override
+  _$DescLengthExceeded<T> get _value => super._value as _$DescLengthExceeded<T>;
+
+  @override
+  $Res call({
+    Object? f = freezed,
+  }) {
+    return _then(_$DescLengthExceeded<T>(
+      f == freezed
+          ? _value.f
+          : f // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DescLengthExceeded<T> implements DescLengthExceeded<T> {
+  const _$DescLengthExceeded(this.f);
+
+  @override
+  final T f;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.descLengthExceeded(f: $f)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DescLengthExceeded<T> &&
+            const DeepCollectionEquality().equals(other.f, f));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(f));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DescLengthExceededCopyWith<T, _$DescLengthExceeded<T>> get copyWith =>
+      __$$DescLengthExceededCopyWithImpl<T, _$DescLengthExceeded<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? f) empty,
+    required TResult Function(T f) invalidEmail,
+    required TResult Function(T f) invalidPassword,
+    required TResult Function(T f) titleLengthExceeded,
+    required TResult Function(T f) descLengthExceeded,
+  }) {
+    return descLengthExceeded(f);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? f)? empty,
+    TResult Function(T f)? invalidEmail,
+    TResult Function(T f)? invalidPassword,
+    TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
+  }) {
+    return descLengthExceeded?.call(f);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? f)? empty,
+    TResult Function(T f)? invalidEmail,
+    TResult Function(T f)? invalidPassword,
+    TResult Function(T f)? titleLengthExceeded,
+    TResult Function(T f)? descLengthExceeded,
+    required TResult orElse(),
+  }) {
+    if (descLengthExceeded != null) {
+      return descLengthExceeded(f);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(InvalidPassword<T> value) invalidPassword,
+    required TResult Function(TitleLengthExceeded<T> value) titleLengthExceeded,
+    required TResult Function(DescLengthExceeded<T> value) descLengthExceeded,
+  }) {
+    return descLengthExceeded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidPassword<T> value)? invalidPassword,
+    TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
+  }) {
+    return descLengthExceeded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(InvalidPassword<T> value)? invalidPassword,
+    TResult Function(TitleLengthExceeded<T> value)? titleLengthExceeded,
+    TResult Function(DescLengthExceeded<T> value)? descLengthExceeded,
+    required TResult orElse(),
+  }) {
+    if (descLengthExceeded != null) {
+      return descLengthExceeded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DescLengthExceeded<T> implements ValueFailure<T> {
+  const factory DescLengthExceeded(final T f) = _$DescLengthExceeded<T>;
+
+  T get f;
+  @JsonKey(ignore: true)
+  _$$DescLengthExceededCopyWith<T, _$DescLengthExceeded<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
