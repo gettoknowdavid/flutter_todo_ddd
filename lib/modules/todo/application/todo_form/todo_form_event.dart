@@ -9,7 +9,6 @@ class TodoFormEvent with _$TodoFormEvent {
   const factory TodoFormEvent.saved() = _TodoSaved;
   const factory TodoFormEvent.timeChanged(DateTime time) = _TodoTimeChanged;
   const factory TodoFormEvent.titleChanged(String title) = _TodoTitleChanged;
-  const factory TodoFormEvent.categoryAddPressed() = _TodoCategoryAddPressed;
   const factory TodoFormEvent.categoryChanged(Category category) =
       _TodoCategoryChanged;
 }
