@@ -115,6 +115,11 @@ class AppTheme {
     ),
   );
 
+  static const _timePickerTheme = TimePickerThemeData(
+    dayPeriodColor: Colors.black26,
+    hourMinuteColor: Colors.black26,
+  );
+
   static final _textButtonTheme = TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.black,
@@ -163,6 +168,7 @@ class AppTheme {
       radioTheme: _radioTheme,
       scaffoldBackgroundColor: AppColors.white,
       switchTheme: _switchTheme,
+      timePickerTheme: _timePickerTheme,
       textButtonTheme: _textButtonTheme,
       textSelectionTheme: _textSelectionTheme,
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
