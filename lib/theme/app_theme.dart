@@ -21,6 +21,16 @@ class AppTheme {
     unselectedItemColor: AppColors.black,
   );
 
+  static final _bottomSheetTheme = BottomSheetThemeData(
+    constraints: BoxConstraints(minHeight: SizeUtil.sh(0.7)),
+    backgroundColor: AppColors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(SizeUtil.r(26)),
+      ),
+    ),
+  );
+
   static final _colorScheme = const ColorScheme.light().copyWith(
     primary: AppColors.white,
     onPrimary: AppColors.black,
@@ -140,6 +150,7 @@ class AppTheme {
       appBarTheme: _appBarTheme,
       backgroundColor: AppColors.white,
       bottomNavigationBarTheme: _bottomNavigationBarTheme,
+      bottomSheetTheme: _bottomSheetTheme,
       brightness: Brightness.light,
       canvasColor: AppColors.grey,
       colorScheme: _colorScheme,

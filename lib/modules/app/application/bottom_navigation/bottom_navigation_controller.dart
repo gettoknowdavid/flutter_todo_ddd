@@ -14,8 +14,6 @@ part 'bottom_navigation_controller.freezed.dart';
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';
 
-
-
 class BottomNavigationController extends StateNotifier<BottomNavigationState> {
   BottomNavigationController() : super(BottomNavigationState.initial());
 
@@ -31,13 +29,6 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
           context: context,
           isScrollControlled: true,
           useRootNavigator: true,
-          constraints: BoxConstraints(minHeight: SizeUtil.sh(0.7)),
-          backgroundColor: Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(SizeUtil.r(26)),
-            ),
-          ),
           builder: (context) => const AddTodoBottomSheet(),
         );
         return state.page;
