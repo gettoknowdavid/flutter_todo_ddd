@@ -12,7 +12,7 @@ Either<ValueFailure<String>, String> validateCategoryNotEmpty(String input) {
 Either<ValueFailure<String>, String> validateTodoTitle(String input) {
   if (input.isEmpty) {
     return left(ValueFailure.empty(input));
-  } else if (input.length > 150) {
+  } else if (input.length > 60) {
     return left(ValueFailure.titleLengthExceeded(input));
   } else {
     return right(input);
