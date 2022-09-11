@@ -8,4 +8,5 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidEmail(T f) = InvalidEmail<T>;
   const factory ValueFailure.invalidPassword(T f) = InvalidPassword<T>;
   const factory ValueFailure.titleLengthExceeded(T f) = TitleLengthExceeded<T>;
+  const factory ValueFailure.descLengthExceeded(T f) = DescLengthExceeded<T>;
 }
