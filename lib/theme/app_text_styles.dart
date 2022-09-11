@@ -5,6 +5,10 @@ import 'package:flutter_todo_ddd/utils/size_util.dart';
 class AppTextStyles {
   static final ThemeData _theme = AppTheme.theme;
 
+  static final TextStyle addNewTodoHeading = TextStyle(
+    fontSize: SizeUtil.fontSize(20),
+  );
+  
   static final TextStyle authHeading = TextStyle(
     fontSize: SizeUtil.fontSize(24),
     fontWeight: FontWeight.w900,
@@ -35,6 +39,7 @@ class AppTextStyles {
   static final TextStyle homeHeaderGreeting = TextStyle(
     color: _theme.primaryColorDark,
   );
+
 
   AppTextStyles._();
 }
