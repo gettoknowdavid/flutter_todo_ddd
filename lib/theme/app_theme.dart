@@ -86,6 +86,25 @@ class AppTheme {
     }),
   );
 
+  static final _switchTheme = SwitchThemeData(
+    thumbColor: MaterialStateProperty.resolveWith<Color>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.disabled)) {
+          return AppColors.black.withOpacity(.48);
+        }
+        return AppColors.black;
+      },
+    ),
+    trackColor: MaterialStateProperty.resolveWith<Color>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColors.black.withOpacity(.3);
+        }
+        return AppColors.black.withOpacity(0.17);
+      },
+    ),
+  );
+
   static final _textButtonTheme = TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.black,
@@ -132,6 +151,7 @@ class AppTheme {
       primaryColorLight: AppColors.grey,
       radioTheme: _radioTheme,
       scaffoldBackgroundColor: AppColors.white,
+      switchTheme: _switchTheme,
       textButtonTheme: _textButtonTheme,
       textSelectionTheme: _textSelectionTheme,
       textTheme: base.textTheme.copyWith().apply(fontFamily: _fontFamily),
