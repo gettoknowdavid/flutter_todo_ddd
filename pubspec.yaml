@@ -53,6 +53,7 @@ dependencies:
   rxdart: ^0.27.5
   kt_dart: ^0.10.0
   equatable: ^2.0.5
+  dropdown_button2: ^1.7.2
 
 dev_dependencies:
   flutter_test:
