@@ -54,8 +54,19 @@ class ITodoTitle extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory ITodoTitle(String input) {
-    return ITodoTitle._(validateTitleNotEmpty(input));
+    return ITodoTitle._(validateTodoTitle(input));
   }
 
   const ITodoTitle._(this.value);
+}
+
+class ITodoDescription extends ValueObject<String?> {
+  @override
+  final Either<ValueFailure<String>, String?> value;
+
+  factory ITodoDescription(String? input) {
+    return ITodoDescription._(validateTodoDescription(input));
+  }
+
+  const ITodoDescription._(this.value);
 }
