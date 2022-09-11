@@ -4,7 +4,6 @@ import 'package:flutter_todo_ddd/common/constants/app_icons.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_icon.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
-import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -25,20 +24,13 @@ class AddTodoBottomSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Center(
-            child: Container(
-              height: SizeUtil.h(4),
-              width: SizeUtil.sw(0.15),
-              decoration: BoxDecoration(
-                color: Colors.black26,
-                borderRadius: SizeUtil.borderRadius(20),
-              ),
-            ),
-          ),
+          const _HandleBar(),
           SizeUtil.vS(20),
           Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
           SizeUtil.vS(16),
-          const AppTextField(hint: 'Title'),
+          const AppTextField(
+            hint: 'Title',
+          ),
           SizeUtil.vS(14),
           const TextField(
             maxLines: 3,
@@ -81,12 +73,12 @@ class AddTodoBottomSheet extends StatelessWidget {
               RawMaterialButton(
                 onPressed: () {},
                 constraints: BoxConstraints(
-                  minWidth: SizeUtil.h(58),
-                  minHeight: SizeUtil.h(58),
+                  minWidth: SizeUtil.h(40),
+                  minHeight: SizeUtil.h(40),
                 ),
                 shape: CircleBorder(
                   side: BorderSide(
-                    color: AppColors.grey,
+                    color: Colors.black12,
                     width: SizeUtil.r(2),
                   ),
                 ),
@@ -116,6 +108,26 @@ class AddTodoBottomSheet extends StatelessWidget {
           AppButton(onPressed: () {}, title: 'Add'),
           SizeUtil.vS(10),
         ],
+      ),
+    );
+  }
+}
+
+class _HandleBar extends StatelessWidget {
+  const _HandleBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        height: SizeUtil.h(4),
+        width: SizeUtil.sw(0.15),
+        decoration: BoxDecoration(
+          color: Colors.black26,
+          borderRadius: SizeUtil.borderRadius(20),
+        ),
       ),
     );
   }
