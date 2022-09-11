@@ -17,7 +17,9 @@ const _items = <Cat>[
 ];
 
 class AddTodoBottomSheet extends ConsumerWidget {
-  const AddTodoBottomSheet({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
+
+  AddTodoBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -128,6 +130,13 @@ class AddTodoBottomSheet extends ConsumerWidget {
   }
 }
 
+class Cat {
+  final int id;
+  final String title;
+
+  const Cat(this.id, this.title);
+}
+
 class _HandleBar extends StatelessWidget {
   const _HandleBar({
     Key? key,
@@ -146,11 +155,4 @@ class _HandleBar extends StatelessWidget {
       ),
     );
   }
-}
-
-class Cat {
-  final int id;
-  final String title;
-
-  const Cat(this.id, this.title);
 }
