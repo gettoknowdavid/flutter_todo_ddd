@@ -21,7 +21,7 @@ class Todo with _$Todo {
         uid: Uid(),
         title: ITodoTitle(''),
         description: ITodoDescription(null),
-        category: ITodoCategory(Category.empty()),
+        category: ITodoCategory(null),
         isDone: false,
         time: null,
         createdAt: DateTime.now(),
