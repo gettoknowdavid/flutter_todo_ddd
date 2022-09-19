@@ -15,6 +15,8 @@ class ICategoryColor extends ValueObject<Color> {
     Color.fromRGBO(252, 163, 183, 1), // flamingo
     Color.fromRGBO(153, 121, 80, 1), // tortilla
     Color.fromRGBO(255, 253, 208, 1), // cream
+    Color.fromRGBO(255, 103, 217, 1), // purple
+    Color.fromRGBO(242, 64, 64, 1), // red
   ];
 
   @override
