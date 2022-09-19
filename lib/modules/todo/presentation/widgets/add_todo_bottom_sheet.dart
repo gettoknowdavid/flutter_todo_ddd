@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
@@ -23,6 +24,20 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
   Widget build(BuildContext context) {
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
+
+    ref.listen<TodoFormState>(todoFormProvider, (previous, next) {
+      next.option.fold(
+        () => null,
+        (either) => either.fold(
+          (failure) => failure.maybeMap(
+            orElse: () => '',
+            insufficientPermissions: (value) => 'You do not have permission.',
+            serverError: (value) => 'Server error. Try again.',
+          ),
+          (success) => Modular.to.pop(),
+        ),
+      );
+    });
 
     return StatefulBuilder(builder: (context, setState) {
       return SingleChildScrollView(
@@ -94,7 +109,9 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
               AppButton(
                 disabled: !state.todo.title.isValid() ||
                     !state.todo.description!.isValid(),
-                onPressed: () => print(state.todo),
+                onPressed: () {
+                  event.mapEventsToStates(const TodoFormEvent.saved());
+                },
                 loading: state.loading,
                 title: 'Add',
               ),
