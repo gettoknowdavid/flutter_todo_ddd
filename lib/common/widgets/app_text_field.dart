@@ -16,6 +16,8 @@ class AppTextField extends StatefulWidget {
     this.initialValue,
     this.onTap,
     this.controller,
+    this.maxLines = 1,
+    this.maxLength,
   }) : super(key: key);
 
   final String hint;
@@ -29,6 +31,8 @@ class AppTextField extends StatefulWidget {
   final String? initialValue;
   final void Function()? onTap;
   final TextEditingController? controller;
+  final int? maxLines;
+  final int? maxLength;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -52,6 +56,8 @@ class _AppTextFieldState extends State<AppTextField> {
       validator: widget.validator,
       enabled: widget.enabled,
       style: theme.textTheme.titleMedium,
+      maxLines: widget.maxLines,
+      maxLength: widget.maxLength,
       decoration: InputDecoration(
         hintText: widget.hint,
         labelText: widget.label,
