@@ -7,7 +7,6 @@ import 'package:flutter_todo_ddd/modules/todo/presentation/pages/home_page.dart'
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/settings_page.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/stats_page.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_bottom_sheet.dart';
-import 'package:flutter_todo_ddd/utils/size_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'bottom_navigation_controller.freezed.dart';
@@ -24,12 +23,11 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
       case 1:
         return const CalendarPage();
       case 2:
-        // Modular.to.pushNamed('/createTodo');
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
           useRootNavigator: true,
-          builder: (context) => AddTodoBottomSheet(),
+          builder: (context) => const AddTodoBottomSheet(),
         );
         return state.page;
       case 3:

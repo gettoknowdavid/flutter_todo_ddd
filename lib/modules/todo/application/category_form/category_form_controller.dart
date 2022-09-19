@@ -16,7 +16,7 @@ class CategoryFormController extends StateNotifier<CategoryFormState> {
 
   CategoryFormController(this._facade) : super(CategoryFormState.initial());
 
-  Future mapEventsToState(CategoryFormEvent e) async {
+  Future mapEventsToStates(CategoryFormEvent e) async {
     return e.map(
       initialized: _initialized,
       titleChanged: _titleChanged,
