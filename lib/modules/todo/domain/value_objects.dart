@@ -40,12 +40,16 @@ class ICategoryTitle extends ValueObject<String> {
   const ICategoryTitle._(this.value);
 }
 
-class ITodoCategory extends ValueObject<Category> {
+class ITodoCategory extends ValueObject<Category?> {
   @override
-  final Either<ValueFailure<Category>, Category> value;
+  final Either<ValueFailure<Category?>, Category?> value;
 
-  factory ITodoCategory(Category input) {
-    return ITodoCategory._(right(input));
+  factory ITodoCategory(Category? input) {
+    if (input == null) {
+      return ITodoCategory._(right(null));
+    } else {
+      return ITodoCategory._(right(input));
+    }
   }
 
   const ITodoCategory._(this.value);
