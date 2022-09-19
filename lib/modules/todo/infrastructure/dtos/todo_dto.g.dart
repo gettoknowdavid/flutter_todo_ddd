@@ -1246,7 +1246,7 @@ class TodoDtoQueryDocumentSnapshot
 TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       uid: json['uid'] as String,
       title: json['title'] as String,
-      isDone: json['isDone'] as bool,
+      isDone: json['isDone'] as bool? ?? false,
       description: json['description'] as String?,
       category: json['category'] == null
           ? null

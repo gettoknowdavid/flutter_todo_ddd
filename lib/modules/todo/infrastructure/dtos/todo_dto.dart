@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -24,7 +25,7 @@ class TodoDto extends Equatable {
   const TodoDto({
     required this.uid,
     required this.title,
-    required this.isDone,
+    this.isDone = false,
     this.description,
     this.category,
     this.time,
@@ -36,9 +37,9 @@ class TodoDto extends Equatable {
       uid: todo.uid.getOrCrash()!,
       title: todo.title.getOrCrash()!,
       isDone: todo.isDone,
-      description: todo.description!.getOrCrash()!,
+      description: todo.description?.getOrCrash(),
       category: todo.category != null
-          ? CategoryDto.fromDomain(todo.category!.getOrCrash()!)
+          ? CategoryDto.fromDomain(todo.category?.getOrCrash())
           : null,
       time: todo.time,
       createdAt: todo.createdAt,
