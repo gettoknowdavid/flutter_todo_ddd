@@ -21,9 +21,9 @@ class CategoryDto extends Equatable {
     this.color = 1,
   });
 
-  factory CategoryDto.fromDomain(Category category) {
+  factory CategoryDto.fromDomain(Category? category) {
     return CategoryDto(
-      uid: category.uid.getOrCrash()!,
+      uid: category!.uid.getOrCrash()!,
       title: category.title.getOrCrash()!,
       color: category.color.getOrCrash()!.value,
     );
