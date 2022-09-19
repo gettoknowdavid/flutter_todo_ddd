@@ -7,4 +7,5 @@ abstract class ICategoryFacade {
   Future<Either<CategoryFailure, Unit>> delete(Category category);
   Future<Either<CategoryFailure, Unit>> edit(Category category);
   Stream<Either<CategoryFailure, List<Category?>>> watchAll();
+  Stream<Either<CategoryFailure, List<Category?>>> getAll();
 }
