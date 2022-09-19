@@ -13,7 +13,7 @@ class Category with _$Category {
   }) = _Category;
 
   factory Category.empty() => Category(
-        uid: Uid.fromUniqueString(''),
+        uid: Uid(),
         title: ICategoryTitle(''),
         color: ICategoryColor(ICategoryColor.colors[0]),
       );
