@@ -64,6 +64,22 @@ class CategoryFacade implements ICategoryFacade {
   }
 
   @override
+  Future<Either<CategoryFailure, List<Category?>>> getAll() async {
+    try {
+      final r = await categoriesRef.get().then(
+          (value) => value.docs.map((e) => _mapper.toDomain(e.data)).toList());
+
+      return right(r);
+    } on PlatformException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const CategoryFailure.insufficientPermissions());
+      } else {
+        return left(const CategoryFailure.serverError());
+      }
+    }
+  }
+
+  @override
   Stream<Either<CategoryFailure, List<Category?>>> watchAll() async* {
     yield* categoriesRef
         .orderByTitle()
