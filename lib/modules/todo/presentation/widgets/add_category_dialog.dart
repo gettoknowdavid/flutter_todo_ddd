@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,83 +8,9 @@ import 'package:flutter_todo_ddd/modules/todo/application/category_form/category
 import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
-import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_objects.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
-
-class CategoryDropDown extends ConsumerWidget {
-  const CategoryDropDown({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(categoryProvider);
-    final todoState = ref.watch(todoFormProvider);
-    final todoEvent = ref.watch(todoFormProvider.notifier);
-
-    final categoryEvent = ref.watch(categoryProvider.notifier);
-
-    return DropdownButton2<Category?>(
-      items: state is CategoryLoading
-          ? []
-          : (state as CategorySuccess)
-              .categories
-              .map(
-                (e) => DropdownMenuItem<Category?>(
-                  value: e,
-                  child: Text(e!.title.getOrCrash()!),
-                ),
-              )
-              .toList(),
-      buttonHeight: SizeUtil.h(58),
-      buttonDecoration: BoxDecoration(
-        borderRadius: SizeUtil.borderRadius(20),
-        color: Theme.of(context).primaryColorLight,
-        border: Border.all(color: Colors.transparent),
-      ),
-      buttonWidth: SizeUtil.sh(1),
-      buttonPadding: SizeUtil.pOnly(l: 22, r: 12),
-      dropdownDecoration: BoxDecoration(
-        borderRadius: SizeUtil.borderRadius(20),
-        color: Theme.of(context).primaryColorLight,
-      ),
-      hint: const Text('Select category'),
-      itemHeight: SizeUtil.h(58),
-      value: todoState.todo.category?.getOrCrash(),
-      onChanged: (value) {
-        todoEvent.mapEventsToStates(TodoFormEvent.categoryChanged(value!));
-      },
-      underline: const SizedBox(),
-    );
-  }
-}
-
-class AddCategoryButton extends StatelessWidget {
-  const AddCategoryButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (context) => const AddCategoryDialog(),
-        );
-      },
-      constraints: BoxConstraints(
-        minWidth: SizeUtil.h(40),
-        minHeight: SizeUtil.h(40),
-      ),
-      shape: CircleBorder(
-        side: BorderSide(
-          color: Colors.black12,
-          width: SizeUtil.r(2),
-        ),
-      ),
-      child: Icon(Icons.add, size: SizeUtil.r(20)),
-    );
-  }
-}
 
 class AddCategoryDialog extends ConsumerWidget {
   const AddCategoryDialog({Key? key}) : super(key: key);
@@ -97,7 +22,6 @@ class AddCategoryDialog extends ConsumerWidget {
     final todoEvent = ref.watch(todoFormProvider.notifier);
 
     final categoryState = ref.watch(categoryProvider);
-    final categoryEvent = ref.watch(categoryProvider.notifier);
 
     ref.listen<CategoryFormState>(categoryFormProvider, (previous, next) {
       next.option.fold(
@@ -205,11 +129,4 @@ class AddCategoryDialog extends ConsumerWidget {
       },
     );
   }
-}
-
-class Cat {
-  final int id;
-  final String title;
-
-  const Cat(this.id, this.title);
 }
