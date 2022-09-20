@@ -27,8 +27,8 @@ class CategoryList extends ConsumerWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: loading ? 4 : categories.length,
         maxCrossAxisExtent: SizeUtil.sw(0.5),
-        mainAxisSpacing: SizeUtil.h(18),
-        crossAxisSpacing: SizeUtil.h(18),
+        mainAxisSpacing: SizeUtil.h(12),
+        crossAxisSpacing: SizeUtil.h(12),
         itemBuilder: (context, index) {
           return Shimmer(
             enabled: loading,
