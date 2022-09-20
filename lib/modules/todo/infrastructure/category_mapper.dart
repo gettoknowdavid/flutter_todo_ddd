@@ -14,6 +14,7 @@ class CategoryMapper {
       uid: Uid.fromUniqueString(dto.uid),
       title: ICategoryTitle(dto.title),
       color: ICategoryColor(Color(dto.color)),
+      createdAt: dto.createdAt,
     );
   }
 }
