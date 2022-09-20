@@ -14,6 +14,7 @@ import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.d
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_form/category_form_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo/todo_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_category_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_todo_facade.dart';
@@ -41,6 +42,7 @@ class AppModule extends Module {
     Bind.lazySingleton<RegisterController>((i) => RegisterController(i())),
     Bind.lazySingleton<OpenMailAppFacade>((i) => OpenMailAppFacade()),
     Bind.lazySingleton<AuthController>((i) => AuthController(i(), i())),
+    Bind.lazySingleton<TodoController>((i) => TodoController(i())),
     Bind.lazySingleton<TodoFormController>((i) => TodoFormController(i())),
     Bind.lazySingleton<CategoryFormController>(
         (i) => CategoryFormController(i())),
