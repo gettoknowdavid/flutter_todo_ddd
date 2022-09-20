@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/pages/category_page.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -21,7 +23,11 @@ class CategoryTile extends StatelessWidget {
         ThemeData.estimateBrightnessForColor(color) == Brightness.light;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Modular.to.push(
+        MaterialPageRoute(
+          builder: (context) => CategoryPage(category: category),
+        ),
+      ),
       child: Container(
         height: (index % 2.05 + 1.3) * 90,
         padding: SizeUtil.pAll(18),
