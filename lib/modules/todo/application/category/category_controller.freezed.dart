@@ -19,25 +19,28 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAll,
+    required TResult Function() watchAll,
     required TResult Function() getUncompletedStarted,
     required TResult Function(
-            Either<CategoryFailure, List<Category>> failureOrNotes)
+            Either<CategoryFailure, List<Category?>> failureOrNotes)
         categoriesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
     required TResult orElse(),
   }) =>
@@ -45,6 +48,7 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GetUncompletedStarted value)
         getUncompletedStarted,
     required TResult Function(_CategoriesReceived value) categoriesReceived,
@@ -53,6 +57,7 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
   }) =>
@@ -60,6 +65,7 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
     required TResult orElse(),
@@ -123,9 +129,10 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAll,
+    required TResult Function() watchAll,
     required TResult Function() getUncompletedStarted,
     required TResult Function(
-            Either<CategoryFailure, List<Category>> failureOrNotes)
+            Either<CategoryFailure, List<Category?>> failureOrNotes)
         categoriesReceived,
   }) {
     return getAll();
@@ -135,8 +142,9 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
   }) {
     return getAll?.call();
@@ -146,8 +154,9 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
     required TResult orElse(),
   }) {
@@ -161,6 +170,7 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GetUncompletedStarted value)
         getUncompletedStarted,
     required TResult Function(_CategoriesReceived value) categoriesReceived,
@@ -172,6 +182,7 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
   }) {
@@ -182,6 +193,7 @@ class _$_GetAll implements _GetAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
     required TResult orElse(),
@@ -195,6 +207,127 @@ class _$_GetAll implements _GetAll {
 
 abstract class _GetAll implements CategoryEvent {
   const factory _GetAll() = _$_GetAll;
+}
+
+/// @nodoc
+abstract class _$$_WatchAllCopyWith<$Res> {
+  factory _$$_WatchAllCopyWith(
+          _$_WatchAll value, $Res Function(_$_WatchAll) then) =
+      __$$_WatchAllCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchAllCopyWithImpl<$Res> extends _$CategoryEventCopyWithImpl<$Res>
+    implements _$$_WatchAllCopyWith<$Res> {
+  __$$_WatchAllCopyWithImpl(
+      _$_WatchAll _value, $Res Function(_$_WatchAll) _then)
+      : super(_value, (v) => _then(v as _$_WatchAll));
+
+  @override
+  _$_WatchAll get _value => super._value as _$_WatchAll;
+}
+
+/// @nodoc
+
+class _$_WatchAll implements _WatchAll {
+  const _$_WatchAll();
+
+  @override
+  String toString() {
+    return 'CategoryEvent.watchAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAll,
+    required TResult Function() watchAll,
+    required TResult Function() getUncompletedStarted,
+    required TResult Function(
+            Either<CategoryFailure, List<Category?>> failureOrNotes)
+        categoriesReceived,
+  }) {
+    return watchAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getAll,
+    TResult Function()? watchAll,
+    TResult Function()? getUncompletedStarted,
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
+        categoriesReceived,
+  }) {
+    return watchAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAll,
+    TResult Function()? watchAll,
+    TResult Function()? getUncompletedStarted,
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
+        categoriesReceived,
+    required TResult orElse(),
+  }) {
+    if (watchAll != null) {
+      return watchAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GetUncompletedStarted value)
+        getUncompletedStarted,
+    required TResult Function(_CategoriesReceived value) categoriesReceived,
+  }) {
+    return watchAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
+    TResult Function(_CategoriesReceived value)? categoriesReceived,
+  }) {
+    return watchAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
+    TResult Function(_CategoriesReceived value)? categoriesReceived,
+    required TResult orElse(),
+  }) {
+    if (watchAll != null) {
+      return watchAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchAll implements CategoryEvent {
+  const factory _WatchAll() = _$_WatchAll;
 }
 
 /// @nodoc
@@ -240,9 +373,10 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAll,
+    required TResult Function() watchAll,
     required TResult Function() getUncompletedStarted,
     required TResult Function(
-            Either<CategoryFailure, List<Category>> failureOrNotes)
+            Either<CategoryFailure, List<Category?>> failureOrNotes)
         categoriesReceived,
   }) {
     return getUncompletedStarted();
@@ -252,8 +386,9 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
   }) {
     return getUncompletedStarted?.call();
@@ -263,8 +398,9 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
     required TResult orElse(),
   }) {
@@ -278,6 +414,7 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GetUncompletedStarted value)
         getUncompletedStarted,
     required TResult Function(_CategoriesReceived value) categoriesReceived,
@@ -289,6 +426,7 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
   }) {
@@ -299,6 +437,7 @@ class _$_GetUncompletedStarted implements _GetUncompletedStarted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
     required TResult orElse(),
@@ -319,7 +458,7 @@ abstract class _$$_CategoriesReceivedCopyWith<$Res> {
   factory _$$_CategoriesReceivedCopyWith(_$_CategoriesReceived value,
           $Res Function(_$_CategoriesReceived) then) =
       __$$_CategoriesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<CategoryFailure, List<Category>> failureOrNotes});
+  $Res call({Either<CategoryFailure, List<Category?>> failureOrNotes});
 }
 
 /// @nodoc
@@ -341,7 +480,7 @@ class __$$_CategoriesReceivedCopyWithImpl<$Res>
       failureOrNotes == freezed
           ? _value.failureOrNotes
           : failureOrNotes // ignore: cast_nullable_to_non_nullable
-              as Either<CategoryFailure, List<Category>>,
+              as Either<CategoryFailure, List<Category?>>,
     ));
   }
 }
@@ -352,7 +491,7 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   const _$_CategoriesReceived(this.failureOrNotes);
 
   @override
-  final Either<CategoryFailure, List<Category>> failureOrNotes;
+  final Either<CategoryFailure, List<Category?>> failureOrNotes;
 
   @override
   String toString() {
@@ -382,9 +521,10 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAll,
+    required TResult Function() watchAll,
     required TResult Function() getUncompletedStarted,
     required TResult Function(
-            Either<CategoryFailure, List<Category>> failureOrNotes)
+            Either<CategoryFailure, List<Category?>> failureOrNotes)
         categoriesReceived,
   }) {
     return categoriesReceived(failureOrNotes);
@@ -394,8 +534,9 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
   }) {
     return categoriesReceived?.call(failureOrNotes);
@@ -405,8 +546,9 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAll,
+    TResult Function()? watchAll,
     TResult Function()? getUncompletedStarted,
-    TResult Function(Either<CategoryFailure, List<Category>> failureOrNotes)?
+    TResult Function(Either<CategoryFailure, List<Category?>> failureOrNotes)?
         categoriesReceived,
     required TResult orElse(),
   }) {
@@ -420,6 +562,7 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GetUncompletedStarted value)
         getUncompletedStarted,
     required TResult Function(_CategoriesReceived value) categoriesReceived,
@@ -431,6 +574,7 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
   }) {
@@ -441,6 +585,7 @@ class _$_CategoriesReceived implements _CategoriesReceived {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GetUncompletedStarted value)? getUncompletedStarted,
     TResult Function(_CategoriesReceived value)? categoriesReceived,
     required TResult orElse(),
@@ -454,10 +599,10 @@ class _$_CategoriesReceived implements _CategoriesReceived {
 
 abstract class _CategoriesReceived implements CategoryEvent {
   const factory _CategoriesReceived(
-          final Either<CategoryFailure, List<Category>> failureOrNotes) =
+          final Either<CategoryFailure, List<Category?>> failureOrNotes) =
       _$_CategoriesReceived;
 
-  Either<CategoryFailure, List<Category>> get failureOrNotes;
+  Either<CategoryFailure, List<Category?>> get failureOrNotes;
   @JsonKey(ignore: true)
   _$$_CategoriesReceivedCopyWith<_$_CategoriesReceived> get copyWith =>
       throw _privateConstructorUsedError;
