@@ -4,7 +4,6 @@ import 'package:flutter_todo_ddd/modules/app/application/app_controller.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_state.dart';
 import 'package:flutter_todo_ddd/modules/app/application/bottom_navigation/bottom_navigation_controller.dart';
 import 'package:flutter_todo_ddd/modules/auth/domain/i_auth_facade.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
 
 final appProvider = StateNotifierProvider<AppController, AppState>(
   (ref) => AppController(Modular.get<IAuthFacade>()),
@@ -12,9 +11,5 @@ final appProvider = StateNotifierProvider<AppController, AppState>(
 
 final bottomNavProvider =
     StateNotifierProvider<BottomNavigationController, BottomNavigationState>(
-  (ref) {
-    final categoryEvent = ref.watch(categoryProvider.notifier);
-
-    return BottomNavigationController(categoryEvent);
-  },
+  (ref) => BottomNavigationController(),
 );
