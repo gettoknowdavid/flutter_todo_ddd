@@ -15,7 +15,6 @@ const _items = <Cat>[
   Cat(2, 'Church'),
 ];
 
-
 class CategoryDropDown extends StatelessWidget {
   const CategoryDropDown({Key? key}) : super(key: key);
 
@@ -84,8 +83,9 @@ class AddCategoryDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(categoryProvider);
-    final event = ref.watch(categoryProvider.notifier);
+    final state = ref.watch(categoryFormProvider);
+    final categoryState = ref.watch(categoryProvider);
+    final event = ref.watch(categoryFormProvider.notifier);
 
     final stateColor = state.category.color.getOrCrash();
     const colors = ICategoryColor.colors;
@@ -164,12 +164,9 @@ class AddCategoryDialog extends ConsumerWidget {
   }
 }
 
-
-
 class Cat {
   final int id;
   final String title;
 
   const Cat(this.id, this.title);
 }
-
