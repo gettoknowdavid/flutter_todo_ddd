@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/core/uid.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_objects.dart';
@@ -10,9 +11,9 @@ class CategoryMapper {
     }
 
     return Category(
-      uid: Uid.fromUniqueString(''),
-      title: ICategoryTitle(''),
-      color: ICategoryColor(ICategoryColor.colors[0]),
+      uid: Uid.fromUniqueString(dto.uid),
+      title: ICategoryTitle(dto.title),
+      color: ICategoryColor(Color(dto.color)),
     );
   }
 }
