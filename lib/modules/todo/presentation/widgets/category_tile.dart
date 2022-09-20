@@ -38,6 +38,7 @@ class CategoryTile extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: SizeUtil.fontSize(18),
+                fontWeight: FontWeight.w600,
                 color: isLight ? AppColors.black : AppColors.white,
               ),
             ),
