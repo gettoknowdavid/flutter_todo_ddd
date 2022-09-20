@@ -33,14 +33,6 @@ class HomePage extends ConsumerWidget {
             SizeUtil.vS(30),
             const SearchBox(),
             SizeUtil.vS(30),
-            if (categoryState is CategoryLoading) ...[
-              Center(
-                child: SizedBox(
-                  width: SizeUtil.sw(0.2),
-                  child: const AppLoadingIndicator(),
-                ),
-              ),
-            ],
             if (categoryState is CategorySuccess) ...[
               CategoryList(categories: categoryState.categories),
             ]
