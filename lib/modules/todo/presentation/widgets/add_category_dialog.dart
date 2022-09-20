@@ -3,11 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_form/category_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_objects.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
@@ -19,25 +16,13 @@ class AddCategoryDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(categoryFormProvider);
     final event = ref.watch(categoryFormProvider.notifier);
-    final todoEvent = ref.watch(todoFormProvider.notifier);
-
-    final categoryState = ref.watch(categoryProvider);
 
     ref.listen<CategoryFormState>(categoryFormProvider, (previous, next) {
       next.option.fold(
         () => null,
         (either) => either.fold(
-          (failure) => failure.maybeMap(
-            orElse: () => '',
-          ),
-          (success) {
-            Modular.to.pop();
-
-            todoEvent.mapEventsToStates(
-              TodoFormEvent.categoryChanged(
-                  (categoryState as CategorySuccess).categories.last!),
-            );
-          },
+          (failure) => failure.maybeMap(orElse: () => ''),
+          (success) => Modular.to.pop(),
         ),
       );
     });
