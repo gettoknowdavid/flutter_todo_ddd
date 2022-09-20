@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_ddd/common/widgets/app_loading_indicator.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_bar_avatar.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
