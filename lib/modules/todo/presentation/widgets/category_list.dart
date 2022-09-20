@@ -19,13 +19,15 @@ class CategoryList extends ConsumerWidget {
 
     final loading = categoryState is CategoryLoading;
 
+    final newCategories = [Category.all(), ...categories];
+
     return Container(
       padding: SizeUtil.pSymmetric(h: 18),
-      height: SizeUtil.sh(0.55),
       child: MasonryGridView.extent(
         primary: false,
+        shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: loading ? 4 : categories.length,
+        itemCount: loading ? 4 : newCategories.length,
         maxCrossAxisExtent: SizeUtil.sw(0.5),
         mainAxisSpacing: SizeUtil.h(12),
         crossAxisSpacing: SizeUtil.h(12),
@@ -33,7 +35,7 @@ class CategoryList extends ConsumerWidget {
           return Shimmer(
             enabled: loading,
             child: CategoryTile(
-              category: categories[index]!,
+              category: newCategories[index]!,
               index: index,
             ),
           );
