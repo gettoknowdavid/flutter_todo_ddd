@@ -1,30 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_tile.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
-class CategoryList extends StatelessWidget {
+class CategoryList extends ConsumerWidget {
   const CategoryList({Key? key, required this.categories}) : super(key: key);
 
   final List<Category?> categories;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final categoryState = ref.watch(categoryProvider);
+
+    final loading = categoryState is CategoryLoading;
+
     return Container(
       padding: SizeUtil.pSymmetric(h: 18),
       height: SizeUtil.sh(0.55),
       child: MasonryGridView.extent(
         primary: false,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: categories.length,
+        itemCount: loading ? 4 : categories.length,
         maxCrossAxisExtent: SizeUtil.sw(0.5),
         mainAxisSpacing: SizeUtil.h(18),
         crossAxisSpacing: SizeUtil.h(18),
         itemBuilder: (context, index) {
-          return CategoryTile(
-            category: categories[index]!,
-            index: index,
+          return Shimmer(
+            enabled: loading,
+            child: CategoryTile(
+              category: categories[index]!,
+              index: index,
+            ),
           );
         },
       ),
