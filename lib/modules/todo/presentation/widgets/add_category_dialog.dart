@@ -1,34 +1,42 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_form/category_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/value_objects.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-const _items = <Cat>[
-  Cat(1, 'Home'),
-  Cat(2, 'Work'),
-  Cat(2, 'Church'),
-];
-
-class CategoryDropDown extends StatelessWidget {
+class CategoryDropDown extends ConsumerWidget {
   const CategoryDropDown({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return DropdownButton2<String>(
-      items: _items
-          .map(
-            (e) => DropdownMenuItem<String>(
-              value: e.title,
-              child: Text(e.title),
-            ),
-          )
-          .toList(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(categoryProvider);
+    final todoState = ref.watch(todoFormProvider);
+    final todoEvent = ref.watch(todoFormProvider.notifier);
+
+    final categoryEvent = ref.watch(categoryProvider.notifier);
+
+    return DropdownButton2<Category?>(
+      items: state is CategoryLoading
+          ? []
+          : (state as CategorySuccess)
+              .categories
+              .map(
+                (e) => DropdownMenuItem<Category?>(
+                  value: e,
+                  child: Text(e!.title.getOrCrash()!),
+                ),
+              )
+              .toList(),
       buttonHeight: SizeUtil.h(58),
       buttonDecoration: BoxDecoration(
         borderRadius: SizeUtil.borderRadius(20),
@@ -43,7 +51,10 @@ class CategoryDropDown extends StatelessWidget {
       ),
       hint: const Text('Select category'),
       itemHeight: SizeUtil.h(58),
-      onChanged: (value) {},
+      value: todoState.todo.category?.getOrCrash(),
+      onChanged: (value) {
+        todoEvent.mapEventsToStates(TodoFormEvent.categoryChanged(value!));
+      },
       underline: const SizedBox(),
     );
   }
@@ -58,9 +69,7 @@ class AddCategoryButton extends StatelessWidget {
       onPressed: () {
         showDialog(
           context: context,
-          builder: (context) {
-            return const AddCategoryDialog();
-          },
+          builder: (context) => const AddCategoryDialog(),
         );
       },
       constraints: BoxConstraints(
@@ -84,8 +93,30 @@ class AddCategoryDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(categoryFormProvider);
-    final categoryState = ref.watch(categoryProvider);
     final event = ref.watch(categoryFormProvider.notifier);
+    final todoEvent = ref.watch(todoFormProvider.notifier);
+
+    final categoryState = ref.watch(categoryProvider);
+    final categoryEvent = ref.watch(categoryProvider.notifier);
+
+    ref.listen<CategoryFormState>(categoryFormProvider, (previous, next) {
+      next.option.fold(
+        () => null,
+        (either) => either.fold(
+          (failure) => failure.maybeMap(
+            orElse: () => '',
+          ),
+          (success) {
+            Modular.to.pop();
+
+            todoEvent.mapEventsToStates(
+              TodoFormEvent.categoryChanged(
+                  (categoryState as CategorySuccess).categories.last!),
+            );
+          },
+        ),
+      );
+    });
 
     final stateColor = state.category.color.getOrCrash();
     const colors = ICategoryColor.colors;
@@ -115,8 +146,14 @@ class AddCategoryDialog extends ConsumerWidget {
                 SizeUtil.vS(6),
                 AppTextField(
                   hint: 'Name',
-                  onChanged: (value) {},
-                  validator: (_) {},
+                  enabled: !state.loading,
+                  onChanged: (value) => event.mapEventsToStates(
+                    CategoryFormEvent.titleChanged(value),
+                  ),
+                  validator: (_) => state.category.title.value.fold(
+                    (f) => f.mapOrNull(empty: (_) => 'Name cannot be empty'),
+                    (_) => null,
+                  ),
                 ),
                 SizeUtil.vS(26),
                 const Text('Select a color'),
@@ -152,7 +189,13 @@ class AddCategoryDialog extends ConsumerWidget {
                 ),
                 SizeUtil.vS(36),
                 AppButton(
-                  onPressed: () {},
+                  disabled: !state.category.title.isValid(),
+                  onPressed: () {
+                    event.mapEventsToStates(
+                      const CategoryFormEvent.categoryAddPressed(),
+                    );
+                  },
+                  loading: state.loading,
                   title: 'Add',
                 ),
               ],
