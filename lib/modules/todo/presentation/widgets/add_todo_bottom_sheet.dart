@@ -5,8 +5,9 @@ import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
-import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_category_dialog.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_category_button.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_date_field.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_drop_down.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -22,12 +23,8 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
-    // final categoryState = ref.watch(categoryProvider);
-    // final categoryFormState = ref.watch(categoryFormProvider);
 
     ref.listen<TodoFormState>(todoFormProvider, (previous, next) {
       next.option.fold(
@@ -55,16 +52,6 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const _HandleBar(),
-
-              // SizeUtil.vS(200),
-              // Align(
-              //   alignment: Alignment.center,
-              //   child: SizedBox(
-              //     width: SizeUtil.sw(0.2),
-              //     child: const AppLoadingIndicator(),
-              //   ),
-              // )
-
               SizeUtil.vS(20),
               Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
               SizeUtil.vS(16),
