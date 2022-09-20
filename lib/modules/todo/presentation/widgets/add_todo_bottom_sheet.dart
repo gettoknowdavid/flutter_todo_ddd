@@ -22,8 +22,12 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
+    // final categoryState = ref.watch(categoryProvider);
+    // final categoryFormState = ref.watch(categoryFormProvider);
 
     ref.listen<TodoFormState>(todoFormProvider, (previous, next) {
       next.option.fold(
@@ -51,6 +55,16 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const _HandleBar(),
+
+              // SizeUtil.vS(200),
+              // Align(
+              //   alignment: Alignment.center,
+              //   child: SizedBox(
+              //     width: SizeUtil.sw(0.2),
+              //     child: const AppLoadingIndicator(),
+              //   ),
+              // )
+
               SizeUtil.vS(20),
               Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
               SizeUtil.vS(16),
