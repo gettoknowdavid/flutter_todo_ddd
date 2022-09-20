@@ -24,7 +24,7 @@ mixin _$TodoFormEvent {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,7 +35,7 @@ mixin _$TodoFormEvent {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,7 +46,7 @@ mixin _$TodoFormEvent {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -174,7 +174,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return descChanged(desc);
   }
@@ -188,7 +188,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return descChanged?.call(desc);
   }
@@ -202,7 +202,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (descChanged != null) {
@@ -340,7 +340,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return initialized(initialOption);
   }
@@ -354,7 +354,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return initialized?.call(initialOption);
   }
@@ -368,7 +368,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -506,7 +506,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return isDoneChanged(isDone);
   }
@@ -520,7 +520,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return isDoneChanged?.call(isDone);
   }
@@ -534,7 +534,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (isDoneChanged != null) {
@@ -645,7 +645,7 @@ class _$_TodoSaved implements _TodoSaved {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return saved();
   }
@@ -659,7 +659,7 @@ class _$_TodoSaved implements _TodoSaved {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return saved?.call();
   }
@@ -673,7 +673,7 @@ class _$_TodoSaved implements _TodoSaved {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -804,7 +804,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return timeChanged(time);
   }
@@ -818,7 +818,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return timeChanged?.call(time);
   }
@@ -832,7 +832,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (timeChanged != null) {
@@ -968,7 +968,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return titleChanged(title);
   }
@@ -982,7 +982,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return titleChanged?.call(title);
   }
@@ -996,7 +996,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -1066,9 +1066,9 @@ abstract class _$$_TodoCategoryChangedCopyWith<$Res> {
   factory _$$_TodoCategoryChangedCopyWith(_$_TodoCategoryChanged value,
           $Res Function(_$_TodoCategoryChanged) then) =
       __$$_TodoCategoryChangedCopyWithImpl<$Res>;
-  $Res call({Category category});
+  $Res call({Category? category});
 
-  $CategoryCopyWith<$Res> get category;
+  $CategoryCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -1090,13 +1090,17 @@ class __$$_TodoCategoryChangedCopyWithImpl<$Res>
       category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as Category?,
     ));
   }
 
   @override
-  $CategoryCopyWith<$Res> get category {
-    return $CategoryCopyWith<$Res>(_value.category, (value) {
+  $CategoryCopyWith<$Res>? get category {
+    if (_value.category == null) {
+      return null;
+    }
+
+    return $CategoryCopyWith<$Res>(_value.category!, (value) {
       return _then(_value.copyWith(category: value));
     });
   }
@@ -1108,7 +1112,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   const _$_TodoCategoryChanged(this.category);
 
   @override
-  final Category category;
+  final Category? category;
 
   @override
   String toString() {
@@ -1142,7 +1146,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
     required TResult Function() saved,
     required TResult Function(DateTime time) timeChanged,
     required TResult Function(String title) titleChanged,
-    required TResult Function(Category category) categoryChanged,
+    required TResult Function(Category? category) categoryChanged,
   }) {
     return categoryChanged(category);
   }
@@ -1156,7 +1160,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
   }) {
     return categoryChanged?.call(category);
   }
@@ -1170,7 +1174,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
     TResult Function()? saved,
     TResult Function(DateTime time)? timeChanged,
     TResult Function(String title)? titleChanged,
-    TResult Function(Category category)? categoryChanged,
+    TResult Function(Category? category)? categoryChanged,
     required TResult orElse(),
   }) {
     if (categoryChanged != null) {
@@ -1227,10 +1231,10 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
 }
 
 abstract class _TodoCategoryChanged implements TodoFormEvent {
-  const factory _TodoCategoryChanged(final Category category) =
+  const factory _TodoCategoryChanged(final Category? category) =
       _$_TodoCategoryChanged;
 
-  Category get category;
+  Category? get category;
   @JsonKey(ignore: true)
   _$$_TodoCategoryChangedCopyWith<_$_TodoCategoryChanged> get copyWith =>
       throw _privateConstructorUsedError;
