@@ -15,6 +15,11 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final title = category.title.getOrCrash()!;
+    final color = category.color.getOrCrash()!;
+    final isLight =
+        ThemeData.estimateBrightnessForColor(color) == Brightness.light;
+
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -22,7 +27,7 @@ class CategoryTile extends StatelessWidget {
         padding: SizeUtil.pAll(18),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: category.color.getOrCrash()!,
+          color: color,
           borderRadius: SizeUtil.borderRadius(30),
         ),
         child: Column(
@@ -30,14 +35,10 @@ class CategoryTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              category.title.getOrCrash()!,
+              title,
               style: TextStyle(
                 fontSize: SizeUtil.fontSize(18),
-                color: ThemeData.estimateBrightnessForColor(
-                            category.color.getOrCrash()!) ==
-                        Brightness.light
-                    ? AppColors.black
-                    : AppColors.white,
+                color: isLight ? AppColors.black : AppColors.white,
               ),
             ),
             SizeUtil.hS(10),
@@ -45,11 +46,7 @@ class CategoryTile extends StatelessWidget {
               '4 Tasks',
               style: TextStyle(
                 fontSize: SizeUtil.fontSize(14),
-                color: ThemeData.estimateBrightnessForColor(
-                            category.color.getOrCrash()!) ==
-                        Brightness.light
-                    ? Colors.black45
-                    : Colors.white54,
+                color: isLight ? Colors.black45 : Colors.white54,
               ),
             ),
           ],
