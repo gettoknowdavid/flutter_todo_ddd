@@ -10,11 +10,13 @@ class Category with _$Category {
     required Uid uid,
     required ICategoryTitle title,
     required ICategoryColor color,
+    DateTime? createdAt,
   }) = _Category;
 
   factory Category.empty() => Category(
         uid: Uid(),
         title: ICategoryTitle(''),
         color: ICategoryColor(ICategoryColor.colors[0]),
+        createdAt: DateTime.now(),
       );
 }

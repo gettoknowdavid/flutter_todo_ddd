@@ -19,6 +19,7 @@ mixin _$Category {
   Uid get uid => throw _privateConstructorUsedError;
   ICategoryTitle get title => throw _privateConstructorUsedError;
   ICategoryColor get color => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryCopyWith<Category> get copyWith =>
@@ -29,7 +30,11 @@ mixin _$Category {
 abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res>;
-  $Res call({Uid uid, ICategoryTitle title, ICategoryColor color});
+  $Res call(
+      {Uid uid,
+      ICategoryTitle title,
+      ICategoryColor color,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -45,6 +50,7 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
     Object? uid = freezed,
     Object? title = freezed,
     Object? color = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -59,6 +65,10 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as ICategoryColor,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -69,7 +79,11 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
           _$_Category value, $Res Function(_$_Category) then) =
       __$$_CategoryCopyWithImpl<$Res>;
   @override
-  $Res call({Uid uid, ICategoryTitle title, ICategoryColor color});
+  $Res call(
+      {Uid uid,
+      ICategoryTitle title,
+      ICategoryColor color,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -87,6 +101,7 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? title = freezed,
     Object? color = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$_Category(
       uid: uid == freezed
@@ -101,6 +116,10 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as ICategoryColor,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -109,7 +128,10 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
 class _$_Category implements _Category {
   const _$_Category(
-      {required this.uid, required this.title, required this.color});
+      {required this.uid,
+      required this.title,
+      required this.color,
+      this.createdAt});
 
   @override
   final Uid uid;
@@ -117,10 +139,12 @@ class _$_Category implements _Category {
   final ICategoryTitle title;
   @override
   final ICategoryColor color;
+  @override
+  final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'Category(uid: $uid, title: $title, color: $color)';
+    return 'Category(uid: $uid, title: $title, color: $color, createdAt: $createdAt)';
   }
 
   @override
@@ -130,7 +154,8 @@ class _$_Category implements _Category {
             other is _$_Category &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.color, color));
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @override
@@ -138,7 +163,8 @@ class _$_Category implements _Category {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(color));
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(createdAt));
 
   @JsonKey(ignore: true)
   @override
@@ -150,7 +176,8 @@ abstract class _Category implements Category {
   const factory _Category(
       {required final Uid uid,
       required final ICategoryTitle title,
-      required final ICategoryColor color}) = _$_Category;
+      required final ICategoryColor color,
+      final DateTime? createdAt}) = _$_Category;
 
   @override
   Uid get uid;
@@ -158,6 +185,8 @@ abstract class _Category implements Category {
   ICategoryTitle get title;
   @override
   ICategoryColor get color;
+  @override
+  DateTime? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryCopyWith<_$_Category> get copyWith =>
