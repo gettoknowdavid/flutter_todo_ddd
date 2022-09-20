@@ -82,7 +82,7 @@ class CategoryFacade implements ICategoryFacade {
   @override
   Stream<Either<CategoryFailure, List<Category?>>> watchAll() async* {
     yield* categoriesRef
-        .orderByTitle()
+        .orderByCreatedAt()
         .snapshots()
         .map((snapshot) => right<CategoryFailure, List<Category?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
