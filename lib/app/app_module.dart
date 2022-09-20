@@ -12,6 +12,7 @@ import 'package:flutter_todo_ddd/modules/auth/presentation/pages/forgot_password
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/login_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/register_page.dart';
 import 'package:flutter_todo_ddd/modules/auth/presentation/pages/verification_page.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/category_form/category_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_category_facade.dart';
@@ -20,6 +21,7 @@ import 'package:flutter_todo_ddd/modules/todo/infrastructure/category_facade.dar
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/category_mapper.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_mapper.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/pages/category_page.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/profile_page.dart';
 import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -42,6 +44,7 @@ class AppModule extends Module {
     Bind.lazySingleton<TodoFormController>((i) => TodoFormController(i())),
     Bind.lazySingleton<CategoryFormController>(
         (i) => CategoryFormController(i())),
+    Bind.lazySingleton<CategoryController>((i) => CategoryController(i())),
   ];
 
   @override
@@ -53,5 +56,9 @@ class AppModule extends Module {
     ChildRoute('/forgotPassword', child: (_, __) => ForgotPasswordPage()),
     ChildRoute('/layout', child: (_, __) => const AppLayout()),
     ChildRoute('/profile', child: (_, __) => const ProfilePage()),
+    ChildRoute(
+      '/category',
+      child: (_, args) => CategoryPage(category: args.data),
+    ),
   ];
 }
