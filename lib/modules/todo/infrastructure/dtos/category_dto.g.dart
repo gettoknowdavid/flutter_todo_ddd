@@ -129,6 +129,7 @@ abstract class CategoryDtoDocumentReference extends FirestoreDocumentReference<
     String uid,
     String title,
     int color,
+    DateTime? createdAt,
     List<Object?> props,
   });
 
@@ -177,12 +178,14 @@ class _$CategoryDtoDocumentReference
     Object? uid = _sentinel,
     Object? title = _sentinel,
     Object? color = _sentinel,
+    Object? createdAt = _sentinel,
     Object? props = _sentinel,
   }) async {
     final json = {
       if (uid != _sentinel) "uid": uid as String,
       if (title != _sentinel) "title": title as String,
       if (color != _sentinel) "color": color as int,
+      if (createdAt != _sentinel) "createdAt": createdAt as DateTime?,
       if (props != _sentinel) "props": props as List<Object?>,
     };
 
@@ -343,6 +346,17 @@ abstract class CategoryDtoQuery
     List<int>? whereIn,
     List<int>? whereNotIn,
   });
+  CategoryDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  });
   CategoryDtoQuery whereProps({
     List<Object?>? isEqualTo,
     List<Object?>? isNotEqualTo,
@@ -397,6 +411,18 @@ abstract class CategoryDtoQuery
     int startAfter,
     int endAt,
     int endBefore,
+    CategoryDtoDocumentSnapshot? startAtDocument,
+    CategoryDtoDocumentSnapshot? endAtDocument,
+    CategoryDtoDocumentSnapshot? endBeforeDocument,
+    CategoryDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  CategoryDtoQuery orderByCreatedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
     CategoryDtoDocumentSnapshot? startAtDocument,
     CategoryDtoDocumentSnapshot? endAtDocument,
     CategoryDtoDocumentSnapshot? endBeforeDocument,
@@ -666,6 +692,34 @@ class _$CategoryDtoQuery
     );
   }
 
+  CategoryDtoQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+  }) {
+    return _$CategoryDtoQuery(
+      reference.where(
+        _$CategoryDtoFieldMap["createdAt"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      _collection,
+    );
+  }
+
   CategoryDtoQuery whereProps({
     List<Object?>? isEqualTo,
     List<Object?>? isNotEqualTo,
@@ -865,6 +919,49 @@ class _$CategoryDtoQuery
     return _$CategoryDtoQuery(query, _collection);
   }
 
+  CategoryDtoQuery orderByCreatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    CategoryDtoDocumentSnapshot? startAtDocument,
+    CategoryDtoDocumentSnapshot? endAtDocument,
+    CategoryDtoDocumentSnapshot? endBeforeDocument,
+    CategoryDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query = reference.orderBy(_$CategoryDtoFieldMap["createdAt"]!,
+        descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$CategoryDtoQuery(query, _collection);
+  }
+
   CategoryDtoQuery orderByProps({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -961,12 +1058,16 @@ CategoryDto _$CategoryDtoFromJson(Map<String, dynamic> json) => CategoryDto(
       uid: json['uid'] as String,
       title: json['title'] as String,
       color: json['color'] as int? ?? 1,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
     );
 
 const _$CategoryDtoFieldMap = <String, String>{
   'uid': 'uid',
   'title': 'title',
   'color': 'color',
+  'createdAt': 'createdAt',
 };
 
 Map<String, dynamic> _$CategoryDtoToJson(CategoryDto instance) =>
@@ -974,4 +1075,5 @@ Map<String, dynamic> _$CategoryDtoToJson(CategoryDto instance) =>
       'uid': instance.uid,
       'title': instance.title,
       'color': instance.color,
+      'createdAt': instance.createdAt?.toIso8601String(),
     };

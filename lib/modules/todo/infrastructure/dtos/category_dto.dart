@@ -14,11 +14,13 @@ class CategoryDto extends Equatable {
   final String uid;
   final String title;
   final int color;
+  final DateTime? createdAt;
 
   const CategoryDto({
     required this.uid,
     required this.title,
     this.color = 1,
+    this.createdAt,
   });
 
   factory CategoryDto.fromDomain(Category? category) {
@@ -26,6 +28,7 @@ class CategoryDto extends Equatable {
       uid: category!.uid.getOrCrash()!,
       title: category.title.getOrCrash()!,
       color: category.color.getOrCrash()!.value,
+      createdAt: DateTime.now(),
     );
   }
 
@@ -33,7 +36,7 @@ class CategoryDto extends Equatable {
       _$CategoryDtoFromJson(json);
 
   @override
-  List<Object?> get props => [uid, title,  color];
+  List<Object?> get props => [uid, title, color];
 
   Map<String, Object?> toJson() => _$CategoryDtoToJson(this);
 }
