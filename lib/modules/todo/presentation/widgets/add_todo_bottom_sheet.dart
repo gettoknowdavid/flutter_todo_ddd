@@ -46,7 +46,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
 
     return StatefulBuilder(builder: (context, setState) {
       return SingleChildScrollView(
-        padding: SizeUtil.pFromLTRB(18, 14, 18, 20),
+        padding: SizeUtil.pFromLTRB(18, 14, 18, 14),
         child: Form(
           key: _formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -56,7 +56,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const _HandleBar(),
-              SizeUtil.vS(20),
+              SizeUtil.vS(10),
               Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
               SizeUtil.vS(16),
               AppTextField(
@@ -74,7 +74,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                   (_) => null,
                 ),
               ),
-              SizeUtil.vS(14),
+              SizeUtil.vS(10),
               AppTextField(
                 enabled: !state.loading,
                 maxLines: 3,
@@ -91,9 +91,8 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                   (_) => null,
                 ),
               ),
-              SizeUtil.vS(14),
+              SizeUtil.vS(10),
               const AddTodoDateField(),
-              SizeUtil.vS(14),
               SwitchListTile(
                 value: widget.isEdit ? todo!.isDone : state.todo.isDone,
                 title: const Text('Mark as completed?'),
@@ -102,7 +101,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                   event.mapEventsToStates(TodoFormEvent.isDoneChanged(value));
                 },
               ),
-              SizeUtil.vS(30),
+              SizeUtil.vS(16),
               AppButton(
                 disabled: !state.todo.title.isValid() ||
                     !state.todo.description!.isValid(),
@@ -112,7 +111,6 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 loading: state.loading,
                 title: 'Add',
               ),
-              SizeUtil.vS(10),
             ],
           ),
         ),
