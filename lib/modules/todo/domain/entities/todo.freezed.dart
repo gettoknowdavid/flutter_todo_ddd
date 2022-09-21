@@ -20,6 +20,7 @@ mixin _$Todo {
   ITodoTitle get title => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
   ITodoDescription? get description => throw _privateConstructorUsedError;
+  Category? get category => throw _privateConstructorUsedError;
   DateTime? get time => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
@@ -36,6 +37,7 @@ abstract class $TodoCopyWith<$Res> {
       ITodoTitle title,
       bool isDone,
       ITodoDescription? description,
+      Category? category,
       DateTime? time,
       DateTime? createdAt});
 }
@@ -54,6 +56,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
     Object? title = freezed,
     Object? isDone = freezed,
     Object? description = freezed,
+    Object? category = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
   }) {
@@ -74,6 +77,10 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as ITodoDescription?,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -96,6 +103,7 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       ITodoTitle title,
       bool isDone,
       ITodoDescription? description,
+      Category? category,
       DateTime? time,
       DateTime? createdAt});
 }
@@ -115,6 +123,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
     Object? title = freezed,
     Object? isDone = freezed,
     Object? description = freezed,
+    Object? category = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
   }) {
@@ -135,6 +144,10 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as ITodoDescription?,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -155,6 +168,7 @@ class _$_Todo implements _Todo {
       required this.title,
       required this.isDone,
       this.description,
+      this.category,
       this.time,
       this.createdAt});
 
@@ -167,13 +181,15 @@ class _$_Todo implements _Todo {
   @override
   final ITodoDescription? description;
   @override
+  final Category? category;
+  @override
   final DateTime? time;
   @override
   final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'Todo(uid: $uid, title: $title, isDone: $isDone, description: $description, time: $time, createdAt: $createdAt)';
+    return 'Todo(uid: $uid, title: $title, isDone: $isDone, description: $description, category: $category, time: $time, createdAt: $createdAt)';
   }
 
   @override
@@ -186,6 +202,7 @@ class _$_Todo implements _Todo {
             const DeepCollectionEquality().equals(other.isDone, isDone) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.time, time) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
@@ -197,6 +214,7 @@ class _$_Todo implements _Todo {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(isDone),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(time),
       const DeepCollectionEquality().hash(createdAt));
 
@@ -212,6 +230,7 @@ abstract class _Todo implements Todo {
       required final ITodoTitle title,
       required final bool isDone,
       final ITodoDescription? description,
+      final Category? category,
       final DateTime? time,
       final DateTime? createdAt}) = _$_Todo;
 
@@ -223,6 +242,8 @@ abstract class _Todo implements Todo {
   bool get isDone;
   @override
   ITodoDescription? get description;
+  @override
+  Category? get category;
   @override
   DateTime? get time;
   @override
