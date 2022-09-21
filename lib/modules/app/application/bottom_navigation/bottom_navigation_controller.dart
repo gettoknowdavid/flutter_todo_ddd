@@ -25,7 +25,6 @@ class BottomNavigationController extends StateNotifier<BottomNavigationState> {
       case 2:
         showModalBottomSheet(
           context: context,
-          isScrollControlled: true,
           useRootNavigator: true,
           builder: (context) => const AddTodoBottomSheet(),
         );
