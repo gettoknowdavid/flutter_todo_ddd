@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo/todo_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/category_page.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-class CategoryTile extends StatelessWidget {
+class CategoryTile extends ConsumerWidget {
   const CategoryTile({
     Key? key,
     required this.category,
@@ -16,18 +19,24 @@ class CategoryTile extends StatelessWidget {
   final int index;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final title = category.title.getOrCrash()!;
     final color = category.color.getOrCrash()!;
     final isLight =
         ThemeData.estimateBrightnessForColor(color) == Brightness.light;
 
+    final todoEvent = ref.watch(todoProvider.notifier);
+
     return GestureDetector(
-      onTap: () => Modular.to.push(
-        MaterialPageRoute(
-          builder: (context) => CategoryPage(category: category),
-        ),
-      ),
+      onTap: () {
+        todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+
+        Modular.to.push(
+          MaterialPageRoute(
+            builder: (context) => CategoryPage(category: category),
+          ),
+        );
+      },
       child: Container(
         height: (index % 2.05 + 1.3) * 90,
         padding: SizeUtil.pAll(18),
