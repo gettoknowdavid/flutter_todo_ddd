@@ -59,12 +59,12 @@ class TodoTile extends ConsumerWidget {
                   ),
                 ),
                 if (todo.time != null) ...[
+                  SizeUtil.vS(4),
                   Text(
-                    dateFormat(todo.time),
+                    'Due ${dateFormat(todo.time)}',
                     style: TextStyle(
-                      color: AppColors.black,
-                      fontSize: SizeUtil.fontSize(16),
-                      fontWeight: FontWeight.w500,
+                      color: Colors.black54,
+                      fontSize: SizeUtil.fontSize(12),
                     ),
                   ),
                 ]
