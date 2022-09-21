@@ -20,6 +20,7 @@ class TodoFormController extends StateNotifier<TodoFormState> {
     return e.map(
       categoryChanged: _categoryChanged,
       descChanged: _descChanged,
+      edit: _edit,
       initialized: _initialized,
       isDoneChanged: _isDoneChanged,
       saved: _saved,
@@ -41,6 +42,30 @@ class TodoFormController extends StateNotifier<TodoFormState> {
       todo: state.todo.copyWith(
         description: ITodoDescription(e.desc),
       ),
+    );
+  }
+
+  _edit(_TodoEdit e) async {
+    Either<TodoFailure, Unit> r;
+
+    state = state.copyWith(
+      todo: state.todo.copyWith(
+        uid: e.todo.uid,
+        title: e.todo.title,
+        description: e.todo.description,
+        category: e.todo.category,
+        createdAt: e.todo.createdAt,
+        isDone: e.todo.isDone,
+        time: e.todo.time,
+      ),
+    );
+
+    r = await _facade.edit(state.todo);
+
+    state = state.copyWith(
+      loading: false,
+      showErrors: true,
+      option: optionOf(r),
     );
   }
 
@@ -66,9 +91,7 @@ class TodoFormController extends StateNotifier<TodoFormState> {
 
     state = state.copyWith(loading: true, option: none());
 
-    r = state.isEdit
-        ? await _facade.edit(state.todo)
-        : await _facade.create(state.todo);
+    r = await _facade.create(state.todo);
 
     state = state.copyWith(
       loading: false,

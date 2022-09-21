@@ -19,6 +19,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -30,6 +31,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -41,6 +43,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -53,6 +56,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -64,6 +68,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -75,6 +80,7 @@ mixin _$TodoFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -169,6 +175,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -183,6 +190,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -197,6 +205,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -215,6 +224,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -229,6 +239,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -243,6 +254,7 @@ class _$_TodoDescChanged implements _TodoDescChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -264,6 +276,184 @@ abstract class _TodoDescChanged implements TodoFormEvent {
   String get desc;
   @JsonKey(ignore: true)
   _$$_TodoDescChangedCopyWith<_$_TodoDescChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TodoEditCopyWith<$Res> {
+  factory _$$_TodoEditCopyWith(
+          _$_TodoEdit value, $Res Function(_$_TodoEdit) then) =
+      __$$_TodoEditCopyWithImpl<$Res>;
+  $Res call({Todo todo});
+
+  $TodoCopyWith<$Res> get todo;
+}
+
+/// @nodoc
+class __$$_TodoEditCopyWithImpl<$Res> extends _$TodoFormEventCopyWithImpl<$Res>
+    implements _$$_TodoEditCopyWith<$Res> {
+  __$$_TodoEditCopyWithImpl(
+      _$_TodoEdit _value, $Res Function(_$_TodoEdit) _then)
+      : super(_value, (v) => _then(v as _$_TodoEdit));
+
+  @override
+  _$_TodoEdit get _value => super._value as _$_TodoEdit;
+
+  @override
+  $Res call({
+    Object? todo = freezed,
+  }) {
+    return _then(_$_TodoEdit(
+      todo == freezed
+          ? _value.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as Todo,
+    ));
+  }
+
+  @override
+  $TodoCopyWith<$Res> get todo {
+    return $TodoCopyWith<$Res>(_value.todo, (value) {
+      return _then(_value.copyWith(todo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_TodoEdit implements _TodoEdit {
+  const _$_TodoEdit(this.todo);
+
+  @override
+  final Todo todo;
+
+  @override
+  String toString() {
+    return 'TodoFormEvent.edit(todo: $todo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TodoEdit &&
+            const DeepCollectionEquality().equals(other.todo, todo));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(todo));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_TodoEditCopyWith<_$_TodoEdit> get copyWith =>
+      __$$_TodoEditCopyWithImpl<_$_TodoEdit>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
+    required TResult Function(Option<Todo> initialOption) initialized,
+    required TResult Function(bool isDone) isDoneChanged,
+    required TResult Function() saved,
+    required TResult Function(DateTime time) timeChanged,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(Category? category) categoryChanged,
+  }) {
+    return edit(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
+    TResult Function(Option<Todo> initialOption)? initialized,
+    TResult Function(bool isDone)? isDoneChanged,
+    TResult Function()? saved,
+    TResult Function(DateTime time)? timeChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(Category? category)? categoryChanged,
+  }) {
+    return edit?.call(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
+    TResult Function(Option<Todo> initialOption)? initialized,
+    TResult Function(bool isDone)? isDoneChanged,
+    TResult Function()? saved,
+    TResult Function(DateTime time)? timeChanged,
+    TResult Function(String title)? titleChanged,
+    TResult Function(Category? category)? categoryChanged,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(todo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
+    required TResult Function(_TodoFormInitialized value) initialized,
+    required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
+    required TResult Function(_TodoSaved value) saved,
+    required TResult Function(_TodoTimeChanged value) timeChanged,
+    required TResult Function(_TodoTitleChanged value) titleChanged,
+    required TResult Function(_TodoCategoryChanged value) categoryChanged,
+  }) {
+    return edit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
+    TResult Function(_TodoFormInitialized value)? initialized,
+    TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
+    TResult Function(_TodoSaved value)? saved,
+    TResult Function(_TodoTimeChanged value)? timeChanged,
+    TResult Function(_TodoTitleChanged value)? titleChanged,
+    TResult Function(_TodoCategoryChanged value)? categoryChanged,
+  }) {
+    return edit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
+    TResult Function(_TodoFormInitialized value)? initialized,
+    TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
+    TResult Function(_TodoSaved value)? saved,
+    TResult Function(_TodoTimeChanged value)? timeChanged,
+    TResult Function(_TodoTitleChanged value)? titleChanged,
+    TResult Function(_TodoCategoryChanged value)? categoryChanged,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TodoEdit implements TodoFormEvent {
+  const factory _TodoEdit(final Todo todo) = _$_TodoEdit;
+
+  Todo get todo;
+  @JsonKey(ignore: true)
+  _$$_TodoEditCopyWith<_$_TodoEdit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -335,6 +525,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -349,6 +540,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -363,6 +555,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -381,6 +574,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -395,6 +589,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -409,6 +604,7 @@ class _$_TodoFormInitialized implements _TodoFormInitialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -501,6 +697,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -515,6 +712,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -529,6 +727,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -547,6 +746,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -561,6 +761,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -575,6 +776,7 @@ class _$_TodoIsDoneChanged implements _TodoIsDoneChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -640,6 +842,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -654,6 +857,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -668,6 +872,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -686,6 +891,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -700,6 +906,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -714,6 +921,7 @@ class _$_TodoSaved implements _TodoSaved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -799,6 +1007,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -813,6 +1022,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -827,6 +1037,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -845,6 +1056,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -859,6 +1071,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -873,6 +1086,7 @@ class _$_TodoTimeChanged implements _TodoTimeChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -963,6 +1177,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -977,6 +1192,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -991,6 +1207,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -1009,6 +1226,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -1023,6 +1241,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -1037,6 +1256,7 @@ class _$_TodoTitleChanged implements _TodoTitleChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -1141,6 +1361,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String desc) descChanged,
+    required TResult Function(Todo todo) edit,
     required TResult Function(Option<Todo> initialOption) initialized,
     required TResult Function(bool isDone) isDoneChanged,
     required TResult Function() saved,
@@ -1155,6 +1376,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -1169,6 +1391,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String desc)? descChanged,
+    TResult Function(Todo todo)? edit,
     TResult Function(Option<Todo> initialOption)? initialized,
     TResult Function(bool isDone)? isDoneChanged,
     TResult Function()? saved,
@@ -1187,6 +1410,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TodoDescChanged value) descChanged,
+    required TResult Function(_TodoEdit value) edit,
     required TResult Function(_TodoFormInitialized value) initialized,
     required TResult Function(_TodoIsDoneChanged value) isDoneChanged,
     required TResult Function(_TodoSaved value) saved,
@@ -1201,6 +1425,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
@@ -1215,6 +1440,7 @@ class _$_TodoCategoryChanged implements _TodoCategoryChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TodoDescChanged value)? descChanged,
+    TResult Function(_TodoEdit value)? edit,
     TResult Function(_TodoFormInitialized value)? initialized,
     TResult Function(_TodoIsDoneChanged value)? isDoneChanged,
     TResult Function(_TodoSaved value)? saved,
