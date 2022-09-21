@@ -5,6 +5,7 @@ import 'package:flutter_todo_ddd/common/widgets/app_button.dart';
 import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/dtos/todo_dto.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_category_button.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_date_field.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_drop_down.dart';
@@ -12,7 +13,10 @@ import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class AddTodoBottomSheet extends ConsumerStatefulWidget {
-  const AddTodoBottomSheet({super.key});
+  const AddTodoBottomSheet({super.key, this.isEdit = false, this.todo});
+
+  final bool isEdit;
+  final TodoDto? todo;
 
   @override
   ConsumerState<AddTodoBottomSheet> createState() => _AddTodoBottomSheetState();
@@ -25,6 +29,8 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
   Widget build(BuildContext context) {
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
+
+    final todo = widget.isEdit ? widget.todo : null;
 
     ref.listen<TodoFormState>(todoFormProvider, (previous, next) {
       next.option.fold(
@@ -59,6 +65,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 hint: 'Title',
                 label: 'Title',
                 enabled: !state.loading,
+                initialValue: todo?.title,
                 onChanged: (value) => event.mapEventsToStates(
                   TodoFormEvent.titleChanged(value),
                 ),
@@ -75,6 +82,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 maxLines: 3,
                 hint: 'Description',
                 label: 'Description',
+                initialValue: todo?.description,
                 onChanged: (value) => event.mapEventsToStates(
                   TodoFormEvent.descChanged(value),
                 ),
@@ -88,8 +96,11 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
               SizeUtil.vS(14),
               Row(
                 children: [
-                  const Expanded(
-                    child: CategoryDropDown(),
+                  Expanded(
+                    child: CategoryDropDown(
+                      isEdit: true,
+                      categoryDto: todo?.category,
+                    ),
                   ),
                   SizeUtil.hS(10),
                   const AddCategoryButton(),
@@ -99,7 +110,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
               const AddTodoDateField(),
               SizeUtil.vS(14),
               SwitchListTile(
-                value: state.todo.isDone,
+                value: widget.isEdit ? todo!.isDone : state.todo.isDone,
                 title: const Text('Mark as completed?'),
                 contentPadding: SizeUtil.pOnly(l: 22),
                 onChanged: (value) {
