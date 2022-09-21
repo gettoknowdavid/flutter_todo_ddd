@@ -9,9 +9,9 @@ import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/todo_list.dar
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class CategoryPage extends ConsumerWidget {
-  const CategoryPage({super.key, required this.category});
-
   final Category category;
+
+  const CategoryPage({super.key, required this.category});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,19 +35,20 @@ class CategoryPage extends ConsumerWidget {
       );
     }
 
-    final todos = (todoState as TodoSuccess).todos;
-
     return Scaffold(
       appBar: _AppBar(title: title),
-      body: TodoList(todos: todos),
+      body: TodoList(todos: (todoState as TodoSuccess).todos),
     );
   }
 }
 
 class _AppBar extends StatelessWidget with PreferredSizeWidget {
+  final String title;
+
   const _AppBar({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,4 @@ class _AppBar extends StatelessWidget with PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
