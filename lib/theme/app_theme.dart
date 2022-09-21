@@ -31,6 +31,18 @@ class AppTheme {
     ),
   );
 
+  static final _checkboxTheme = CheckboxThemeData(
+    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+      if (states.contains(MaterialState.disabled)) {
+        return AppColors.lavender;
+      }
+      return AppColors.orange;
+    }),
+    shape: RoundedRectangleBorder(
+      borderRadius: SizeUtil.borderRadius(100),
+    ),
+  );
+
   static final _colorScheme = const ColorScheme.light().copyWith(
     primary: AppColors.white,
     onPrimary: AppColors.black,
@@ -158,6 +170,7 @@ class AppTheme {
       bottomSheetTheme: _bottomSheetTheme,
       brightness: Brightness.light,
       canvasColor: AppColors.grey,
+      checkboxTheme: _checkboxTheme,
       colorScheme: _colorScheme,
       elevatedButtonTheme: _elevatedButtonTheme,
       iconTheme: _iconTheme,
