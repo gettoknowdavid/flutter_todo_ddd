@@ -6,29 +6,43 @@ import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/category_mapper.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/dtos/category_dto.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-class CategoryDropDown extends ConsumerWidget {
-  const CategoryDropDown({Key? key}) : super(key: key);
+class CategoryDropDown extends ConsumerStatefulWidget {
+  const CategoryDropDown({Key? key, this.isEdit = false, this.categoryDto})
+      : super(key: key);
+
+  final bool isEdit;
+  final CategoryDto? categoryDto;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CategoryDropDown> createState() => _CategoryDropDownState();
+}
+
+class _CategoryDropDownState extends ConsumerState<CategoryDropDown> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(categoryProvider);
     final todoState = ref.watch(todoFormProvider);
     final todoEvent = ref.watch(todoFormProvider.notifier);
 
-    return DropdownButton2<Category?>(
-      items: state is CategoryLoading ||
-              (state as CategorySuccess).categories.isEmpty
-          ? []
-          : state.categories
-              .map(
-                (e) => DropdownMenuItem<Category?>(
-                  value: e,
-                  child: Text(e!.title.getOrCrash()!),
-                ),
-              )
-              .toList(),
+    final initialCategory = CategoryMapper().toDomain(widget.categoryDto);
+
+    return DropdownButton2<Category>(
+      key: _formKey,
+      items: (state as CategorySuccess)
+          .categories
+          .map(
+            (e) => DropdownMenuItem<Category>(
+              value: e,
+              child: Text(e!.title.getOrCrash()!),
+            ),
+          )
+          .toList(),
       buttonHeight: SizeUtil.h(58),
       buttonDecoration: BoxDecoration(
         borderRadius: SizeUtil.borderRadius(20),
@@ -43,11 +57,23 @@ class CategoryDropDown extends ConsumerWidget {
       ),
       hint: const Text('Select category'),
       itemHeight: SizeUtil.h(58),
-      value: todoState.todo.category?.getOrCrash(),
+      value: initialCategory ?? todoState.todo.category?.getOrCrash()!,
       onChanged: (value) {
         todoEvent.mapEventsToStates(TodoFormEvent.categoryChanged(value));
       },
       underline: const SizedBox(),
     );
+  }
+
+  @override
+  bool get mounted => super.mounted;
+
+  @override
+  void initState() {
+    if (mounted) {
+      print('mounted');
+      _formKey.currentState?.reset();
+    }
+    super.initState();
   }
 }
