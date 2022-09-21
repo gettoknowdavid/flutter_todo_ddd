@@ -22,7 +22,7 @@ class TodoTile extends ConsumerWidget {
     return Container(
       height: SizeUtil.h(90),
       width: SizeUtil.sw(1),
-      margin: SizeUtil.pSymmetric(v: 6),
+      margin: SizeUtil.pOnly(b: 12),
       padding: SizeUtil.pSymmetric(h: 8, v: 18),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
