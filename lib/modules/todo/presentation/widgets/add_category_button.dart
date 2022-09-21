@@ -8,12 +8,7 @@ class AddCategoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (context) => const AddCategoryDialog(),
-        );
-      },
+      onPressed: () {},
       constraints: BoxConstraints(
         minWidth: SizeUtil.h(40),
         minHeight: SizeUtil.h(40),

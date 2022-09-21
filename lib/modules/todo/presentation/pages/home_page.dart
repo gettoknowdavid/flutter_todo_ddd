@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_bar_avatar.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
-import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_list.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/search_box.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/get_greeting.dart';
@@ -15,7 +12,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categoryState = ref.watch(categoryProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,9 +28,7 @@ class HomePage extends ConsumerWidget {
             SizeUtil.vS(30),
             const SearchBox(),
             SizeUtil.vS(30),
-            if (categoryState is CategorySuccess) ...[
-              CategoryList(categories: categoryState.categories),
-            ]
+            
           ],
         ),
       ),

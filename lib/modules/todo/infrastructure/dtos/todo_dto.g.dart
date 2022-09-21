@@ -1248,9 +1248,6 @@ TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       title: json['title'] as String,
       isDone: json['isDone'] as bool? ?? false,
       description: json['description'] as String?,
-      category: json['category'] == null
-          ? null
-          : CategoryDto.fromJson(json['category'] as Map<String, dynamic>),
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
       createdAt: json['createdAt'] == null
@@ -1263,7 +1260,6 @@ const _$TodoDtoFieldMap = <String, String>{
   'title': 'title',
   'isDone': 'isDone',
   'description': 'description',
-  'category': 'category',
   'time': 'time',
   'createdAt': 'createdAt',
 };
@@ -1273,7 +1269,6 @@ Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
       'title': instance.title,
       'isDone': instance.isDone,
       'description': instance.description,
-      'category': instance.category?.toJson(),
       'time': instance.time?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
     };

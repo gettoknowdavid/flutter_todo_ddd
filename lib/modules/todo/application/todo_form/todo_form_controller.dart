@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/errors/todo_failure.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/i_todo_facade.dart';
@@ -18,7 +17,6 @@ class TodoFormController extends StateNotifier<TodoFormState> {
 
   Future mapEventsToStates(TodoFormEvent e) async {
     return e.map(
-      categoryChanged: _categoryChanged,
       descChanged: _descChanged,
       edit: _edit,
       initialized: _initialized,
@@ -29,13 +27,7 @@ class TodoFormController extends StateNotifier<TodoFormState> {
     );
   }
 
-  _categoryChanged(_TodoCategoryChanged e) async {
-    state = state.copyWith(
-      todo: state.todo.copyWith(
-        category: ITodoCategory(e.category),
-      ),
-    );
-  }
+
 
   _descChanged(_TodoDescChanged e) async {
     state = state.copyWith(
@@ -53,7 +45,6 @@ class TodoFormController extends StateNotifier<TodoFormState> {
         uid: e.todo.uid,
         title: e.todo.title,
         description: e.todo.description,
-        category: e.todo.category,
         createdAt: e.todo.createdAt,
         isDone: e.todo.isDone,
         time: e.todo.time,

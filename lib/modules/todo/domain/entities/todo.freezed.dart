@@ -19,7 +19,6 @@ mixin _$Todo {
   Uid get uid => throw _privateConstructorUsedError;
   ITodoTitle get title => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
-  ITodoCategory? get category => throw _privateConstructorUsedError;
   ITodoDescription? get description => throw _privateConstructorUsedError;
   DateTime? get time => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -36,7 +35,6 @@ abstract class $TodoCopyWith<$Res> {
       {Uid uid,
       ITodoTitle title,
       bool isDone,
-      ITodoCategory? category,
       ITodoDescription? description,
       DateTime? time,
       DateTime? createdAt});
@@ -55,7 +53,6 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
     Object? uid = freezed,
     Object? title = freezed,
     Object? isDone = freezed,
-    Object? category = freezed,
     Object? description = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
@@ -73,10 +70,6 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as ITodoCategory?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -102,7 +95,6 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       {Uid uid,
       ITodoTitle title,
       bool isDone,
-      ITodoCategory? category,
       ITodoDescription? description,
       DateTime? time,
       DateTime? createdAt});
@@ -122,7 +114,6 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? title = freezed,
     Object? isDone = freezed,
-    Object? category = freezed,
     Object? description = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
@@ -140,10 +131,6 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as ITodoCategory?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -167,7 +154,6 @@ class _$_Todo implements _Todo {
       {required this.uid,
       required this.title,
       required this.isDone,
-      this.category,
       this.description,
       this.time,
       this.createdAt});
@@ -179,8 +165,6 @@ class _$_Todo implements _Todo {
   @override
   final bool isDone;
   @override
-  final ITodoCategory? category;
-  @override
   final ITodoDescription? description;
   @override
   final DateTime? time;
@@ -189,7 +173,7 @@ class _$_Todo implements _Todo {
 
   @override
   String toString() {
-    return 'Todo(uid: $uid, title: $title, isDone: $isDone, category: $category, description: $description, time: $time, createdAt: $createdAt)';
+    return 'Todo(uid: $uid, title: $title, isDone: $isDone, description: $description, time: $time, createdAt: $createdAt)';
   }
 
   @override
@@ -200,7 +184,6 @@ class _$_Todo implements _Todo {
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.isDone, isDone) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.time, time) &&
@@ -213,7 +196,6 @@ class _$_Todo implements _Todo {
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(isDone),
-      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(time),
       const DeepCollectionEquality().hash(createdAt));
@@ -229,7 +211,6 @@ abstract class _Todo implements Todo {
       {required final Uid uid,
       required final ITodoTitle title,
       required final bool isDone,
-      final ITodoCategory? category,
       final ITodoDescription? description,
       final DateTime? time,
       final DateTime? createdAt}) = _$_Todo;
@@ -240,8 +221,6 @@ abstract class _Todo implements Todo {
   ITodoTitle get title;
   @override
   bool get isDone;
-  @override
-  ITodoCategory? get category;
   @override
   ITodoDescription? get description;
   @override

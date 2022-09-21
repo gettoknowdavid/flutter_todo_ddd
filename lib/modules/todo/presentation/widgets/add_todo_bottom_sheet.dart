@@ -6,9 +6,7 @@ import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/dtos/todo_dto.dart';
-import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_category_button.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_date_field.dart';
-import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_drop_down.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -92,19 +90,6 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                   ),
                   (_) => null,
                 ),
-              ),
-              SizeUtil.vS(14),
-              Row(
-                children: [
-                  Expanded(
-                    child: CategoryDropDown(
-                      isEdit: true,
-                      categoryDto: todo?.category,
-                    ),
-                  ),
-                  SizeUtil.hS(10),
-                  const AddCategoryButton(),
-                ],
               ),
               SizeUtil.vS(14),
               const AddTodoDateField(),

@@ -4,8 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'category_dto.dart';
-
 part 'todo_dto.g.dart';
 
 @Collection<TodoDto>('todos')
@@ -17,7 +15,6 @@ class TodoDto extends Equatable {
   final String title;
   final bool isDone;
   final String? description;
-  final CategoryDto? category;
   final DateTime? time;
   final DateTime? createdAt;
 
@@ -26,7 +23,6 @@ class TodoDto extends Equatable {
     required this.title,
     this.isDone = false,
     this.description,
-    this.category,
     this.time,
     this.createdAt,
   });
@@ -37,9 +33,6 @@ class TodoDto extends Equatable {
       title: todo.title.getOrCrash()!,
       isDone: todo.isDone,
       description: todo.description?.getOrCrash(),
-      category: todo.category != null
-          ? CategoryDto.fromDomain(todo.category?.getOrCrash())
-          : null,
       time: todo.time,
       createdAt: todo.createdAt,
     );

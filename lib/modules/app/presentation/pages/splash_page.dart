@@ -6,8 +6,6 @@ import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category/category_controller.dart';
-import 'package:flutter_todo_ddd/modules/todo/application/category_provider.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -20,14 +18,12 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   Widget build(BuildContext context) {
     final appEvent = ref.watch(appProvider.notifier);
-    final categoryEvent = ref.watch(categoryProvider.notifier);
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       Future.delayed(const Duration(seconds: 5), () {
         next.mapOrNull(
           authenticated: (_) {
             appEvent.mapEventsToStates(const AppEvent.initialized());
-            categoryEvent.mapEventsToStates(const CategoryEvent.watchAll());
             Modular.to.pushReplacementNamed('/layout');
           },
           unauthenticated: (_) => Modular.to.pushReplacementNamed('/login'),
