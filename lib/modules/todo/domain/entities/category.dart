@@ -7,13 +7,13 @@ extension CategoryColor on Category {
   Color get color {
     switch (this) {
       case Category.inbox:
-        return AppColors.white;
+        return AppColors.grey;
       case Category.upComing:
         return AppColors.green;
       case Category.today:
         return AppColors.orange;
       default:
-        return AppColors.black;
+        return AppColors.grey;
     }
   }
 }
