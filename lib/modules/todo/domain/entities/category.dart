@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 
-enum Category { all, upComing, today, inbox }
+enum Category { all, upComing, today, done }
 
 extension CategoryColor on Category {
   Color get color {
     switch (this) {
-      case Category.inbox:
+      case Category.done:
         return AppColors.grey;
       case Category.upComing:
         return AppColors.green;
@@ -21,8 +21,8 @@ extension CategoryColor on Category {
 extension CategoryName on Category {
   String get name {
     switch (this) {
-      case Category.inbox:
-        return 'Inbox';
+      case Category.done:
+        return 'Done';
       case Category.upComing:
         return 'Upcoming';
       case Category.today:
