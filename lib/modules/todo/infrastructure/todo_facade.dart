@@ -98,7 +98,7 @@ class TodoFacade implements ITodoFacade {
   @override
   Stream<Either<TodoFailure, List<Todo?>>> watchToday() async* {
     yield* todosRef
-        .whereCreatedAt(isEqualTo: DateTime.now())
+        .whereTime(isEqualTo: DateTime.now())
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
@@ -131,7 +131,7 @@ class TodoFacade implements ITodoFacade {
   @override
   Stream<Either<TodoFailure, List<Todo?>>> watchUpcoming() async* {
     yield* todosRef
-        .whereCreatedAt(isGreaterThan: DateTime.now())
+        .whereTime(isGreaterThan: DateTime.now())
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
