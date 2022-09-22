@@ -8,16 +8,21 @@ import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/todo_list.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-class CategoryPage extends ConsumerWidget {
+class CategoryPage extends ConsumerStatefulWidget {
   final Category category;
 
   const CategoryPage({super.key, required this.category});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CategoryPage> createState() => _CategoryPageState();
+}
+
+class _CategoryPageState extends ConsumerState<CategoryPage> {
+  @override
+  Widget build(BuildContext context) {
     final todoState = ref.watch(todoProvider);
 
-    final title = category.name;
+    final title = widget.category.name;
 
     if (todoState is TodoFailed) {
       return Scaffold(
