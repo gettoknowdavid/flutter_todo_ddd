@@ -7,5 +7,8 @@ abstract class ITodoFacade {
   Future<Either<TodoFailure, Unit>> delete(Todo todo);
   Future<Either<TodoFailure, Unit>> edit(Todo todo);
   Stream<Either<TodoFailure, List<Todo?>>> watchAll();
+  Stream<Either<TodoFailure, List<Todo?>>> watchUpcoming();
+  Stream<Either<TodoFailure, List<Todo?>>> watchToday();
+  Stream<Either<TodoFailure, List<Todo?>>> watchDone();
   Stream<Either<TodoFailure, List<Todo?>>> watchUncompleted();
 }
