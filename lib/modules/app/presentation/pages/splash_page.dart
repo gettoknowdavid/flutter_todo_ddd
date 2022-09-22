@@ -6,6 +6,8 @@ import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_event.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_providers.dart';
 import 'package:flutter_todo_ddd/modules/auth/application/auth_state.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo/todo_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -18,13 +20,20 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   Widget build(BuildContext context) {
     final appEvent = ref.watch(appProvider.notifier);
+    final todoEvent = ref.watch(todoProvider.notifier);
 
     ref.listen<AuthState>(authProvider, (previous, next) {
       Future.delayed(const Duration(seconds: 5), () {
         next.mapOrNull(
           authenticated: (_) {
             appEvent.mapEventsToStates(const AppEvent.initialized());
+
             Modular.to.pushReplacementNamed('/layout');
+
+            todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+            todoEvent.mapEventsToStates(const TodoEvent.watchDone());
+            todoEvent.mapEventsToStates(const TodoEvent.watchToday());
+            todoEvent.mapEventsToStates(const TodoEvent.watchUpcoming());
           },
           unauthenticated: (_) => Modular.to.pushReplacementNamed('/login'),
           unverified: (_) => Modular.to.pushReplacementNamed('/verification'),
