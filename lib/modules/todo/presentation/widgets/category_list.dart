@@ -11,20 +11,33 @@ class CategoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: SizeUtil.pSymmetric(h: 18),
-      child: MasonryGridView.extent(
-        primary: false,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: Category.values.length,
-        maxCrossAxisExtent: SizeUtil.sw(0.5),
-        mainAxisSpacing: SizeUtil.h(12),
-        crossAxisSpacing: SizeUtil.h(12),
-        itemBuilder: (context, index) {
-          return CategoryTile(
-            category: Category.values[index],
-            index: index,
-          );
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'Categories',
+            style: TextStyle(
+              fontSize: SizeUtil.fontSize(20),
+              color: Colors.black54,
+            ),
+          ),
+          SizeUtil.vS(14),
+          MasonryGridView.extent(
+            primary: false,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: Category.values.length,
+            maxCrossAxisExtent: SizeUtil.sw(0.45),
+            mainAxisSpacing: SizeUtil.h(12),
+            crossAxisSpacing: SizeUtil.h(12),
+            itemBuilder: (context, index) {
+              return CategoryTile(
+                category: Category.values[index],
+                index: index,
+              );
+            },
+          ),
+        ],
       ),
     );
   }
