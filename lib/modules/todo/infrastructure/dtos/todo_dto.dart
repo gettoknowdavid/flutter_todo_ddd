@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,13 +9,26 @@ part 'todo_dto.g.dart';
 @Collection<TodoDto>('todos')
 final todosRef = TodoDtoCollectionReference();
 
+class TimestampConverter implements JsonConverter<DateTime?, Timestamp?> {
+  const TimestampConverter();
+
+  @override
+  DateTime? fromJson(Timestamp? value) => value?.toDate();
+
+  @override
+  Timestamp? toJson(DateTime? value) =>
+      value != null ? Timestamp.fromDate(value) : null;
+}
+
 @JsonSerializable(explicitToJson: true, createFieldMap: true)
 class TodoDto extends Equatable {
   final String uid;
   final String title;
   final bool isDone;
   final String? description;
+  @TimestampConverter()
   final DateTime? time;
+  @TimestampConverter()
   final DateTime? createdAt;
 
   const TodoDto({
