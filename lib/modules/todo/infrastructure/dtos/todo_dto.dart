@@ -16,7 +16,6 @@ class TodoDto extends Equatable {
   final String title;
   final bool isDone;
   final String? description;
-  final Category? category;
   final DateTime? time;
   final DateTime? createdAt;
 
@@ -24,7 +23,6 @@ class TodoDto extends Equatable {
     required this.uid,
     required this.title,
     this.isDone = false,
-    this.category,
     this.description,
     this.time,
     this.createdAt,
@@ -36,7 +34,6 @@ class TodoDto extends Equatable {
       title: todo.title.getOrCrash()!,
       isDone: todo.isDone,
       description: todo.description?.getOrCrash(),
-      category: todo.category,
       time: todo.time,
       createdAt: todo.createdAt,
     );

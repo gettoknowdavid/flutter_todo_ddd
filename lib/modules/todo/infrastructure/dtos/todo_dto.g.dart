@@ -1247,7 +1247,6 @@ TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       uid: json['uid'] as String,
       title: json['title'] as String,
       isDone: json['isDone'] as bool? ?? false,
-      category: $enumDecodeNullable(_$CategoryEnumMap, json['category']),
       description: json['description'] as String?,
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
@@ -1261,7 +1260,6 @@ const _$TodoDtoFieldMap = <String, String>{
   'title': 'title',
   'isDone': 'isDone',
   'description': 'description',
-  'category': 'category',
   'time': 'time',
   'createdAt': 'createdAt',
 };
@@ -1271,14 +1269,6 @@ Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
       'title': instance.title,
       'isDone': instance.isDone,
       'description': instance.description,
-      'category': _$CategoryEnumMap[instance.category],
       'time': instance.time?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
     };
-
-const _$CategoryEnumMap = {
-  Category.all: 'all',
-  Category.upComing: 'upComing',
-  Category.today: 'today',
-  Category.inbox: 'inbox',
-};
