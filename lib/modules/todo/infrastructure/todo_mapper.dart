@@ -14,7 +14,6 @@ class TodoMapper {
       title: ITodoTitle(dto.title),
       isDone: dto.isDone,
       description: ITodoDescription(dto.description),
-      category: dto.category,
       time: dto.time,
       createdAt: dto.createdAt,
     );
