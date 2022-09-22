@@ -34,7 +34,7 @@ class CategoryTile extends ConsumerWidget {
         // );
       },
       child: Container(
-        height: (index % 2.05 + 1.3) * 90,
+        height: (index % 2.03 + 1.3) * 80,
         padding: SizeUtil.pAll(18),
         alignment: Alignment.center,
         decoration: BoxDecoration(
