@@ -9,7 +9,7 @@ extension CategoryColor on Category {
       case Category.inbox:
         return AppColors.lavender;
       case Category.upComing:
-        return Colors.green;
+        return AppColors.green;
       case Category.today:
         return AppColors.orange;
       default:
