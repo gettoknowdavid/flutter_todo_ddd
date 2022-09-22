@@ -27,7 +27,22 @@ class CategoryTile extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+        switch (category) {
+          case Category.all:
+            todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+            break;
+          case Category.done:
+            todoEvent.mapEventsToStates(const TodoEvent.watchDone());
+            break;
+          case Category.today:
+            todoEvent.mapEventsToStates(const TodoEvent.watchToday());
+            break;
+          case Category.upComing:
+            todoEvent.mapEventsToStates(const TodoEvent.watchUpcoming());
+            break;
+          default:
+            null;
+        }
 
         Modular.to.push(
           MaterialPageRoute(
