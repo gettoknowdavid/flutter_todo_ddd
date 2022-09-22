@@ -17,6 +17,7 @@ import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_co
 import 'package:flutter_todo_ddd/modules/todo/domain/i_todo_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_facade.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_mapper.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/pages/category_page.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/pages/profile_page.dart';
 import 'package:flutter_todo_ddd/services/open_mail_app_facade.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -47,5 +48,9 @@ class AppModule extends Module {
     ChildRoute('/forgotPassword', child: (_, __) => ForgotPasswordPage()),
     ChildRoute('/layout', child: (_, __) => const AppLayout()),
     ChildRoute('/profile', child: (_, __) => const ProfilePage()),
+    ChildRoute(
+      '/category',
+      child: (_, args) => CategoryPage(category: args.data),
+    ),
   ];
 }
