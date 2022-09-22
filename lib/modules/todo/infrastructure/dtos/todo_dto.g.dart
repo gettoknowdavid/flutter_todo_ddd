@@ -1248,11 +1248,9 @@ TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       title: json['title'] as String,
       isDone: json['isDone'] as bool? ?? false,
       description: json['description'] as String?,
-      time:
-          json['time'] == null ? null : DateTime.parse(json['time'] as String),
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
+      time: const TimestampConverter().fromJson(json['time'] as Timestamp?),
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp?),
     );
 
 const _$TodoDtoFieldMap = <String, String>{
@@ -1269,6 +1267,6 @@ Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
       'title': instance.title,
       'isDone': instance.isDone,
       'description': instance.description,
-      'time': instance.time?.toIso8601String(),
-      'createdAt': instance.createdAt?.toIso8601String(),
+      'time': const TimestampConverter().toJson(instance.time),
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
     };
