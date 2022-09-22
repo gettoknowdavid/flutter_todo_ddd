@@ -80,10 +80,61 @@ class TodoFacade implements ITodoFacade {
   }
 
   @override
+  Stream<Either<TodoFailure, List<Todo?>>> watchDone() async* {
+    yield* todosRef
+        .whereIsDone(isEqualTo: true)
+        .orderByCreatedAt(descending: true)
+        .snapshots()
+        .map((snapshot) => right<TodoFailure, List<Todo?>>(
+            snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
+        .onErrorReturnWith((e, stackTrace) {
+      if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    });
+  }
+
+  @override
+  Stream<Either<TodoFailure, List<Todo?>>> watchToday() async* {
+    yield* todosRef
+        .whereCreatedAt(isEqualTo: DateTime.now())
+        .orderByCreatedAt(descending: true)
+        .snapshots()
+        .map((snapshot) => right<TodoFailure, List<Todo?>>(
+            snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
+        .onErrorReturnWith((e, stackTrace) {
+      if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    });
+  }
+
+  @override
   Stream<Either<TodoFailure, List<Todo?>>> watchUncompleted() async* {
     yield* todosRef
         .orderByCreatedAt(descending: true)
         .orderByIsDone(startAt: false)
+        .snapshots()
+        .map((snapshot) => right<TodoFailure, List<Todo?>>(
+            snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
+        .onErrorReturnWith((e, stackTrace) {
+      if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
+        return left(const TodoFailure.insufficientPermissions());
+      } else {
+        return left(const TodoFailure.serverError());
+      }
+    });
+  }
+
+  @override
+  Stream<Either<TodoFailure, List<Todo?>>> watchUpcoming() async* {
+    yield* todosRef
+        .whereCreatedAt(isGreaterThan: DateTime.now())
+        .orderByCreatedAt(descending: true)
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
