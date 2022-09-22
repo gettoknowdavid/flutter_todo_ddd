@@ -18,46 +18,64 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAll,
-    required TResult Function() watchUncompleted,
     required TResult Function(Either<TodoFailure, List<Todo?>> either)
         todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
     TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
     TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAll value) watchAll,
-    required TResult Function(_WatchUncompleted value) watchUncompleted,
     required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
     TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
     TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,229 +94,6 @@ class _$TodoEventCopyWithImpl<$Res> implements $TodoEventCopyWith<$Res> {
   final TodoEvent _value;
   // ignore: unused_field
   final $Res Function(TodoEvent) _then;
-}
-
-/// @nodoc
-abstract class _$$_WatchAllCopyWith<$Res> {
-  factory _$$_WatchAllCopyWith(
-          _$_WatchAll value, $Res Function(_$_WatchAll) then) =
-      __$$_WatchAllCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_WatchAllCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
-    implements _$$_WatchAllCopyWith<$Res> {
-  __$$_WatchAllCopyWithImpl(
-      _$_WatchAll _value, $Res Function(_$_WatchAll) _then)
-      : super(_value, (v) => _then(v as _$_WatchAll));
-
-  @override
-  _$_WatchAll get _value => super._value as _$_WatchAll;
-}
-
-/// @nodoc
-
-class _$_WatchAll implements _WatchAll {
-  const _$_WatchAll();
-
-  @override
-  String toString() {
-    return 'TodoEvent.watchAll()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WatchAll);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() watchAll,
-    required TResult Function() watchUncompleted,
-    required TResult Function(Either<TodoFailure, List<Todo?>> either)
-        todosReceived,
-  }) {
-    return watchAll();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
-    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
-  }) {
-    return watchAll?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
-    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
-    required TResult orElse(),
-  }) {
-    if (watchAll != null) {
-      return watchAll();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAll value) watchAll,
-    required TResult Function(_WatchUncompleted value) watchUncompleted,
-    required TResult Function(_TodosReceived value) todosReceived,
-  }) {
-    return watchAll(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
-    TResult Function(_TodosReceived value)? todosReceived,
-  }) {
-    return watchAll?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
-    TResult Function(_TodosReceived value)? todosReceived,
-    required TResult orElse(),
-  }) {
-    if (watchAll != null) {
-      return watchAll(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WatchAll implements TodoEvent {
-  const factory _WatchAll() = _$_WatchAll;
-}
-
-/// @nodoc
-abstract class _$$_WatchUncompletedCopyWith<$Res> {
-  factory _$$_WatchUncompletedCopyWith(
-          _$_WatchUncompleted value, $Res Function(_$_WatchUncompleted) then) =
-      __$$_WatchUncompletedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_WatchUncompletedCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res>
-    implements _$$_WatchUncompletedCopyWith<$Res> {
-  __$$_WatchUncompletedCopyWithImpl(
-      _$_WatchUncompleted _value, $Res Function(_$_WatchUncompleted) _then)
-      : super(_value, (v) => _then(v as _$_WatchUncompleted));
-
-  @override
-  _$_WatchUncompleted get _value => super._value as _$_WatchUncompleted;
-}
-
-/// @nodoc
-
-class _$_WatchUncompleted implements _WatchUncompleted {
-  const _$_WatchUncompleted();
-
-  @override
-  String toString() {
-    return 'TodoEvent.watchUncompleted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WatchUncompleted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() watchAll,
-    required TResult Function() watchUncompleted,
-    required TResult Function(Either<TodoFailure, List<Todo?>> either)
-        todosReceived,
-  }) {
-    return watchUncompleted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
-    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
-  }) {
-    return watchUncompleted?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
-    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
-    required TResult orElse(),
-  }) {
-    if (watchUncompleted != null) {
-      return watchUncompleted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAll value) watchAll,
-    required TResult Function(_WatchUncompleted value) watchUncompleted,
-    required TResult Function(_TodosReceived value) todosReceived,
-  }) {
-    return watchUncompleted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
-    TResult Function(_TodosReceived value)? todosReceived,
-  }) {
-    return watchUncompleted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
-    TResult Function(_TodosReceived value)? todosReceived,
-    required TResult orElse(),
-  }) {
-    if (watchUncompleted != null) {
-      return watchUncompleted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WatchUncompleted implements TodoEvent {
-  const factory _WatchUncompleted() = _$_WatchUncompleted;
 }
 
 /// @nodoc
@@ -365,10 +160,13 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAll,
-    required TResult Function() watchUncompleted,
     required TResult Function(Either<TodoFailure, List<Todo?>> either)
         todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
   }) {
     return todosReceived(either);
   }
@@ -376,9 +174,12 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
     TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
   }) {
     return todosReceived?.call(either);
   }
@@ -386,9 +187,12 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAll,
-    TResult Function()? watchUncompleted,
     TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
     required TResult orElse(),
   }) {
     if (todosReceived != null) {
@@ -400,9 +204,12 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAll value) watchAll,
-    required TResult Function(_WatchUncompleted value) watchUncompleted,
     required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
   }) {
     return todosReceived(this);
   }
@@ -410,9 +217,12 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
     TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
   }) {
     return todosReceived?.call(this);
   }
@@ -420,9 +230,12 @@ class _$_TodosReceived implements _TodosReceived {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAll value)? watchAll,
-    TResult Function(_WatchUncompleted value)? watchUncompleted,
     TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
     required TResult orElse(),
   }) {
     if (todosReceived != null) {
@@ -440,6 +253,652 @@ abstract class _TodosReceived implements TodoEvent {
   @JsonKey(ignore: true)
   _$$_TodosReceivedCopyWith<_$_TodosReceived> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_WatchAllCopyWith<$Res> {
+  factory _$$_WatchAllCopyWith(
+          _$_WatchAll value, $Res Function(_$_WatchAll) then) =
+      __$$_WatchAllCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchAllCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
+    implements _$$_WatchAllCopyWith<$Res> {
+  __$$_WatchAllCopyWithImpl(
+      _$_WatchAll _value, $Res Function(_$_WatchAll) _then)
+      : super(_value, (v) => _then(v as _$_WatchAll));
+
+  @override
+  _$_WatchAll get _value => super._value as _$_WatchAll;
+}
+
+/// @nodoc
+
+class _$_WatchAll implements _WatchAll {
+  const _$_WatchAll();
+
+  @override
+  String toString() {
+    return 'TodoEvent.watchAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<TodoFailure, List<Todo?>> either)
+        todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
+  }) {
+    return watchAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+  }) {
+    return watchAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchAll != null) {
+      return watchAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
+  }) {
+    return watchAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+  }) {
+    return watchAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchAll != null) {
+      return watchAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchAll implements TodoEvent {
+  const factory _WatchAll() = _$_WatchAll;
+}
+
+/// @nodoc
+abstract class _$$_WatchDoneCopyWith<$Res> {
+  factory _$$_WatchDoneCopyWith(
+          _$_WatchDone value, $Res Function(_$_WatchDone) then) =
+      __$$_WatchDoneCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchDoneCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
+    implements _$$_WatchDoneCopyWith<$Res> {
+  __$$_WatchDoneCopyWithImpl(
+      _$_WatchDone _value, $Res Function(_$_WatchDone) _then)
+      : super(_value, (v) => _then(v as _$_WatchDone));
+
+  @override
+  _$_WatchDone get _value => super._value as _$_WatchDone;
+}
+
+/// @nodoc
+
+class _$_WatchDone implements _WatchDone {
+  const _$_WatchDone();
+
+  @override
+  String toString() {
+    return 'TodoEvent.watchDone()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchDone);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<TodoFailure, List<Todo?>> either)
+        todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
+  }) {
+    return watchDone();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+  }) {
+    return watchDone?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchDone != null) {
+      return watchDone();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
+  }) {
+    return watchDone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+  }) {
+    return watchDone?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchDone != null) {
+      return watchDone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchDone implements TodoEvent {
+  const factory _WatchDone() = _$_WatchDone;
+}
+
+/// @nodoc
+abstract class _$$_WatchTodayCopyWith<$Res> {
+  factory _$$_WatchTodayCopyWith(
+          _$_WatchToday value, $Res Function(_$_WatchToday) then) =
+      __$$_WatchTodayCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchTodayCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
+    implements _$$_WatchTodayCopyWith<$Res> {
+  __$$_WatchTodayCopyWithImpl(
+      _$_WatchToday _value, $Res Function(_$_WatchToday) _then)
+      : super(_value, (v) => _then(v as _$_WatchToday));
+
+  @override
+  _$_WatchToday get _value => super._value as _$_WatchToday;
+}
+
+/// @nodoc
+
+class _$_WatchToday implements _WatchToday {
+  const _$_WatchToday();
+
+  @override
+  String toString() {
+    return 'TodoEvent.watchToday()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchToday);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<TodoFailure, List<Todo?>> either)
+        todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
+  }) {
+    return watchToday();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+  }) {
+    return watchToday?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchToday != null) {
+      return watchToday();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
+  }) {
+    return watchToday(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+  }) {
+    return watchToday?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchToday != null) {
+      return watchToday(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchToday implements TodoEvent {
+  const factory _WatchToday() = _$_WatchToday;
+}
+
+/// @nodoc
+abstract class _$$_WatchUncompletedCopyWith<$Res> {
+  factory _$$_WatchUncompletedCopyWith(
+          _$_WatchUncompleted value, $Res Function(_$_WatchUncompleted) then) =
+      __$$_WatchUncompletedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchUncompletedCopyWithImpl<$Res>
+    extends _$TodoEventCopyWithImpl<$Res>
+    implements _$$_WatchUncompletedCopyWith<$Res> {
+  __$$_WatchUncompletedCopyWithImpl(
+      _$_WatchUncompleted _value, $Res Function(_$_WatchUncompleted) _then)
+      : super(_value, (v) => _then(v as _$_WatchUncompleted));
+
+  @override
+  _$_WatchUncompleted get _value => super._value as _$_WatchUncompleted;
+}
+
+/// @nodoc
+
+class _$_WatchUncompleted implements _WatchUncompleted {
+  const _$_WatchUncompleted();
+
+  @override
+  String toString() {
+    return 'TodoEvent.watchUncompleted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchUncompleted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<TodoFailure, List<Todo?>> either)
+        todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
+  }) {
+    return watchUncompleted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+  }) {
+    return watchUncompleted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchUncompleted != null) {
+      return watchUncompleted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
+  }) {
+    return watchUncompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+  }) {
+    return watchUncompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchUncompleted != null) {
+      return watchUncompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchUncompleted implements TodoEvent {
+  const factory _WatchUncompleted() = _$_WatchUncompleted;
+}
+
+/// @nodoc
+abstract class _$$_WatchUpcomingCopyWith<$Res> {
+  factory _$$_WatchUpcomingCopyWith(
+          _$_WatchUpcoming value, $Res Function(_$_WatchUpcoming) then) =
+      __$$_WatchUpcomingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchUpcomingCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
+    implements _$$_WatchUpcomingCopyWith<$Res> {
+  __$$_WatchUpcomingCopyWithImpl(
+      _$_WatchUpcoming _value, $Res Function(_$_WatchUpcoming) _then)
+      : super(_value, (v) => _then(v as _$_WatchUpcoming));
+
+  @override
+  _$_WatchUpcoming get _value => super._value as _$_WatchUpcoming;
+}
+
+/// @nodoc
+
+class _$_WatchUpcoming implements _WatchUpcoming {
+  const _$_WatchUpcoming();
+
+  @override
+  String toString() {
+    return 'TodoEvent.watchUpcoming()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchUpcoming);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Either<TodoFailure, List<Todo?>> either)
+        todosReceived,
+    required TResult Function() watchAll,
+    required TResult Function() watchDone,
+    required TResult Function() watchToday,
+    required TResult Function() watchUncompleted,
+    required TResult Function() watchUpcoming,
+  }) {
+    return watchUpcoming();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+  }) {
+    return watchUpcoming?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Either<TodoFailure, List<Todo?>> either)? todosReceived,
+    TResult Function()? watchAll,
+    TResult Function()? watchDone,
+    TResult Function()? watchToday,
+    TResult Function()? watchUncompleted,
+    TResult Function()? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchUpcoming != null) {
+      return watchUpcoming();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TodosReceived value) todosReceived,
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_WatchDone value) watchDone,
+    required TResult Function(_WatchToday value) watchToday,
+    required TResult Function(_WatchUncompleted value) watchUncompleted,
+    required TResult Function(_WatchUpcoming value) watchUpcoming,
+  }) {
+    return watchUpcoming(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+  }) {
+    return watchUpcoming?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TodosReceived value)? todosReceived,
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_WatchDone value)? watchDone,
+    TResult Function(_WatchToday value)? watchToday,
+    TResult Function(_WatchUncompleted value)? watchUncompleted,
+    TResult Function(_WatchUpcoming value)? watchUpcoming,
+    required TResult orElse(),
+  }) {
+    if (watchUpcoming != null) {
+      return watchUpcoming(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchUpcoming implements TodoEvent {
+  const factory _WatchUpcoming() = _$_WatchUpcoming;
 }
 
 /// @nodoc
