@@ -40,6 +40,7 @@ class CategoryTile extends ConsumerWidget {
         decoration: BoxDecoration(
           color: category.color,
           borderRadius: SizeUtil.borderRadius(30),
+          border: Border.all(color: AppColors.lavender),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
