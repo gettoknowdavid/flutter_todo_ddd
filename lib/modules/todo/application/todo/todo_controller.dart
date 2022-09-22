@@ -14,13 +14,25 @@ part 'todo_state.dart';
 class TodoController extends StateNotifier<TodoState> {
   final ITodoFacade _facade;
 
-  late StreamSubscription<Either<TodoFailure, List<Todo?>>> _subscription;
+  late StreamSubscription<Either<TodoFailure, List<Todo?>>> _subscriptionAll;
+  late StreamSubscription<Either<TodoFailure, List<Todo?>>> _subscriptionDone;
+  late StreamSubscription<Either<TodoFailure, List<Todo?>>> _subscriptionToday;
+  late StreamSubscription<Either<TodoFailure, List<Todo?>>>
+      _subscriptionUpcoming;
+
+  int subLengthAll = 0;
+  int subLengthDone = 0;
+  int subLengthToday = 0;
+  int subLengthUpcoming = 0;
 
   TodoController(this._facade) : super(const TodoState.initial());
 
   @override
   Future<void> dispose() async {
-    await _subscription.cancel();
+    _subscriptionAll.cancel();
+    _subscriptionDone.cancel();
+    _subscriptionToday.cancel();
+    _subscriptionUpcoming.cancel();
     super.dispose();
   }
 
@@ -38,46 +50,47 @@ class TodoController extends StateNotifier<TodoState> {
   _todosReceived(_TodosReceived e) async {
     state = e.either.fold(
       (failure) => TodoState.loadFailure(failure),
-      (success) => TodoState.loadSuccess(success),
+      (success) => TodoState.loadSuccess(
+        todos: success,
+        allTodosLength: subLengthAll,
+        doneTodosLength: subLengthDone,
+        todayTodosLength: subLengthToday,
+        upcomingTodosLength: subLengthUpcoming,
+      ),
     );
   }
 
   _watchAll(_WatchAll e) async {
-    state = const TodoState.loading();
-
-    _subscription = _facade.watchAll().listen((event) {
+    _subscriptionAll = _facade.watchAll().listen((event) {
+      event.fold((l) => null, (r) => subLengthAll = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
   _watchDone(_WatchDone e) async {
-    state = const TodoState.loading();
-
-    _subscription = _facade.watchDone().listen((event) {
+    _subscriptionDone = _facade.watchDone().listen((event) {
+      event.fold((l) => null, (r) => subLengthDone = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
   _watchToday(_WatchToday e) async {
-    state = const TodoState.loading();
-
-    _subscription = _facade.watchToday().listen((event) {
+    _subscriptionToday = _facade.watchToday().listen((event) {
+      event.fold((l) => null, (r) => subLengthToday = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
   _watchUncompleted(_WatchUncompleted e) async {
-    state = const TodoState.loading();
-
-    _subscription = _facade.watchUncompleted().listen((event) {
+    _subscriptionToday = _facade.watchUncompleted().listen((event) {
+      event.fold((l) => null, (r) => subLengthAll = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
   _watchUpcoming(_WatchUpcoming e) async {
-    state = const TodoState.loading();
-
-    _subscription = _facade.watchUncompleted().listen((event) {
+    _subscriptionUpcoming = _facade.watchUpcoming().listen((event) {
+      event.fold((l) => null, (r) => subLengthUpcoming = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
