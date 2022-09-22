@@ -8,6 +8,24 @@ import 'package:flutter_todo_ddd/modules/todo/presentation/pages/category_page.d
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
+String getLength(Category category, TodoState state) {
+  if (state is TodoSuccess) {
+    switch (category) {
+      case Category.all:
+        return '${state.allTodosLength} todos';
+      case Category.done:
+        return '${state.doneTodosLength} todos';
+      case Category.today:
+        return '${state.todayTodosLength} todos';
+      case Category.upComing:
+        return '${state.upcomingTodosLength} todos';
+      default:
+        return '${state.allTodosLength} todos';
+    }
+  }
+  return 'Loading';
+}
+
 class CategoryTile extends ConsumerWidget {
   const CategoryTile({
     Key? key,
@@ -24,6 +42,7 @@ class CategoryTile extends ConsumerWidget {
         Brightness.light;
 
     final todoEvent = ref.watch(todoProvider.notifier);
+    final todoState = ref.watch(todoProvider);
 
     return GestureDetector(
       onTap: () {
@@ -41,7 +60,7 @@ class CategoryTile extends ConsumerWidget {
             todoEvent.mapEventsToStates(const TodoEvent.watchUpcoming());
             break;
           default:
-            null;
+            todoEvent.mapEventsToStates(const TodoEvent.watchAll());
         }
 
         Modular.to.push(
@@ -73,7 +92,7 @@ class CategoryTile extends ConsumerWidget {
             ),
             SizeUtil.hS(10),
             Text(
-              '4 Tasks',
+              getLength(category, todoState),
               style: TextStyle(
                 fontSize: SizeUtil.fontSize(14),
                 color: isLight ? Colors.black45 : Colors.white54,
