@@ -907,7 +907,9 @@ mixin _$TodoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Todo?> todos) loadSuccess,
+    required TResult Function(List<Todo?> todos, int allTodosLength,
+            int doneTodosLength, int todayTodosLength, int upcomingTodosLength)
+        loadSuccess,
     required TResult Function(TodoFailure failure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -915,7 +917,9 @@ mixin _$TodoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -923,7 +927,9 @@ mixin _$TodoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -1012,7 +1018,9 @@ class _$TodoInitial implements TodoInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Todo?> todos) loadSuccess,
+    required TResult Function(List<Todo?> todos, int allTodosLength,
+            int doneTodosLength, int todayTodosLength, int upcomingTodosLength)
+        loadSuccess,
     required TResult Function(TodoFailure failure) loadFailure,
   }) {
     return initial();
@@ -1023,7 +1031,9 @@ class _$TodoInitial implements TodoInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
   }) {
     return initial?.call();
@@ -1034,7 +1044,9 @@ class _$TodoInitial implements TodoInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -1128,7 +1140,9 @@ class _$TodoLoading implements TodoLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Todo?> todos) loadSuccess,
+    required TResult Function(List<Todo?> todos, int allTodosLength,
+            int doneTodosLength, int todayTodosLength, int upcomingTodosLength)
+        loadSuccess,
     required TResult Function(TodoFailure failure) loadFailure,
   }) {
     return loading();
@@ -1139,7 +1153,9 @@ class _$TodoLoading implements TodoLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
   }) {
     return loading?.call();
@@ -1150,7 +1166,9 @@ class _$TodoLoading implements TodoLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -1207,7 +1225,12 @@ abstract class _$$TodoSuccessCopyWith<$Res> {
   factory _$$TodoSuccessCopyWith(
           _$TodoSuccess value, $Res Function(_$TodoSuccess) then) =
       __$$TodoSuccessCopyWithImpl<$Res>;
-  $Res call({List<Todo?> todos});
+  $Res call(
+      {List<Todo?> todos,
+      int allTodosLength,
+      int doneTodosLength,
+      int todayTodosLength,
+      int upcomingTodosLength});
 }
 
 /// @nodoc
@@ -1223,12 +1246,32 @@ class __$$TodoSuccessCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? todos = freezed,
+    Object? allTodosLength = freezed,
+    Object? doneTodosLength = freezed,
+    Object? todayTodosLength = freezed,
+    Object? upcomingTodosLength = freezed,
   }) {
     return _then(_$TodoSuccess(
-      todos == freezed
+      todos: todos == freezed
           ? _value._todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List<Todo?>,
+      allTodosLength: allTodosLength == freezed
+          ? _value.allTodosLength
+          : allTodosLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      doneTodosLength: doneTodosLength == freezed
+          ? _value.doneTodosLength
+          : doneTodosLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      todayTodosLength: todayTodosLength == freezed
+          ? _value.todayTodosLength
+          : todayTodosLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      upcomingTodosLength: upcomingTodosLength == freezed
+          ? _value.upcomingTodosLength
+          : upcomingTodosLength // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1236,7 +1279,13 @@ class __$$TodoSuccessCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TodoSuccess implements TodoSuccess {
-  const _$TodoSuccess(final List<Todo?> todos) : _todos = todos;
+  const _$TodoSuccess(
+      {required final List<Todo?> todos,
+      required this.allTodosLength,
+      required this.doneTodosLength,
+      required this.todayTodosLength,
+      required this.upcomingTodosLength})
+      : _todos = todos;
 
   final List<Todo?> _todos;
   @override
@@ -1246,8 +1295,17 @@ class _$TodoSuccess implements TodoSuccess {
   }
 
   @override
+  final int allTodosLength;
+  @override
+  final int doneTodosLength;
+  @override
+  final int todayTodosLength;
+  @override
+  final int upcomingTodosLength;
+
+  @override
   String toString() {
-    return 'TodoState.loadSuccess(todos: $todos)';
+    return 'TodoState.loadSuccess(todos: $todos, allTodosLength: $allTodosLength, doneTodosLength: $doneTodosLength, todayTodosLength: $todayTodosLength, upcomingTodosLength: $upcomingTodosLength)';
   }
 
   @override
@@ -1255,12 +1313,25 @@ class _$TodoSuccess implements TodoSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TodoSuccess &&
-            const DeepCollectionEquality().equals(other._todos, _todos));
+            const DeepCollectionEquality().equals(other._todos, _todos) &&
+            const DeepCollectionEquality()
+                .equals(other.allTodosLength, allTodosLength) &&
+            const DeepCollectionEquality()
+                .equals(other.doneTodosLength, doneTodosLength) &&
+            const DeepCollectionEquality()
+                .equals(other.todayTodosLength, todayTodosLength) &&
+            const DeepCollectionEquality()
+                .equals(other.upcomingTodosLength, upcomingTodosLength));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todos));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_todos),
+      const DeepCollectionEquality().hash(allTodosLength),
+      const DeepCollectionEquality().hash(doneTodosLength),
+      const DeepCollectionEquality().hash(todayTodosLength),
+      const DeepCollectionEquality().hash(upcomingTodosLength));
 
   @JsonKey(ignore: true)
   @override
@@ -1272,10 +1343,13 @@ class _$TodoSuccess implements TodoSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Todo?> todos) loadSuccess,
+    required TResult Function(List<Todo?> todos, int allTodosLength,
+            int doneTodosLength, int todayTodosLength, int upcomingTodosLength)
+        loadSuccess,
     required TResult Function(TodoFailure failure) loadFailure,
   }) {
-    return loadSuccess(todos);
+    return loadSuccess(todos, allTodosLength, doneTodosLength, todayTodosLength,
+        upcomingTodosLength);
   }
 
   @override
@@ -1283,10 +1357,13 @@ class _$TodoSuccess implements TodoSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
   }) {
-    return loadSuccess?.call(todos);
+    return loadSuccess?.call(todos, allTodosLength, doneTodosLength,
+        todayTodosLength, upcomingTodosLength);
   }
 
   @override
@@ -1294,12 +1371,15 @@ class _$TodoSuccess implements TodoSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(todos);
+      return loadSuccess(todos, allTodosLength, doneTodosLength,
+          todayTodosLength, upcomingTodosLength);
     }
     return orElse();
   }
@@ -1343,9 +1423,18 @@ class _$TodoSuccess implements TodoSuccess {
 }
 
 abstract class TodoSuccess implements TodoState {
-  const factory TodoSuccess(final List<Todo?> todos) = _$TodoSuccess;
+  const factory TodoSuccess(
+      {required final List<Todo?> todos,
+      required final int allTodosLength,
+      required final int doneTodosLength,
+      required final int todayTodosLength,
+      required final int upcomingTodosLength}) = _$TodoSuccess;
 
   List<Todo?> get todos;
+  int get allTodosLength;
+  int get doneTodosLength;
+  int get todayTodosLength;
+  int get upcomingTodosLength;
   @JsonKey(ignore: true)
   _$$TodoSuccessCopyWith<_$TodoSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1426,7 +1515,9 @@ class _$TodoFailed implements TodoFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Todo?> todos) loadSuccess,
+    required TResult Function(List<Todo?> todos, int allTodosLength,
+            int doneTodosLength, int todayTodosLength, int upcomingTodosLength)
+        loadSuccess,
     required TResult Function(TodoFailure failure) loadFailure,
   }) {
     return loadFailure(failure);
@@ -1437,7 +1528,9 @@ class _$TodoFailed implements TodoFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
   }) {
     return loadFailure?.call(failure);
@@ -1448,7 +1541,9 @@ class _$TodoFailed implements TodoFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Todo?> todos)? loadSuccess,
+    TResult Function(List<Todo?> todos, int allTodosLength, int doneTodosLength,
+            int todayTodosLength, int upcomingTodosLength)?
+        loadSuccess,
     TResult Function(TodoFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
