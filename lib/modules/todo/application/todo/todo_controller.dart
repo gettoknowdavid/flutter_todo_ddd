@@ -38,20 +38,21 @@ class TodoController extends StateNotifier<TodoState> {
 
   Future mapEventsToStates(TodoEvent e) async {
     return e.map(
-      watchAll: _watchAll,
-      watchUncompleted: _watchUncompleted,
       todosReceived: _todosReceived,
+      watchAll: _watchAll,
       watchDone: _watchDone,
       watchToday: _watchToday,
       watchUpcoming: _watchUpcoming,
+      watchUncompleted: _watchUncompleted,
     );
   }
 
-  _todosReceived(_TodosReceived e) async {
+  _todosReceived(_TodosReceived e) {
     state = e.either.fold(
       (failure) => TodoState.loadFailure(failure),
       (success) => TodoState.loadSuccess(
         todos: success,
+        // doneTodos: success.where((e) => e?.isDone == true).toList(),
         allTodosLength: subLengthAll,
         doneTodosLength: subLengthDone,
         todayTodosLength: subLengthToday,
@@ -60,35 +61,35 @@ class TodoController extends StateNotifier<TodoState> {
     );
   }
 
-  _watchAll(_WatchAll e) async {
+  _watchAll(_WatchAll e) {
     _subscriptionAll = _facade.watchAll().listen((event) {
       event.fold((l) => null, (r) => subLengthAll = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
-  _watchDone(_WatchDone e) async {
+  _watchDone(_WatchDone e) {
     _subscriptionDone = _facade.watchDone().listen((event) {
       event.fold((l) => null, (r) => subLengthDone = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
-  _watchToday(_WatchToday e) async {
+  _watchToday(_WatchToday e) {
     _subscriptionToday = _facade.watchToday().listen((event) {
       event.fold((l) => null, (r) => subLengthToday = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
-  _watchUncompleted(_WatchUncompleted e) async {
+  _watchUncompleted(_WatchUncompleted e) {
     _subscriptionToday = _facade.watchUncompleted().listen((event) {
       event.fold((l) => null, (r) => subLengthAll = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
     });
   }
 
-  _watchUpcoming(_WatchUpcoming e) async {
+  _watchUpcoming(_WatchUpcoming e) {
     _subscriptionUpcoming = _facade.watchUpcoming().listen((event) {
       event.fold((l) => null, (r) => subLengthUpcoming = r.length);
       mapEventsToStates(TodoEvent.todosReceived(event));
