@@ -37,7 +37,10 @@ class AppLayout extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Lottie.asset('assets/animations/loading.json'),
-                const Text('Loading'),
+                Text(
+                  'Loading',
+                  style: TextStyle(fontSize: SizeUtil.fontSize(20)),
+                ),
               ],
             ),
           ),
