@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_todo_ddd/common/widgets/app_text_field.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/dtos/todo_dto.dart';
+import 'package:flutter_todo_ddd/modules/todo/infrastructure/todo_mapper.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_date_field.dart';
+import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/handle_bar.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
@@ -28,7 +31,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
 
-    final todo = widget.isEdit ? widget.todo : null;
+    final todo = widget.isEdit ? TodoDto.fromDomain(state.todo) : null;
 
     ref.listen<TodoFormState>(todoFormProvider, (previous, next) {
       next.option.fold(
@@ -39,7 +42,7 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
             insufficientPermissions: (value) => 'You do not have permission.',
             serverError: (value) => 'Server error. Try again.',
           ),
-          (success) => Modular.to.pop(),
+          (success) => widget.isEdit ? null : Modular.to.pop(),
         ),
       );
     });
@@ -55,9 +58,12 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const _HandleBar(),
+              const HandleBar(),
               SizeUtil.vS(10),
-              Text('Add a new todo', style: AppTextStyles.addNewTodoHeading),
+              Text(
+                widget.isEdit ? 'Edit Todo' : 'Add a new todo',
+                style: AppTextStyles.addNewTodoHeading,
+              ),
               SizeUtil.vS(16),
               AppTextField(
                 hint: 'Title',
@@ -92,24 +98,30 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
                 ),
               ),
               SizeUtil.vS(10),
-              const AddTodoDateField(),
+              AddTodoDateField(initialDate: todo?.time),
               SwitchListTile(
-                value: widget.isEdit ? todo!.isDone : state.todo.isDone,
+                value: state.todo.isDone,
                 title: const Text('Mark as completed?'),
-                contentPadding: SizeUtil.pOnly(l: 22),
+                contentPadding: SizeUtil.pOnly(l: 0),
                 onChanged: (value) {
                   event.mapEventsToStates(TodoFormEvent.isDoneChanged(value));
+                  return;
                 },
               ),
               SizeUtil.vS(16),
               AppButton(
-                disabled: !state.todo.title.isValid() ||
+                disabled: !widget.isEdit && !state.todo.title.isValid() ||
                     !state.todo.description!.isValid(),
                 onPressed: () {
-                  event.mapEventsToStates(const TodoFormEvent.saved());
+                  if (widget.isEdit) {
+                    event.mapEventsToStates(TodoFormEvent.edit(state.todo));
+                    Modular.to.pop();
+                  } else {
+                    event.mapEventsToStates(const TodoFormEvent.saved());
+                  }
                 },
                 loading: state.loading,
-                title: 'Add',
+                title: widget.isEdit ? 'Save' : 'Add',
               ),
             ],
           ),
@@ -120,31 +132,12 @@ class _AddTodoBottomSheetState extends ConsumerState<AddTodoBottomSheet> {
 
   @override
   void initState() {
-    // final formState = ref.read(todoFormProvider);
-    // final formEvent = ref.read(todoFormProvider.notifier);
-    // formEvent.mapEventsToStates(
-    //   TodoFormEvent.initialized(some(formState.todo)),
-    // );
+    final formEvent = ref.read(todoFormProvider.notifier);
+    if (widget.isEdit) {
+      formEvent.mapEventsToStates(
+        TodoFormEvent.initialized(some(TodoMapper().toDomain(widget.todo)!)),
+      );
+    }
     super.initState();
-  }
-}
-
-class _HandleBar extends StatelessWidget {
-  const _HandleBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: SizeUtil.h(4),
-        width: SizeUtil.sw(0.15),
-        decoration: BoxDecoration(
-          color: Colors.black26,
-          borderRadius: SizeUtil.borderRadius(20),
-        ),
-      ),
-    );
   }
 }
