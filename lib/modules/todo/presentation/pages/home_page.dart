@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_ddd/modules/app/application/app_providers.dart';
 import 'package:flutter_todo_ddd/modules/app/presentation/widgets/app_bar_avatar.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo/todo_controller.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/category_list.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/search_box.dart';
 import 'package:flutter_todo_ddd/theme/app_text_styles.dart';
 import 'package:flutter_todo_ddd/utils/get_greeting.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: const [
@@ -33,6 +40,17 @@ class HomePage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final todoEvent = ref.read(todoProvider.notifier);
+
+    todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+    todoEvent.mapEventsToStates(const TodoEvent.watchDone());
+    todoEvent.mapEventsToStates(const TodoEvent.watchToday());
+    todoEvent.mapEventsToStates(const TodoEvent.watchUpcoming());
   }
 }
 
