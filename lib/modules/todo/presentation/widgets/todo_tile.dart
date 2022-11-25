@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_ddd/modules/todo/application/todo/todo_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_form/todo_form_controller.dart';
 import 'package:flutter_todo_ddd/modules/todo/application/todo_provider.dart';
+import 'package:flutter_todo_ddd/modules/todo/domain/entities/category.dart';
 import 'package:flutter_todo_ddd/modules/todo/domain/entities/todo.dart';
 import 'package:flutter_todo_ddd/modules/todo/presentation/widgets/add_todo_bottom_sheet.dart';
 import 'package:flutter_todo_ddd/theme/app_colors.dart';
@@ -10,13 +12,15 @@ import 'package:flutter_todo_ddd/utils/size_util.dart';
 import 'package:flutter_todo_ddd/modules/todo/infrastructure/dtos/todo_dto.dart';
 
 class TodoTile extends ConsumerWidget {
-  const TodoTile({Key? key, required this.todoEntity}) : super(key: key);
+  const TodoTile({super.key, required this.todoEntity, required this.category});
 
   final Todo todoEntity;
+  final Category category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final event = ref.watch(todoFormProvider.notifier);
+    final todoEvent = ref.watch(todoProvider.notifier);
 
     final todo = TodoDto.fromDomain(todoEntity);
 
@@ -24,7 +28,6 @@ class TodoTile extends ConsumerWidget {
       onTap: () {
         showModalBottomSheet(
           context: context,
-          isScrollControlled: true,
           useRootNavigator: true,
           builder: (context) => AddTodoBottomSheet(isEdit: true, todo: todo),
         );
@@ -53,6 +56,23 @@ class TodoTile extends ConsumerWidget {
                 event.mapEventsToStates(
                   TodoFormEvent.edit(todoEntity.copyWith(isDone: value!)),
                 );
+                switch (category) {
+                  case Category.all:
+                    todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+                    break;
+                  case Category.done:
+                    todoEvent.mapEventsToStates(const TodoEvent.watchDone());
+                    break;
+                  case Category.today:
+                    todoEvent.mapEventsToStates(const TodoEvent.watchToday());
+                    break;
+                  case Category.upComing:
+                    todoEvent
+                        .mapEventsToStates(const TodoEvent.watchUpcoming());
+                    break;
+                  default:
+                    todoEvent.mapEventsToStates(const TodoEvent.watchAll());
+                }
               },
             ),
             Expanded(
