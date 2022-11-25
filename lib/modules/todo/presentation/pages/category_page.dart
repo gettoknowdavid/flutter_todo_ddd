@@ -42,7 +42,10 @@ class _CategoryPageState extends ConsumerState<CategoryPage> {
 
     return Scaffold(
       appBar: _AppBar(title: title),
-      body: TodoList(todos: (todoState as TodoSuccess).todos),
+      body: TodoList(
+        todos: (todoState as TodoSuccess).todos,
+        category: widget.category,
+      ),
     );
   }
 }
