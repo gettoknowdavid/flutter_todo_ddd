@@ -129,6 +129,7 @@ abstract class TodoDtoDocumentReference
     String? description,
     DateTime? time,
     DateTime? createdAt,
+    List<String>? titleSearch,
     List<Object?> props,
   });
 
@@ -180,6 +181,7 @@ class _$TodoDtoDocumentReference
     Object? description = _sentinel,
     Object? time = _sentinel,
     Object? createdAt = _sentinel,
+    Object? titleSearch = _sentinel,
     Object? props = _sentinel,
   }) async {
     final json = {
@@ -189,6 +191,7 @@ class _$TodoDtoDocumentReference
       if (description != _sentinel) "description": description as String?,
       if (time != _sentinel) "time": time as DateTime?,
       if (createdAt != _sentinel) "createdAt": createdAt as DateTime?,
+      if (titleSearch != _sentinel) "titleSearch": titleSearch as List<String>?,
       if (props != _sentinel) "props": props as List<Object?>,
     };
 
@@ -381,6 +384,17 @@ abstract class TodoDtoQuery
     List<DateTime?>? whereIn,
     List<DateTime?>? whereNotIn,
   });
+  TodoDtoQuery whereTitleSearch({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  });
   TodoDtoQuery whereProps({
     List<Object?>? isEqualTo,
     List<Object?>? isNotEqualTo,
@@ -471,6 +485,18 @@ abstract class TodoDtoQuery
     DateTime? startAfter,
     DateTime? endAt,
     DateTime? endBefore,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  });
+
+  TodoDtoQuery orderByTitleSearch({
+    bool descending = false,
+    List<String>? startAt,
+    List<String>? startAfter,
+    List<String>? endAt,
+    List<String>? endBefore,
     TodoDtoDocumentSnapshot? startAtDocument,
     TodoDtoDocumentSnapshot? endAtDocument,
     TodoDtoDocumentSnapshot? endBeforeDocument,
@@ -823,6 +849,34 @@ class _$TodoDtoQuery extends QueryReference<TodoDto, TodoDtoQuerySnapshot>
     );
   }
 
+  TodoDtoQuery whereTitleSearch({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  }) {
+    return _$TodoDtoQuery(
+      reference.where(
+        _$TodoDtoFieldMap["titleSearch"]!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+      ),
+      _collection,
+    );
+  }
+
   TodoDtoQuery whereProps({
     List<Object?>? isEqualTo,
     List<Object?>? isNotEqualTo,
@@ -1151,6 +1205,49 @@ class _$TodoDtoQuery extends QueryReference<TodoDto, TodoDtoQuerySnapshot>
     return _$TodoDtoQuery(query, _collection);
   }
 
+  TodoDtoQuery orderByTitleSearch({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    TodoDtoDocumentSnapshot? startAtDocument,
+    TodoDtoDocumentSnapshot? endAtDocument,
+    TodoDtoDocumentSnapshot? endBeforeDocument,
+    TodoDtoDocumentSnapshot? startAfterDocument,
+  }) {
+    var query = reference.orderBy(_$TodoDtoFieldMap["titleSearch"]!,
+        descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$TodoDtoQuery(query, _collection);
+  }
+
   TodoDtoQuery orderByProps({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1251,6 +1348,9 @@ TodoDto _$TodoDtoFromJson(Map<String, dynamic> json) => TodoDto(
       time: const TimestampConverter().fromJson(json['time'] as Timestamp?),
       createdAt:
           const TimestampConverter().fromJson(json['createdAt'] as Timestamp?),
+      titleSearch: (json['titleSearch'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 const _$TodoDtoFieldMap = <String, String>{
@@ -1260,6 +1360,7 @@ const _$TodoDtoFieldMap = <String, String>{
   'description': 'description',
   'time': 'time',
   'createdAt': 'createdAt',
+  'titleSearch': 'titleSearch',
 };
 
 Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
@@ -1269,4 +1370,5 @@ Map<String, dynamic> _$TodoDtoToJson(TodoDto instance) => <String, dynamic>{
       'description': instance.description,
       'time': const TimestampConverter().toJson(instance.time),
       'createdAt': const TimestampConverter().toJson(instance.createdAt),
+      'titleSearch': instance.titleSearch,
     };

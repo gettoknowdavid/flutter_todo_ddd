@@ -11,4 +11,5 @@ abstract class ITodoFacade {
   Stream<Either<TodoFailure, List<Todo?>>> watchToday();
   Stream<Either<TodoFailure, List<Todo?>>> watchDone();
   Stream<Either<TodoFailure, List<Todo?>>> watchUncompleted();
+  Stream<Either<TodoFailure, List<Todo?>>> search(String title);
 }

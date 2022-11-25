@@ -30,6 +30,7 @@ class TodoDto extends Equatable {
   final DateTime? time;
   @TimestampConverter()
   final DateTime? createdAt;
+  final List<String>? titleSearch;
 
   const TodoDto({
     required this.uid,
@@ -38,6 +39,7 @@ class TodoDto extends Equatable {
     this.description,
     this.time,
     this.createdAt,
+    this.titleSearch,
   });
 
   factory TodoDto.fromDomain(Todo todo) {
@@ -48,6 +50,7 @@ class TodoDto extends Equatable {
       description: todo.description?.getOrCrash(),
       time: todo.time,
       createdAt: todo.createdAt,
+      titleSearch: todo.titleSearch,
     );
   }
 
@@ -55,7 +58,8 @@ class TodoDto extends Equatable {
       _$TodoDtoFromJson(json);
 
   @override
-  List<Object?> get props => [uid, title, isDone, description, time, createdAt];
+  List<Object?> get props =>
+      [uid, title, isDone, description, time, createdAt, titleSearch];
 
   Map<String, Object?> toJson() => _$TodoDtoToJson(this);
 }

@@ -13,6 +13,7 @@ class Todo with _$Todo {
     ITodoDescription? description,
     DateTime? time,
     DateTime? createdAt,
+    List<String>? titleSearch,
   }) = _Todo;
 
   factory Todo.empty() => Todo(
@@ -22,5 +23,6 @@ class Todo with _$Todo {
         isDone: false,
         time: null,
         createdAt: DateTime.now(),
+        titleSearch: [],
       );
 }

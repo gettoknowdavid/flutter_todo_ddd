@@ -22,6 +22,7 @@ mixin _$Todo {
   ITodoDescription? get description => throw _privateConstructorUsedError;
   DateTime? get time => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  List<String>? get titleSearch => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TodoCopyWith<Todo> get copyWith => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $TodoCopyWith<$Res> {
       bool isDone,
       ITodoDescription? description,
       DateTime? time,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      List<String>? titleSearch});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
     Object? description = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
+    Object? titleSearch = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -82,6 +85,10 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      titleSearch: titleSearch == freezed
+          ? _value.titleSearch
+          : titleSearch // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -97,7 +104,8 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       bool isDone,
       ITodoDescription? description,
       DateTime? time,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      List<String>? titleSearch});
 }
 
 /// @nodoc
@@ -117,6 +125,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
     Object? description = freezed,
     Object? time = freezed,
     Object? createdAt = freezed,
+    Object? titleSearch = freezed,
   }) {
     return _then(_$_Todo(
       uid: uid == freezed
@@ -143,6 +152,10 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      titleSearch: titleSearch == freezed
+          ? _value._titleSearch
+          : titleSearch // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -156,7 +169,9 @@ class _$_Todo implements _Todo {
       required this.isDone,
       this.description,
       this.time,
-      this.createdAt});
+      this.createdAt,
+      final List<String>? titleSearch})
+      : _titleSearch = titleSearch;
 
   @override
   final Uid uid;
@@ -170,10 +185,18 @@ class _$_Todo implements _Todo {
   final DateTime? time;
   @override
   final DateTime? createdAt;
+  final List<String>? _titleSearch;
+  @override
+  List<String>? get titleSearch {
+    final value = _titleSearch;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Todo(uid: $uid, title: $title, isDone: $isDone, description: $description, time: $time, createdAt: $createdAt)';
+    return 'Todo(uid: $uid, title: $title, isDone: $isDone, description: $description, time: $time, createdAt: $createdAt, titleSearch: $titleSearch)';
   }
 
   @override
@@ -187,7 +210,9 @@ class _$_Todo implements _Todo {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other._titleSearch, _titleSearch));
   }
 
   @override
@@ -198,7 +223,8 @@ class _$_Todo implements _Todo {
       const DeepCollectionEquality().hash(isDone),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(createdAt));
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(_titleSearch));
 
   @JsonKey(ignore: true)
   @override
@@ -213,7 +239,8 @@ abstract class _Todo implements Todo {
       required final bool isDone,
       final ITodoDescription? description,
       final DateTime? time,
-      final DateTime? createdAt}) = _$_Todo;
+      final DateTime? createdAt,
+      final List<String>? titleSearch}) = _$_Todo;
 
   @override
   Uid get uid;
@@ -227,6 +254,8 @@ abstract class _Todo implements Todo {
   DateTime? get time;
   @override
   DateTime? get createdAt;
+  @override
+  List<String>? get titleSearch;
   @override
   @JsonKey(ignore: true)
   _$$_TodoCopyWith<_$_Todo> get copyWith => throw _privateConstructorUsedError;

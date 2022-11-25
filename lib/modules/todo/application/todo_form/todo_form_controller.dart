@@ -27,8 +27,6 @@ class TodoFormController extends StateNotifier<TodoFormState> {
     );
   }
 
-
-
   _descChanged(_TodoDescChanged e) async {
     state = state.copyWith(
       todo: state.todo.copyWith(
@@ -103,7 +101,18 @@ class TodoFormController extends StateNotifier<TodoFormState> {
     state = state.copyWith(
       todo: state.todo.copyWith(
         title: ITodoTitle(e.title),
+        titleSearch: setSearchParam(e.title),
       ),
     );
+  }
+
+  setSearchParam(String title) {
+    List<String>? titleSearchList = [];
+    String temp = "";
+    for (int i = 0; i < title.length; i++) {
+      temp = temp + title[i];
+      titleSearchList.add(temp.toLowerCase());
+    }
+    return titleSearchList;
   }
 }
