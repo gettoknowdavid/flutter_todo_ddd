@@ -66,17 +66,18 @@ class TodoFacade implements ITodoFacade {
   @override
   Stream<Either<TodoFailure, List<Todo?>>> watchAll() async* {
     yield* todosRef
-        .orderByCreatedAt(descending: true)
+        .whereIsDone(whereIn: [true, false])
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
         .onErrorReturnWith((e, stackTrace) {
-      if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
-        return left(const TodoFailure.insufficientPermissions());
-      } else {
-        return left(const TodoFailure.serverError());
-      }
-    });
+          if (e is PlatformException &&
+              e.message!.contains('PERMISSION_DENIED')) {
+            return left(const TodoFailure.insufficientPermissions());
+          } else {
+            return left(const TodoFailure.serverError());
+          }
+        });
   }
 
   @override
@@ -97,8 +98,13 @@ class TodoFacade implements ITodoFacade {
 
   @override
   Stream<Either<TodoFailure, List<Todo?>>> watchToday() async* {
+    final date = DateTime.now();
+    print(await todosRef
+        .whereTime(isEqualTo: DateTime(date.year, date.month, date.day))
+        .get()
+        .then((value) => value.docs.map((e) => e.data.toJson()).toList()));
     yield* todosRef
-        .whereTime(isEqualTo: DateTime.now())
+        .whereTime(isEqualTo: DateTime(date.year, date.month, date.day))
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
@@ -132,6 +138,7 @@ class TodoFacade implements ITodoFacade {
   Stream<Either<TodoFailure, List<Todo?>>> watchUpcoming() async* {
     yield* todosRef
         .whereTime(isGreaterThan: DateTime.now())
+        .whereIsDone(isEqualTo: false)
         .snapshots()
         .map((snapshot) => right<TodoFailure, List<Todo?>>(
             snapshot.docs.map((doc) => _mapper.toDomain(doc.data)).toList()))
