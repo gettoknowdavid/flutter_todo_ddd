@@ -8,7 +8,12 @@ import 'package:flutter_todo_ddd/utils/date_formatter.dart';
 import 'package:flutter_todo_ddd/utils/size_util.dart';
 
 class AddTodoDateField extends ConsumerStatefulWidget {
-  const AddTodoDateField({Key? key}) : super(key: key);
+  const AddTodoDateField({
+    Key? key,
+    this.initialDate,
+  }) : super(key: key);
+
+  final DateTime? initialDate;
 
   @override
   ConsumerState<AddTodoDateField> createState() => _AddTodoDateFieldState();
@@ -21,9 +26,10 @@ class _AddTodoDateFieldState extends ConsumerState<AddTodoDateField> {
   Widget build(BuildContext context) {
     final state = ref.watch(todoFormProvider);
     final event = ref.watch(todoFormProvider.notifier);
-    timeController = TextEditingController(
-      text: dateFormat(state.todo.time),
-    );
+
+    timeController = widget.initialDate != null
+        ? TextEditingController(text: dateFormat(widget.initialDate))
+        : TextEditingController(text: dateFormat(state.todo.time));
 
     return TextFormField(
       controller: timeController,
@@ -43,19 +49,8 @@ class _AddTodoDateFieldState extends ConsumerState<AddTodoDateField> {
           lastDate: DateTime(2025),
         );
 
-        TimeOfDay? time = await showTimePicker(
-          context: context,
-          initialTime: const TimeOfDay(hour: 9, minute: 0),
-        );
-
-        if (date != null && time != null) {
-          DateTime dt = DateTime(
-            date.year,
-            date.month,
-            date.day,
-            time.hour,
-            time.minute,
-          );
+        if (date != null) {
+          DateTime dt = DateTime(date.year, date.month, date.day);
           event.mapEventsToStates(TodoFormEvent.timeChanged(dt));
           setState(() => timeController.text = dateFormat(dt));
         }
